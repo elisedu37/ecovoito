@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, Button } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
+import Footer from "./Footer";
 
-export default function ScanQRCode() {
+export default function ScanQRCode({navigation}) {
     const [hasPermission, setHasPermission] = useState(null);
     const [scanned, setScanned] = useState(false);
 
@@ -32,6 +33,14 @@ export default function ScanQRCode() {
                 style={StyleSheet.absoluteFillObject}
             />
             {scanned && <Button title={'Scan'} onPress={() => setScanned(false)} />}
+
+            <Button
+                title=""
+                onPress={() =>
+                    navigation.navigate('Home')
+                }
+            />
+            <Footer navigation={navigation}/>
         </View>
     );
 }
