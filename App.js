@@ -5,7 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import ScanQRCode from "./components/ScanQRCode";
 import QRCodeGenerator from "./components/QRCodeGenerator";
 import Footer from "./components/Footer";
-
+import Home from './screens/Home';
 const Stack = createNativeStackNavigator();
 
 const MyStack = () => {
@@ -24,6 +24,7 @@ export default MyStack;
 const HomeScreen = ({ navigation }) => {
     return (
         <View style={styles.container}>
+            <Home/>
               <Footer navigation={navigation}/>
         </View>
     );
