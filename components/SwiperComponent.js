@@ -13,27 +13,31 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
     textAlign: 'center',
-    margin:'auto',
     fontSize: 27,
     fontWeight: 'bold',
     padding:10,
     borderRadius:30,
     width:"80%",
-    height:"80%",
+    height:"60%",
     shadowOpacity:1,
     shadowRadius:2,
     justifyContent: 'center',
     alignItems: 'center',
+    margin:'auto',
+    marginLeft:'10%',
+    marginBottom:'15%',
+    marginTop:'15%',
   },
  
   text: {
     color: '#275E47',
-    fontSize: 27,
-    fontWeight: 'bold'
+    fontSize: 23,
+    fontWeight: 'bold',
+    textAlign:"center",
   },
   image: {
-    width:50,
-    height:50,
+    width:200,
+    height:100,
     },
 })
  
@@ -42,9 +46,8 @@ export default class SwiperComponent extends Component {
     return (
       <Swiper style={styles.wrapper} showsButtons={false} showsPagination={true} dotColor={"white"} activeDotColor={"#707070"}>
         <View style={styles.slide1}>
-        <Image source={require('../assets/favicon.png')} style={styles.image}/>
-
           <Text style={styles.text}>Une application de challenge covoiturage inter-entreprises</Text>
+          <Image source={require('../assets/CarIllustration.png')} style={styles.image}/>
         </View>
         <View style={styles.slide1}>
           <Text style={styles.text}>Vous voulez reduire la taxe carbone de votre entreprise</Text>
