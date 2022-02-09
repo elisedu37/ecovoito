@@ -6,6 +6,7 @@ import ScanQRCode from "./components/ScanQRCode";
 import QRCodeGenerator from "./components/QRCodeGenerator";
 import Footer from "./components/Footer";
 import Home from './screens/Home';
+import LogIn from './forms/logIn';
 const Stack = createNativeStackNavigator();
 
 const MyStack = () => {
@@ -25,6 +26,7 @@ const HomeScreen = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <Home/>
+            <LogIn/>
               <Footer navigation={navigation}/>
         </View>
     );
