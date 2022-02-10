@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import ScanQRCode from "./components/ScanQRCode";
 import QRCodeGenerator from "./components/QRCodeGenerator";
 import Footer from "./components/Footer";
+import SignIn from './forms/signIn'
 
 const Stack = createNativeStackNavigator();
 
