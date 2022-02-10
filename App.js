@@ -7,6 +7,7 @@ import QRCodeGenerator from "./components/QRCodeGenerator";
 import Footer from "./components/Footer";
 import Home from './screens/Home';
 import LogIn from './forms/logIn';
+import SignIn from './forms/signIn';
 const Stack = createNativeStackNavigator();
 
 const MyStack = () => {
@@ -16,6 +17,8 @@ const MyStack = () => {
             <Stack.Screen name="Home" component={HomeScreen} />
             <Stack.Screen name="Scan" component={ ScanQRCode } />
             <Stack.Screen name="Generate" component={ QRCodeGenerator } />
+            <Stack.Screen name="SignIn" component={ SignIn } />
+            <Stack.Screen name="LogIn" component={ LogIn } />
         </Stack.Navigator>
       </NavigationContainer>
   );
