@@ -8,6 +8,7 @@ import Footer from "./components/Footer";
 import Home from './screens/Home';
 import LogIn from './forms/logIn';
 import SignIn from './forms/signIn';
+import MapScreen from './screens/MapScreen';
 const Stack = createNativeStackNavigator();
 
 const MyStack = () => {
@@ -28,9 +29,7 @@ export default MyStack;
 const HomeScreen = ({ navigation }) => {
     return (
         <View style={styles.container}>
-            <Home/>
-            <LogIn/>
-              <Footer navigation={navigation}/>
+            <MapScreen/>
         </View>
     );
 };
