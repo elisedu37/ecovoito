@@ -35,7 +35,7 @@ export default class SignIn extends Component {
       .then(userCredentials => {
         const user = userCredentials.user;
         console.log('User registered successfully!');
-        this.navigation.navigate('logIn');
+        this.navigation.navigate('Home');
       })
       .catch(error => this.setState({ errorMessage: error.message }))      
     }
@@ -65,13 +65,14 @@ export default class SignIn extends Component {
           secureTextEntry={true}
         />   
         <Button
+          navigation={this.props.navigation}
           color="#3740FE"
           title="Signup"
           onPress={() => this.registerUser()}
         />
         <Text 
           style={styles.loginText}
-          onPress={() => this.props.navigation.navigate('logIn')}>
+          onPress={() => this.props.navigation.navigate('Login')}>
           Already Registered? Click here to login
         </Text>                          
       </View>

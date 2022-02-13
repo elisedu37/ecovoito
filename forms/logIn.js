@@ -26,6 +26,12 @@ export default class Login extends Component{
         }
       }
 
+      logOut = () => {
+        auth()
+        .signOut()
+        .then(() => console.log('User signed out!'));
+      }
+
       updateInputVal = (val, prop) => {
         const state = this.state;
         state[prop] = val;
@@ -43,7 +49,7 @@ export default class Login extends Component{
           .then(userCredentials => {
             const user = userCredentials.user;
             console.log('User registered successfully!');
-            this.navigation.navigate('signIn');
+            this.props.navigation.navigate('Home');
           })
           .catch(error => this.setState({ errorMessage: error.message }))      
         }
@@ -52,7 +58,9 @@ export default class Login extends Component{
 
     return(
 
-        <View style={styles.container}>      
+        <View style={styles.container}>   
+        <Button 
+        onPress={() => this.logOut()}/>   
         <TextInput
           style={styles.inputStyle}
           placeholder="Email"
@@ -69,12 +77,12 @@ export default class Login extends Component{
         />   
         <Button
           color="#3740FE"
-          title="Signup"
+          title=""
           onPress={() => this.loginUser()}
         />
         <Text 
           style={styles.loginText}
-          onPress={() => this.navigation.navigate('signIn')}>
+          onPress={() => this.props.navigation.navigate('SignIn')}>
           Pas de compte chez nous ? Cliquez ici
         </Text>                          
       </View>
