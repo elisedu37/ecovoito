@@ -8,7 +8,6 @@ import Footer from "./components/Footer";
 import Home from './screens/Home';
 import LogIn from './forms/logIn';
 import SignIn from './forms/signIn';
-import Loader from './components/Loader';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { auth } from './config/firebase';
 

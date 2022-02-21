@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32.501" height="21.616" viewBox="0 0 32.501 21.616">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #275e47;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 3px;
+      }
+    </style>
+  </defs>
+  <g id="arrow-27324" transform="translate(34.618 41.114) rotate(180)">
+    <path id="Tracé_56" data-name="Tracé 56" class="cls-1" d="M31.858,31.209H3.617" transform="translate(0 -1.071)"/>
+    <path id="Tracé_57" data-name="Tracé 57" class="cls-1" d="M43.224,21.592,54.673,29.84,43.5,39" transform="translate(-21.555)"/>
+  </g>
+</svg>
