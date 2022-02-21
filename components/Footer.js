@@ -43,7 +43,6 @@ const styles = StyleSheet.create({
         margin: 'auto',
         backgroundColor:Colors.tertiary,
         height: 75,
-        position: 'fixed',
         bottom : 0,
     },
     text: {

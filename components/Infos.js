@@ -24,8 +24,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     justifyContent: 'center',
     backgroundColor: Colors.tertiary,
-    borderRadius:"10px",
-    padding:"10px",
+    borderRadius:10,
+    padding:10,
     alignItems:'center',
   },
   paragraph:{
