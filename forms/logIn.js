@@ -48,8 +48,8 @@ export default class Login extends Component{
           signInWithEmailAndPassword(this.state.email, this.state.password)
           .then(userCredentials => {
             const user = userCredentials.user;
-            console.log('User registered successfully!');
-            this.props.navigation.navigate('Home');
+            console.log('User Logged successfully!');
+            this.props.navigation.navigate('HomeScreen');
           })
           .catch(error => this.setState({ errorMessage: error.message }))      
         }
@@ -82,7 +82,7 @@ export default class Login extends Component{
         />
         <Text 
           style={styles.loginText}
-          onPress={() => this.props.navigation.navigate('SignIn')}>
+          onPress={() => this.props.navigation.navigate('Signin')}>
           Pas de compte chez nous ? Cliquez ici
         </Text>                          
       </View>

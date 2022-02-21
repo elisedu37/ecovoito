@@ -1,13 +1,12 @@
 // components/signup.js
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, TextInput, Button, Alert, ActivityIndicator } from 'react-native';
-import { auth } from '../config/firebase';
+import { auth, db } from '../config/firebase';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 
 export default class SignIn extends Component {
-  
   
   constructor() {
     super();
@@ -17,7 +16,14 @@ export default class SignIn extends Component {
       password: '',
       isLoading: false
     }
+    const userData = {
+      email: '', 
+      password: '',
+    };
+
+    
   }
+  
   updateInputVal = (val, prop) => {
     const state = this.state;
     state[prop] = val;
@@ -35,7 +41,7 @@ export default class SignIn extends Component {
       .then(userCredentials => {
         const user = userCredentials.user;
         console.log('User registered successfully!');
-        this.navigation.navigate('Home');
+        this.navigation.navigate('Account');
       })
       .catch(error => this.setState({ errorMessage: error.message }))      
     }

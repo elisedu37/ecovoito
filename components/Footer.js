@@ -5,7 +5,7 @@ import { Colors } from './Colors';
 const Footer = ({navigation}) =>{
     return (
         <View style={styles.footer}>
-            <Button title="Home" onPress={() => navigation.navigate('Home')}/>
+            <Button title="Home" onPress={() => navigation.navigate('HomeScreen')}/>
             <Button title="Scan" onPress={() => navigation.navigate('Scan')}/>
             <Button title="Generate" onPress={() => navigation.navigate('Generate')}/>
         </View>
