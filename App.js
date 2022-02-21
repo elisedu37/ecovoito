@@ -5,30 +5,39 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import ScanQRCode from "./components/ScanQRCode";
 import QRCodeGenerator from "./components/QRCodeGenerator";
 import Footer from "./components/Footer";
-import SignIn from './forms/signIn'
+import Home from './screens/Home';
+import LogIn from './forms/logIn';
+import SignIn from './forms/signIn';
+import Loader from './components/Loader';
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { auth } from './config/firebase';
 
 const Stack = createNativeStackNavigator();
 
 const MyStack = () => {
+  const user = auth.currentUser;
   return (
-      <NavigationContainer>
-        <Stack.Navigator initialRouteName='Home'>
-            <Stack.Screen name="Home" component={HomeScreen} />
-            <Stack.Screen name="Scan" component={ ScanQRCode } />
-            <Stack.Screen name="Generate" component={ QRCodeGenerator } />
+        <NavigationContainer>
+          <Stack.Navigator>
+          {user == null ? (
+
+            <Stack.Screen name="SignIn" component={ SignIn } />
+
+          ) : (
+            <Stack.Screen name="Home" component={HomeScreen} />  
+
+          )} 
+            <Stack.Screen name="Login" component={LogIn} />  
+            <Stack.Screen name="Signin" component={SignIn} />  
+            <Stack.Screen name="Home" component={Home} />  
         </Stack.Navigator>
       </NavigationContainer>
   );
 };
 export default MyStack;
+  
+  
 
-const HomeScreen = ({ navigation }) => {
-    return (
-        <View style={styles.container}>
-              <Footer navigation={navigation}/>
-        </View>
-    );
-};
 
 const styles = StyleSheet.create({
   container: {
