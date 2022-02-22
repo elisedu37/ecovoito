@@ -59,8 +59,6 @@ export default class Login extends Component{
     return(
 
         <View style={styles.container}>   
-        <Button 
-        onPress={() => this.logOut()}/>   
         <TextInput
           style={styles.inputStyle}
           placeholder="Email"
@@ -77,7 +75,7 @@ export default class Login extends Component{
         />   
         <Button
           color="#3740FE"
-          title=""
+          title="login"
           onPress={() => this.loginUser()}
         />
         <Text 

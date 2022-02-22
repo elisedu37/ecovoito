@@ -15,6 +15,7 @@ import { auth } from './config/firebase';
 
 const Stack = createNativeStackNavigator();
 
+
 const MyStack = () => {
   const user = auth.currentUser;
   console.log(user);
@@ -38,7 +39,7 @@ const MyStack = () => {
             <Stack.Screen name="HomeScreen" component={Home} />  
         </Stack.Navigator>
       </NavigationContainer>
-      <Footer/>
+      <Footer />
     </>
   );
 };
