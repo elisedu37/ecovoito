@@ -50,7 +50,6 @@ const styles = StyleSheet.create({
   },
   sousTexte:{
     fontSize:10,
-    fontWeight:'light',
     paddingLeft:5,
 
   }

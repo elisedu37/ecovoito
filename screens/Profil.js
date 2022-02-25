@@ -16,7 +16,9 @@ import OldRoute from '../components/OldRoute';
 export default function Profil() {
   return (
     <View style={styles.container}>
-      <ScrollView>
+
+<ScrollView>
+
         <View style={styles.header}>
           <TouchableOpacity>
             <View style={styles.titleBar}>
@@ -31,23 +33,25 @@ export default function Profil() {
             </View>
           </TouchableOpacity>
         </View>
+      <View style={styles.profil}>
 
-        <View style={styles.profil}>
-          <Image
-            source={require('../assets/img/google.png')}
-            style={styles.imgProfil}
-          />
-          <View style={styles.infoContainer}>
+        <Image
+              source={require('../assets/img/google.png')}
+              style={styles.imgProfil}
+            />
+            <View style={styles.infoContainer}>
             <Text style={styles.nom}>Filipine Monvoisin</Text>
             <Text style={styles.subText}>132</Text>
             <Text style={styles.subText}>abonnees</Text>
           </View>
+      </View>
+      <View style={styles.statsContainer}>
 
-          <View style={styles.statsContainer}>
-            <View style={styles.statsBox}>
+      <View style={styles.statsBox}>
               <Ionicons name="key-outline" size={24} color="#52575D"/>
               <Text style={styles.subText}>Suivre</Text>
             </View>
+
             <View style={[styles.statsBox]}>
               <Ionicons name="at-outline" size={25} color="#52575D"/>
               <Text style={styles.subText}>Salarie</Text>
@@ -59,31 +63,30 @@ export default function Profil() {
                 color="#52575D"/>
               <Text style={styles.subText}>Contacter</Text>
             </View>
-          </View>
-        </View>
 
-        <View style={styles.infoProfil}>
-          <Text style={styles.titre}>Informations </Text>
-          <View style={styles.colonne}>
-            <Infos text="23 ans" />
-            <Infos text="5/5" />
-            <Infos text="Le Puy" />
-          </View>
+            </View>
 
-          <Text style={styles.titre}>Anciens covoiturage </Text>
+            <View style={styles.infoProfil}>
+                  <Text style={styles.titre}>Informations </Text>
+                  <View style={styles.colonne}>
+                    <Infos text="23 ans" />
+                    <Infos text="5/5" />
+                    <Infos text="Le Puy" />
+                  </View>
+         </View> 
+
+         <Text style={styles.titre}>Anciens covoiturage </Text>
           
           <OldRoute nom="Nathan" work="Salarié décathon" depart="Puy en Velay" destination="Val le Puy"/>
           <OldRoute nom="Nathan" work="Salarié décathon" depart="Puy en Velay" destination="Val le Puy"/>
-
-
           <Text style={styles.titre}>Centres d interet </Text>
           <View style={styles.colonne}>
             <Infos text="sport" />
             <Infos text="musique" />
             <Infos text="parler" />
           </View>
-        </View>
-      </ScrollView>
+
+        </ScrollView> 
     </View>
   );
 }
@@ -141,7 +144,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: Colors.primary,
     borderRadius: 20,
-    marginTop: '-100px',
     margin: 20,
     shadowColor: Colors.shadow,
     shadowOffset: {

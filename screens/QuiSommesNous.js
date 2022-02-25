@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, Text, Image, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, Image, View, TouchableOpacity, ScrollView } from 'react-native';
 import { Colors } from '../components/Colors';
 import TextChecked from '../components/TextChecked';
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
@@ -10,6 +10,9 @@ import Infos from '../components/Infos';
 export default function QuiSommesNous() {
   return (
     <View style={styles.container}>
+
+<ScrollView>
+
       <View>
         <TouchableOpacity>
           <View style={styles.titleBar}>
@@ -66,6 +69,8 @@ export default function QuiSommesNous() {
       <Question question="Comment sont attribués les points" />
       <Question question="Comment sont attribués les points" />
       <Question question="Comment sont attribués les points" />
+
+      </ScrollView>
     </View>
   );
 }
