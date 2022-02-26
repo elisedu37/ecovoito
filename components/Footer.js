@@ -2,16 +2,17 @@ import React, { useState, useEffect } from 'react';
 import {Button, StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import { Colors } from './Colors';
 import Icon from 'react-native-vector-icons/FontAwesome';
-
+import { useNavigation } from '@react-navigation/native';
 
 const IconColor = '#000000';
 function AnimTabnav() {
     const IconColor = '#633dae';
 }
-function Footer(navigation) {
-
-    return (
-        <View style={styles.footer}>
+export default function Footer() {
+const navigation= useNavigation();
+  return (
+    
+       <View style={styles.footer}>
             <TouchableOpacity
                 onPress={() => navigation.navigate('Scan')} color="Colors.IconColor" style={styles.currentBtn}
                 onClick={AnimTabnav()}
@@ -30,11 +31,9 @@ function Footer(navigation) {
             >
                 <Icon name="search" size={40} color="#ffffff" />
             </TouchableOpacity>
-        </View>
-    );
+    </View>
+  );
 }
-
-export default Footer;
 
 const styles = StyleSheet.create({
     footer: {

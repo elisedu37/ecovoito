@@ -39,7 +39,6 @@ const MyStack = () => {
             <Stack.Screen name="HomeScreen" component={Home} />  
         </Stack.Navigator>
       </NavigationContainer>
-      <Footer />
     </>
   );
 };
