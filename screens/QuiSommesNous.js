@@ -6,9 +6,11 @@ import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 import Question from '../components/Question';
 import IllustratedText from '../components/IllustratedText';
 import Infos from '../components/Infos';
+import Footer from '../components/Footer';
 
 export default function QuiSommesNous() {
   return (
+    <>
     <View style={styles.container}>
 
 <ScrollView>
@@ -72,6 +74,9 @@ export default function QuiSommesNous() {
 
       </ScrollView>
     </View>
+    <Footer/>
+
+    </>
   );
 }
 

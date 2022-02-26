@@ -13,23 +13,35 @@ const navigation= useNavigation();
   return (
     
        <View style={styles.footer}>
-            <TouchableOpacity
-                onPress={() => navigation.navigate('Scan')} color="Colors.IconColor" style={styles.currentBtn}
+           <TouchableOpacity
+                onPress={() => navigation.navigate('QuiSommesNous')} color="Colors.IconColor" 
                 onClick={AnimTabnav()}
             >
-                <Icon name="qrcode" size={40} color="#ffffff" style={styles.currentIco} />
+                <Icon name="question" size={40} color="#ffffff" />
             </TouchableOpacity>
             <TouchableOpacity
-                onPress={() => navigation.navigate('HomeScreen')} color="Colors.IconColor"
+                onPress={() => navigation.navigate('Trajets')} color="Colors.IconColor" 
                 onClick={AnimTabnav()}
             >
-                <Icon name="home" size={40} color="#ffffff" />
+                <Icon name="taxi" size={35} color="#ffffff" />
             </TouchableOpacity>
             <TouchableOpacity
-                onPress={() => navigation.navigate('Generate')} color="Colors.IconColor"
+                onPress={() => navigation.navigate('Home')} color="Colors.IconColor"
                 onClick={AnimTabnav()}
             >
-                <Icon name="search" size={40} color="#ffffff" />
+                <Icon name="globe" size={40} color="#ffffff" />
+            </TouchableOpacity>
+            <TouchableOpacity
+                onPress={() => navigation.navigate('Analyse')} color="Colors.IconColor"
+                onClick={AnimTabnav()}
+            >
+                <Icon name="unlock" size={40} color="#ffffff" />
+            </TouchableOpacity>
+            <TouchableOpacity
+                onPress={() => navigation.navigate('Classement')} color="Colors.IconColor" 
+                onClick={AnimTabnav()}
+            >
+                <Icon name="trophy" size={40} color="#ffffff" />
             </TouchableOpacity>
     </View>
   );
@@ -71,3 +83,25 @@ const styles = StyleSheet.create({
         color: 'green',
     }
 });
+/*
+
+<TouchableOpacity
+                onPress={() => navigation.navigate('Scan')} color="Colors.IconColor" style={styles.currentBtn}
+                onClick={AnimTabnav()}
+            >
+                <Icon name="qrcode" size={40} color="#ffffff" style={styles.currentIco} />
+            </TouchableOpacity>
+            <TouchableOpacity
+                onPress={() => navigation.navigate('HomeScreen')} color="Colors.IconColor"
+                onClick={AnimTabnav()}
+            >
+                <Icon name="home" size={40} color="#ffffff" />
+            </TouchableOpacity>
+            <TouchableOpacity
+                onPress={() => navigation.navigate('Generate')} color="Colors.IconColor"
+                onClick={AnimTabnav()}
+            >
+                <Icon name="search" size={40} color="#ffffff" />
+            </TouchableOpacity>
+
+            */

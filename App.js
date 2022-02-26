@@ -12,6 +12,11 @@ import setAccount from './forms/setAccount';
 import Loader from './components/Loader';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { auth } from './config/firebase';
+import QuiSommesNous from './screens/QuiSommesNous';
+import Classement from './screens/Classement';
+import Accueil from './screens/Accueil';
+import Trajets from './screens/Trajets';
+import Analyse from './screens/Analyse';
 
 const Stack = createNativeStackNavigator();
 
@@ -36,7 +41,12 @@ const MyStack = () => {
             <Stack.Screen name="Login" component={LogIn} />  
             <Stack.Screen name="Account" component={setAccount} />
             <Stack.Screen name="Signin" component={SignIn} />  
-            <Stack.Screen name="HomeScreen" component={Home} />  
+            <Stack.Screen name="Home" component={Accueil} />  
+            <Stack.Screen name="QuiSommesNous" component={QuiSommesNous} />  
+            <Stack.Screen name="Classement" component={Classement} />  
+            <Stack.Screen name="Trajets" component={Trajets} />  
+            <Stack.Screen name="Analyse" component={Analyse} />  
+
         </Stack.Navigator>
       </NavigationContainer>
     </>
