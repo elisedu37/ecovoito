@@ -6,9 +6,9 @@ export default function IllustratedText(props) {
     <View style={styles.box}>
       <Image
         source={props.image}
-        style={styles.illustration}
+        style={styles.illustration} 
       />
-      <Text>{props.texte}</Text>
+      <Text style={styles.texte}>{props.texte}</Text>
     </View>
   );
 }
@@ -22,7 +22,10 @@ const styles = StyleSheet.create({
 
   illustration: {
     height: 100,
-    width:'50%',
-    borderRadius: 20,
+    width:'40%',
   },
+
+  texte:{
+    width:'60%',
+  }
 });

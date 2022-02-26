@@ -15,17 +15,17 @@ export default function Button(props) {
 
 const styles = StyleSheet.create({
   container: {
-    //flex: 1,
     justifyContent:'center',
     alignItems: 'center',
+    padding:20,
   },
   text: {
-    fontSize: 17,
+    fontSize: 16,
     fontWeight: 'bold',
     textAlign: 'center',
     padding:10,
     borderRadius: 19,
-    width: '80%',
+    width: '100%',
     shadowColor: Colors.shadow,
     shadowOffset: {
       width: 0,
@@ -34,7 +34,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 1,
     shadowRadius: 19,
     elevation: 1,
-    //'Montserrat': require('../assets/fonts/Montserrat-Medium.ttf'),
-    //fontFamily: "Montserrat",
+    
   }
 });

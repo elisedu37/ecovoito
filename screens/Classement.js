@@ -1,23 +1,58 @@
 import * as React from 'react';
-import { StyleSheet, Text, View} from 'react-native';
-import Button from '../components/Button';
-import Constants from 'expo-constants';
+import { StyleSheet, Text, Image, View, TouchableOpacity } from 'react-native';
 import { Colors } from '../components/Colors';
+import { Ionicons, MaterialIcons } from '@expo/vector-icons';
+
 import Footer from '../components/Footer';
 
-export default function Classement() {
+export default function Classement({navigation}) {
   return (
+      <>
     <View style={styles.container}>
-          <Text>Classement</Text>
-          <Footer />
+    <View>
+      <View style={styles.titleBar}>
+            <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+                <Image
+                source={require('../assets/loader-icon.png')}
+                style={styles.imgCovoit}
+                />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('Profil')}>
+              <Image
+                source={require('../assets/img/compte.png')}
+                style={styles.imgCovoit}
+                />
+            </TouchableOpacity>
+          </View>
+      </View>
+      <Text style={styles.titre}>EVOLUTION </Text>
+      <Text style={styles.titre}>VOTRE CLASSEMENT </Text>
+      <Text style={styles.titre}>VOTRE ENTREPRISE </Text>
     </View>
+    <Footer />
+
+    </>
   );
 };
 
 
+
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#F2EDD0',
-  },
-});
+    container: {
+      flex: 1,
+      backgroundColor: '#F2EDD0',
+      width: '100%',
+      padding: 20,
+    },
+    titleBar: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      marginTop: 24,
+      marginHorizontal: 16,
+    },
+    imgCovoit: {
+        width: 20,
+        height: 20,
+      },
+  });
+  

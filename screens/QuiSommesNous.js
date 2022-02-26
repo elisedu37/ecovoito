@@ -8,7 +8,7 @@ import IllustratedText from '../components/IllustratedText';
 import Infos from '../components/Infos';
 import Footer from '../components/Footer';
 
-export default function QuiSommesNous() {
+export default function QuiSommesNous({navigation}) {
   return (
     <>
     <View style={styles.container}>
@@ -16,25 +16,29 @@ export default function QuiSommesNous() {
 <ScrollView>
 
       <View>
-        <TouchableOpacity>
+        
           <View style={styles.titleBar}>
-            <Ionicons
-              name="ios-arrow-back"
-              size={24}
-              color={Colors.secondary}></Ionicons>
-            <Ionicons
-              name="cog-outline"
-              size={24}
-              color={Colors.secondary}></Ionicons>
+            <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+                <Image
+                source={require('../assets/loader-icon.png')}
+                style={styles.imgCovoit}
+                />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('Profil')}>
+              <Image
+                source={require('../assets/img/compte.png')}
+                style={styles.imgCovoit}
+                />
+            </TouchableOpacity>
           </View>
-        </TouchableOpacity>
+        
       </View>
 
       <Text style={styles.titre}>ECOVOITO C EST : </Text>
 
-      <IllustratedText texte="Evaluer et reduire l emission de co2 produite par les salaries" image={require('../assets/img/google.png')} />
-      <IllustratedText texte="Un challenge entre entreprise ! Qui sera la meilleure ?" image={require('../assets/img/google.png')} />
-      <IllustratedText texte="Une solution de covoiturage pour vous !" image={require('../assets/img/google.png') } />
+      <IllustratedText texte="Evaluer et reduire l emission de co2 produite par les salaries" image={require('../assets/img/reductionCO2.png')} />
+      <IllustratedText texte="Un challenge entre entreprise ! Qui sera la meilleure ?" image={require('../assets/img/challenge.png')} />
+      <IllustratedText texte="Une solution de covoiturage pour vous !" image={require('../assets/img/covoiturage.png') } />
 
       <View style={styles.block}>
         <Text style={styles.titre}>Regle du challenge </Text>
@@ -48,7 +52,7 @@ export default function QuiSommesNous() {
 
         <View style={styles.boxCovoit}>
           <Image
-            source={require('../assets/img/google.png')}
+            source={require('../assets/img/attention.png')}
             style={styles.imgCovoit}
           />
           <Text>
@@ -58,7 +62,6 @@ export default function QuiSommesNous() {
       </View>
 
       <Text style={styles.titre}>LES RECOMPENSES </Text>
-
       <View style={styles.colonne}>
         <Infos text="Bon de réduction" />
         <Infos text="Argent" />
@@ -109,7 +112,6 @@ const styles = StyleSheet.create({
   imgCovoit: {
     width: 20,
     height: 20,
-    borderRadius: 20,
   },
 
   colonne: {

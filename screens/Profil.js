@@ -12,8 +12,9 @@ import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 import Infos from '../components/Infos';
 import { Colors } from '../components/Colors';
 import OldRoute from '../components/OldRoute';
+import Footer from '../components/Footer';
 
-export default function Profil() {
+export default function Profil({navigation}) {
   return (
     <View style={styles.container}>
 
@@ -87,6 +88,7 @@ export default function Profil() {
           </View>
 
         </ScrollView> 
+        <Footer/>
     </View>
   );
 }

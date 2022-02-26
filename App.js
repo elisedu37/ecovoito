@@ -17,6 +17,7 @@ import Classement from './screens/Classement';
 import Accueil from './screens/Accueil';
 import Trajets from './screens/Trajets';
 import Analyse from './screens/Analyse';
+import Profil from './screens/Profil';
 
 const Stack = createNativeStackNavigator();
 
@@ -27,13 +28,13 @@ const MyStack = () => {
   return (
     <>
         <NavigationContainer>
-          <Stack.Navigator>
+          <Stack.Navigator screenOptions={{headerShown: false}}>
           {user == null ? (
 
             <Stack.Screen name="LogIn" component={LogIn} /> 
 
           ) : (
-            <Stack.Screen name="HomeScreen" component={Home} />  
+            () => navigation.navigate('HomeScreen')
 
           )} 
             <Stack.Screen name="Generate" component={QRCodeGenerator} />  
@@ -46,6 +47,8 @@ const MyStack = () => {
             <Stack.Screen name="Classement" component={Classement} />  
             <Stack.Screen name="Trajets" component={Trajets} />  
             <Stack.Screen name="Analyse" component={Analyse} />  
+            <Stack.Screen name="HomeScreen" component={Home} />  
+            <Stack.Screen name="Profil" component={Profil} />  
 
         </Stack.Navigator>
       </NavigationContainer>
