@@ -36,11 +36,13 @@ export default function Trajets({navigation}) {
         bg={Colors.secondary}
         textcolor={Colors.tertiary}
       />
+      <TouchableOpacity onPress={() => navigation.navigate('TrajetIndiv')}>
       <Button
         name="Créer mon trajet individuel"
         bg={Colors.secondary}
         textcolor={Colors.tertiary}
       />
+      </TouchableOpacity>
       </View>    
       </View>
     <Footer />
@@ -56,7 +58,6 @@ const styles = StyleSheet.create({
       flex: 1,
       backgroundColor: '#F2EDD0',
       width: '100%',
-      padding: 20,
     },
     titleBar: {
       flexDirection: 'row',

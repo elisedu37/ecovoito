@@ -32,13 +32,6 @@ export default function ScanQRCode({navigation}) {
                 style={StyleSheet.absoluteFillObject}
             />
             {scanned && <Button title={'scan'} onPress={() => setScanned(false)} />}
-
-            <Button
-                title=""
-                onPress={() =>
-                    navigation.navigate('Home')
-                }
-            />
         </View>
     );
 }

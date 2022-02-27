@@ -18,6 +18,7 @@ import Accueil from './screens/Accueil';
 import Trajets from './screens/Trajets';
 import Analyse from './screens/Analyse';
 import Profil from './screens/Profil';
+import TrajetIndividuel from './screens/TrajetIndividuel';
 
 const Stack = createNativeStackNavigator();
 
@@ -49,6 +50,7 @@ const MyStack = () => {
             <Stack.Screen name="Analyse" component={Analyse} />  
             <Stack.Screen name="HomeScreen" component={Home} />  
             <Stack.Screen name="Profil" component={Profil} />  
+            <Stack.Screen name="TrajetIndiv" component={TrajetIndividuel} />  
 
         </Stack.Navigator>
       </NavigationContainer>

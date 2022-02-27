@@ -63,10 +63,10 @@ export default function QuiSommesNous({navigation}) {
 
       <Text style={styles.titre}>LES RECOMPENSES </Text>
       <View style={styles.colonne}>
-        <Infos text="Bon de réduction" />
-        <Infos text="Argent" />
-        <Infos text="Argent" />
-        <Infos text="Bon de réduction" />
+        <Infos text="Bon de réduction" image={require('../assets/img/google.png')}/>
+        <Infos text="Argent" image={require('../assets/img/google.png')}/>
+        <Infos text="Argent" image={require('../assets/img/google.png')}/>
+        <Infos text="Bon de réduction" image={require('../assets/img/google.png')}/>
       </View>
 
       <Text style={styles.titre}>FAQ </Text>

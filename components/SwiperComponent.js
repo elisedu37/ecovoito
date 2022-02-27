@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-import { Image, AppRegistry, StyleSheet, Text, View } from 'react-native'
+import { Image, AppRegistry, StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import { Colors } from '../components/Colors';
 
 import Swiper from 'react-native-swiper/src'
 import Button from './Button'
- 
+ import IllustratedText from './IllustratedText'
+
 const styles = StyleSheet.create({
   wrapper: {
     backgroundColor: '#FFE9CC',
@@ -31,9 +32,10 @@ const styles = StyleSheet.create({
  
   text: {
     color: '#275E47',
-    fontSize: 23,
+    fontSize: 22,
     fontWeight: 'bold',
     textAlign:"center",
+    margin:10,
   },
   image: {
     width:200,
@@ -46,23 +48,25 @@ export default class SwiperComponent extends Component {
     return (
       <Swiper style={styles.wrapper} showsButtons={false} showsPagination={true} dotColor={"white"} activeDotColor={"#707070"}>
         <View style={styles.slide1}>
-          <Text style={styles.text}>Une application de challenge covoiturage inter-entreprises</Text>
+          <Text style={styles.text}>UNE APPLICATION DE "CHALLENGE" ENTRE ENTREPRISES</Text>
           <Image source={require('../assets/CarIllustration.png')} style={styles.image}/>
         </View>
         <View style={styles.slide1}>
-          <Text style={styles.text}>Vous voulez reduire la taxe carbone de votre entreprise</Text>
+          <Text style={styles.text}>VOUS VOULEZ RÉDUIRE L'ÉMISSION DE CO2 DE VOTRE ENTREPRISE ?</Text>
+          <Text style={styles.text}>ECOVOITO EST FAIT POUR VOUS !</Text>
         </View>
         <View style={styles.slide1}>
           <Text style={styles.text}>ECOVOITO c est :</Text>
-          <Text style={styles.text}>- reduire l emission de CO2 produite par le salarie</Text>
-          <Text style={styles.text}>- une plateforme de covoiturage a votre disposition </Text>
+          <IllustratedText texte="Évaluer et réduire l'émission de CO2 produite par les salariés" image={require('../assets/img/reductionCO2.png')} />
+          <IllustratedText texte="Un challenge entre entreprise ! Qui sera la meilleure entreprise ?" image={require('../assets/img/challenge.png')} />
+          <IllustratedText texte="Une solution de covoiturage pour vous !" image={require('../assets/img/covoiturage.png') } />
         </View>
         <View style={styles.slide1}>
-          <Text style={styles.text}>Classement</Text>
+          <Text style={styles.text}>Et pourquoi pas la votre ?</Text>
         </View>
         <View style={styles.slide1}>
-          <Text style={styles.text}> C est a votre tour de vous challenger</Text>
-          <Button name="Inscription" bg={Colors.secondary} textcolor={Colors.tertiary}/>
+          <Text style={styles.text}>C'EST À VOTRE TOUR DE VOUS CHALLENGER !</Text>
+          <Button name="COMMENCER" bg={Colors.secondary} textcolor={Colors.tertiary}/>
         </View>
       </Swiper>
     )

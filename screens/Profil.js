@@ -13,7 +13,6 @@ import Infos from '../components/Infos';
 import { Colors } from '../components/Colors';
 import OldRoute from '../components/OldRoute';
 import Footer from '../components/Footer';
-
 export default function Profil({navigation}) {
   return (
     <View style={styles.container}>
@@ -75,9 +74,9 @@ export default function Profil({navigation}) {
             <View style={styles.infoProfil}>
                   <Text style={styles.titre}>Informations </Text>
                   <View style={styles.colonne}>
-                    <Infos text="23 ans" />
-                    <Infos text="5/5" />
-                    <Infos text="Le Puy" />
+                    <Infos text="23 ans" image={require('../assets/img/anniversaire.png')} />
+                    <Infos text="5/5" image={require('../assets/img/etoile.png')} />
+                    <Infos text="Le Puy" image={require('../assets/img/lieux.png')} />
                   </View>
          </View> 
 
@@ -90,9 +89,9 @@ export default function Profil({navigation}) {
 
           <Text style={styles.titre}>Centres d interet </Text>
           <View style={styles.colonne}>
-            <Infos text="sport" />
-            <Infos text="musique" />
-            <Infos text="parler" />
+            <Infos text="sport" image={require('../assets/img/google.png')}/>
+            <Infos text="musique" image={require('../assets/img/google.png')} />
+            <Infos text="parler" image={require('../assets/img/google.png')} />
           </View>
 
         </ScrollView> 
@@ -162,7 +161,7 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 1,
     shadowRadius: 19,
-    elevation: 1,
+    elevation: 5,
     marginTop:-100,
   },
   infoProfil: {

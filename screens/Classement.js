@@ -1,14 +1,15 @@
 import * as React from 'react';
-import { StyleSheet, Text, Image, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, Image, View, TouchableOpacity, ScrollView } from 'react-native';
 import { Colors } from '../components/Colors';
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
-
 import Footer from '../components/Footer';
+import ClassementBox from '../components/ClassementBox';
 
 export default function Classement({navigation}) {
   return (
       <>
     <View style={styles.container}>
+      <ScrollView>
     <View>
       <View style={styles.titleBar}>
             <TouchableOpacity onPress={() => navigation.navigate('Home')}>
@@ -23,10 +24,25 @@ export default function Classement({navigation}) {
                 style={styles.imgCovoit}
                 />
             </TouchableOpacity>
-          </View>
       </View>
-      <Text style={styles.titre}>LE CLASSEMENT </Text>
     </View>
+      <Text style={styles.titre}>LE CLASSEMENT </Text>
+      <View style={styles.box}>
+      <ClassementBox position="2" logo={require('../assets/img/google.png')} work="Géant Casino" lieu="Le Puy en Velay" point="148"/>
+      <ClassementBox position="3" logo={require('../assets/img/google.png')} work="Leclerc" lieu="Saint Etienne" point="143"/>
+      <ClassementBox position="4" logo={require('../assets/img/google.png')} work="Sport 2000" lieu="Le Puy en Velay" point="140"/>
+      <ClassementBox position="5" logo={require('../assets/img/google.png')} work="Delbard" lieu="Le Puy en Velay" point="137"/>
+      <ClassementBox position="6" logo={require('../assets/img/google.png')} work="Darty" lieu="Saint Etienne" point="136"/>
+      <ClassementBox position="7" logo={require('../assets/img/google.png')} work="Mercedes" lieu="Le Puy en Velay" point="132"/>
+      <ClassementBox position="8" logo={require('../assets/img/google.png')} work="Gifi" lieu="Le Puy en Velay" point="125"/>
+      <ClassementBox position="9" logo={require('../assets/img/google.png')} work="Darty" lieu="Saint Etienne" point="110"/>
+      <ClassementBox position="10" logo={require('../assets/img/google.png')} work="Darty" lieu="Saint Etienne" point="98"/>
+
+      </View>
+      </ScrollView>
+
+    </View>
+
     <Footer />
 
     </>
@@ -59,5 +75,9 @@ const styles = StyleSheet.create({
         color: Colors.tertiary,
         padding: 10,
       },
+      box:{
+        justifyContent:'center',
+        alignItems:'center',
+      }
   });
   

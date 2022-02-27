@@ -2,14 +2,14 @@ import * as React from 'react';
 import { StyleSheet, Text, Image, View, TouchableOpacity } from 'react-native';
 import { Colors } from '../components/Colors';
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
-import Button from '../components/Button';
+import ChoixTransport from '../components/ChoixTransport';
 import Footer from '../components/Footer';
-import Infos from '../components/Infos';
-export default function Accueil({navigation}) {
+
+export default function TrajetIndividuel({navigation}) {
   return (
       <>
     <View style={styles.container}>
-    <View>
+      <View>
       <View style={styles.titleBar}>
             <TouchableOpacity onPress={() => navigation.navigate('Home')}>
                 <Image
@@ -25,23 +25,28 @@ export default function Accueil({navigation}) {
             </TouchableOpacity>
           </View>
       </View>
-      <Button
-        name="Mon trajet du jour"
+      <Text style={styles.titre}>CRÉATION DE MON TRAJET INDIVIDUEL</Text>
+      <View >
+      <ChoixTransport
+        name="VÉHICULE NON-MOTORISÉ"
         bg={Colors.secondary}
         textcolor={Colors.tertiary}
+        image={require('../assets/img/velo.png')}
       />
-        <View style={styles.colonne}>
-
-        <TouchableOpacity onPress={() => navigation.navigate('Generate')}>
-        <Infos text="Generer QR" image={require('../assets/img/google.png')}/>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('Scan')}>
-            <Infos text="Scan QR" image={require('../assets/img/google.png')}/>
-            </TouchableOpacity>
-            </View>
-
-      <Text style={styles.titre}>MON TABLEAU DE BORD </Text>
-          </View>
+      <ChoixTransport
+        name="TRANSPORT EN COMMUN"
+        bg={Colors.secondary}
+        textcolor={Colors.tertiary}
+        image={require('../assets/img/bus.png')}
+      />
+      <ChoixTransport
+        name="VEHICULE MOTORISE"
+        bg={Colors.secondary}
+        textcolor={Colors.tertiary}
+        image={require('../assets/img/voiture.png')}
+      />
+      </View>    
+      </View>
     <Footer />
 
     </>
@@ -55,7 +60,6 @@ const styles = StyleSheet.create({
       flex: 1,
       backgroundColor: '#F2EDD0',
       width: '100%',
-      padding: 20,
     },
     titleBar: {
       flexDirection: 'row',
@@ -64,14 +68,13 @@ const styles = StyleSheet.create({
       marginHorizontal: 16,
       marginBottom:30,
     },
+    bouton:{
+      justifyContent: 'center',
+      alignItems:'center',
+    },
     imgCovoit: {
         width: 40,
         height: 40,
-      },
-      colonne: {
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        justifyContent:'center',
       },
       titre: {
         fontSize: 17,
@@ -80,4 +83,3 @@ const styles = StyleSheet.create({
         padding: 10,
       },
   });
-  

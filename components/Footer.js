@@ -83,25 +83,3 @@ const styles = StyleSheet.create({
         color: 'green',
     }
 });
-/*
-
-<TouchableOpacity
-                onPress={() => navigation.navigate('Scan')} color="Colors.IconColor" style={styles.currentBtn}
-                onClick={AnimTabnav()}
-            >
-                <Icon name="qrcode" size={40} color="#ffffff" style={styles.currentIco} />
-            </TouchableOpacity>
-            <TouchableOpacity
-                onPress={() => navigation.navigate('HomeScreen')} color="Colors.IconColor"
-                onClick={AnimTabnav()}
-            >
-                <Icon name="home" size={40} color="#ffffff" />
-            </TouchableOpacity>
-            <TouchableOpacity
-                onPress={() => navigation.navigate('Generate')} color="Colors.IconColor"
-                onClick={AnimTabnav()}
-            >
-                <Icon name="search" size={40} color="#ffffff" />
-            </TouchableOpacity>
-
-            */
