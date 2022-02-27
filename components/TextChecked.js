@@ -30,5 +30,6 @@ const styles = StyleSheet.create({
 
   texte : {
     padding:5,
+    paddingLeft:15,
   }
 });

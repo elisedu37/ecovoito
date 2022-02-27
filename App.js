@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import ScanQRCode from "./components/ScanQRCode";
-import QRCodeGenerator from "./components/QRCodeGenerator";
+import ScanQRCode from "./screens/ScanQRCode";
+import QRCode from "./screens/QRCode";
 import Footer from "./components/Footer";
 import Home from './screens/Home';
 import LogIn from './forms/logIn';
@@ -37,7 +37,7 @@ const MyStack = () => {
             () => navigation.navigate('HomeScreen')
 
           )} 
-            <Stack.Screen name="Generate" component={QRCodeGenerator} />  
+            <Stack.Screen name="Generate" component={QRCode} />  
             <Stack.Screen name="Scan" component={ScanQRCode} />  
             <Stack.Screen name="Login" component={LogIn} />  
             <Stack.Screen name="Account" component={setAccount} />

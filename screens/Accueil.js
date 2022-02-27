@@ -4,7 +4,7 @@ import { Colors } from '../components/Colors';
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 import Button from '../components/Button';
 import Footer from '../components/Footer';
-
+import Infos from '../components/Infos';
 export default function Accueil({navigation}) {
   return (
       <>
@@ -30,6 +30,16 @@ export default function Accueil({navigation}) {
         bg={Colors.secondary}
         textcolor={Colors.tertiary}
       />
+        <View style={styles.colonne}>
+
+        <TouchableOpacity onPress={() => navigation.navigate('Generate')}>
+        <Infos text="Generer QR" />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('Scan')}>
+            <Infos text="Scan QR" />
+            </TouchableOpacity>
+            </View>
+
       <Text style={styles.titre}>MON TABLEAU DE BORD </Text>
           </View>
     <Footer />
@@ -52,10 +62,22 @@ const styles = StyleSheet.create({
       justifyContent: 'space-between',
       marginTop: 24,
       marginHorizontal: 16,
+      marginBottom:30,
     },
     imgCovoit: {
-        width: 20,
-        height: 20,
+        width: 40,
+        height: 40,
+      },
+      colonne: {
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        justifyContent:'center',
+      },
+      titre: {
+        fontSize: 17,
+        fontWeight: 'bold',
+        color: Colors.tertiary,
+        padding: 10,
       },
   });
   

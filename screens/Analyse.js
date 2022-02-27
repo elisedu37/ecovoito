@@ -25,7 +25,11 @@ export default function Analyse({navigation}) {
             </TouchableOpacity>
           </View>
       </View>
-      <Text style={styles.titre}>Analyse </Text>
+      <Text style={styles.titre}>MON TABLEAU DE BORD </Text>
+
+      <Text style={styles.titre}>EVOLUTION </Text>
+      <Text style={styles.titre}>VOTRE CLASSEMENT </Text>
+      <Text style={styles.titre}>VOTRE ENTREPRISE </Text>
     </View>
     <Footer />
 
@@ -47,6 +51,7 @@ const styles = StyleSheet.create({
       justifyContent: 'space-between',
       marginTop: 24,
       marginHorizontal: 16,
+      marginBottom:30,
     },
     titre: {
       fontSize: 17,
@@ -55,7 +60,7 @@ const styles = StyleSheet.create({
       padding: 10,
     },
     imgCovoit: {
-        width: 20,
-        height: 20,
+        width: 40,
+        height: 40,
       },
   });

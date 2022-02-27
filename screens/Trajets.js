@@ -25,7 +25,7 @@ export default function Trajets({navigation}) {
             </TouchableOpacity>
           </View>
       </View>
-      <View style={styles.bouton}>
+      <View >
       <Button
         name="Mes anciens trajets"
         bg={Colors.secondary}
@@ -63,13 +63,14 @@ const styles = StyleSheet.create({
       justifyContent: 'space-between',
       marginTop: 24,
       marginHorizontal: 16,
+      marginBottom:30,
     },
     bouton:{
       justifyContent: 'center',
       alignItems:'center',
     },
     imgCovoit: {
-        width: 20,
-        height: 20,
+        width: 40,
+        height: 40,
       },
   });

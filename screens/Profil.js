@@ -21,23 +21,28 @@ export default function Profil({navigation}) {
 <ScrollView>
 
         <View style={styles.header}>
-          <TouchableOpacity>
             <View style={styles.titleBar}>
+            <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+
               <Ionicons
                 name="ios-arrow-back"
                 size={24}
                 color={Colors.secondary}></Ionicons>
+                          </TouchableOpacity>
+                          <TouchableOpacity>
+
               <Ionicons
                 name="cog-outline"
                 size={24}
                 color={Colors.secondary}></Ionicons>
+                                          </TouchableOpacity>
+
             </View>
-          </TouchableOpacity>
         </View>
       <View style={styles.profil}>
 
         <Image
-              source={require('../assets/img/google.png')}
+              source={require('../assets/img/imgProfil.jpg')}
               style={styles.imgProfil}
             />
             <View style={styles.infoContainer}>
@@ -45,7 +50,7 @@ export default function Profil({navigation}) {
             <Text style={styles.subText}>132</Text>
             <Text style={styles.subText}>abonnees</Text>
           </View>
-      </View>
+      
       <View style={styles.statsContainer}>
 
       <View style={styles.statsBox}>
@@ -66,7 +71,7 @@ export default function Profil({navigation}) {
             </View>
 
             </View>
-
+            </View>
             <View style={styles.infoProfil}>
                   <Text style={styles.titre}>Informations </Text>
                   <View style={styles.colonne}>
@@ -77,9 +82,12 @@ export default function Profil({navigation}) {
          </View> 
 
          <Text style={styles.titre}>Anciens covoiturage </Text>
-          
+         <View style={styles.boxOldRoute}>
+
           <OldRoute nom="Nathan" work="Salarié décathon" depart="Puy en Velay" destination="Val le Puy"/>
           <OldRoute nom="Nathan" work="Salarié décathon" depart="Puy en Velay" destination="Val le Puy"/>
+          </View>
+
           <Text style={styles.titre}>Centres d interet </Text>
           <View style={styles.colonne}>
             <Infos text="sport" />
@@ -155,6 +163,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 1,
     shadowRadius: 19,
     elevation: 1,
+    marginTop:-100,
   },
   infoProfil: {
     backgroundColor: Colors.primary,
@@ -178,4 +187,8 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     alignItems: 'center',
   },
+  boxOldRoute:{
+    justifyContent:'center',
+    alignItems:'center',
+  }
 });

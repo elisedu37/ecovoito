@@ -25,9 +25,7 @@ export default function Classement({navigation}) {
             </TouchableOpacity>
           </View>
       </View>
-      <Text style={styles.titre}>EVOLUTION </Text>
-      <Text style={styles.titre}>VOTRE CLASSEMENT </Text>
-      <Text style={styles.titre}>VOTRE ENTREPRISE </Text>
+      <Text style={styles.titre}>LE CLASSEMENT </Text>
     </View>
     <Footer />
 
@@ -49,10 +47,17 @@ const styles = StyleSheet.create({
       justifyContent: 'space-between',
       marginTop: 24,
       marginHorizontal: 16,
+      marginBottom:30,
     },
     imgCovoit: {
-        width: 20,
-        height: 20,
+        width: 40,
+        height: 40,
+      },
+      titre: {
+        fontSize: 17,
+        fontWeight: 'bold',
+        color: Colors.tertiary,
+        padding: 10,
       },
   });
   
