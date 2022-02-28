@@ -20,7 +20,12 @@
     "expo-camera": "~12.1.0",
     "expo-permissions": "^13.1.0",
     "expo-status-bar": "~1.2.0",
+<<<<<<< HEAD
     "firebase": "^9.6.6",
+=======
+    "firebase": "^8.10.0",
+    "firebase-admin": "^10.0.2",
+>>>>>>> develop
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-native": "0.64.3",

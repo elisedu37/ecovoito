@@ -32,7 +32,7 @@ export default function ScanQRCode({navigation}) {
                 onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
                 style={StyleSheet.absoluteFillObject}
             />
-            {scanned && <Button title={'Scan'} onPress={() => setScanned(false)} />}
+            {scanned && <Button title={'scan'} onPress={() => setScanned(false)} />}
 
             <Button
                 title=""

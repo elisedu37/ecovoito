@@ -10,7 +10,6 @@ export default function Home() {
   return (
     <View style={styles.container}>
           <SwiperComponent/>
-     
     </View>
   );
 };

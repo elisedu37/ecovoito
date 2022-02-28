@@ -1,0 +1,26 @@
+<svg id="Groupe_68" data-name="Groupe 68" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16.316" height="16.316" viewBox="0 0 16.316 16.316">
+  <defs>
+    <style>
+      .cls-1, .cls-3 {
+        fill: #ffe9cc;
+      }
+
+      .cls-2 {
+        clip-path: url(#clip-path);
+      }
+
+      .cls-3 {
+        fill-rule: evenodd;
+      }
+    </style>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_66" data-name="Rectangle 66" class="cls-1" width="16.316" height="16.316"/>
+    </clipPath>
+  </defs>
+  <g id="Groupe_67" data-name="Groupe 67" class="cls-2">
+    <path id="Tracé_275" data-name="Tracé 275" class="cls-3" d="M8.158,0A8.158,8.158,0,1,1,2.389,2.388,8.133,8.133,0,0,1,8.158,0m5.2,2.961a7.349,7.349,0,1,0,2.152,5.2,7.326,7.326,0,0,0-2.152-5.2" transform="translate(0 0.001)"/>
+    <path id="Tracé_276" data-name="Tracé 276" class="cls-3" d="M286.766,287.4a.633.633,0,1,0-.633-.633.634.634,0,0,0,.633.633" transform="translate(-278.608 -278.608)"/>
+    <path id="Tracé_277" data-name="Tracé 277" class="cls-3" d="M295.951,108.192h.749l-.252-5.456h-.24Z" transform="translate(-288.167 -100.034)"/>
+    <path id="Tracé_278" data-name="Tracé 278" class="cls-3" d="M303.445,297.857l-.374.649,3.8,1.9.12-.207Z" transform="translate(-295.099 -290.024)"/>
+  </g>
+</svg>

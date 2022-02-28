@@ -11,11 +11,10 @@ import {
     Button
 } from 'react-native';
 import { auth } from '../config/firebase';
-import { AuthContext } from '../context/context';
-import { useNavigation } from '@react-navigation/native';
 
 
-export default class Login extends Component {
+
+export default class Login extends Component{
 
     constructor() {
         super();
@@ -27,13 +26,18 @@ export default class Login extends Component {
         }
       }
 
+      logOut = () => {
+        auth()
+        .signOut()
+        .then(() => console.log('User signed out!'));
+      }
+
       updateInputVal = (val, prop) => {
         const state = this.state;
         state[prop] = val;
         this.setState(state);
       }
-
-        loginUser = () => {
+      loginUser = () => {
         if(this.state.email === '' && this.state.password === '') {
           Alert.alert('Enter details to signup!')
         } else {
@@ -44,18 +48,17 @@ export default class Login extends Component {
           signInWithEmailAndPassword(this.state.email, this.state.password)
           .then(userCredentials => {
             const user = userCredentials.user;
-            console.log('User logged successfully!');
-            this.navigation.navigate('logIn');
+            console.log('User Logged successfully!');
+            this.props.navigation.navigate('HomeScreen');
           })
           .catch(error => this.setState({ errorMessage: error.message }))      
         }
       }
+    render() {
 
-      render() {
-    
     return(
 
-        <View style={styles.container}>      
+        <View style={styles.container}>   
         <TextInput
           style={styles.inputStyle}
           placeholder="Email"
@@ -72,15 +75,15 @@ export default class Login extends Component {
         />   
         <Button
           color="#3740FE"
-          title="Signup"
+          title="login"
           onPress={() => this.loginUser()}
         />
         <Text 
           style={styles.loginText}
-          onPress={() => this.props.navigation.navigate('signIn')}>
-          Pas de compte ? Créez-en un ici
+          onPress={() => this.props.navigation.navigate('Signin')}>
+          Pas de compte chez nous ? Cliquez ici
         </Text>                          
-      </View> 
+      </View>
     );
 }
 }
