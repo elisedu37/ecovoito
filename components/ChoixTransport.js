@@ -1,13 +1,17 @@
 import * as React from 'react';
-import { StyleSheet, Text, View} from 'react-native';
+import { StyleSheet, Text, View, Image} from 'react-native';
 import Constants from 'expo-constants';
 import { Colors } from './Colors';
 
-//import { Card } from 'react-native-paper';
-
-export default function Button(props) {
+export default function ChoixTransport(props) {
   return (
     <View style={styles.container}>
+        <View style={styles.icone}>
+            <Image
+            source={props.image}
+            style={styles.image} 
+            />
+      </View>
         <Text style={[styles.text, {backgroundColor:props.bg}, {color:props.textcolor}]}>{props.name}</Text>
     </View>
   );
@@ -19,7 +23,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding:20,
   },
+  icone:{
+    padding:15,
+    backgroundColor: Colors.tertiary,
+    borderRadius:50,
+  },
   text: {
+      marginTop:-10,
     fontSize: 16,
     fontWeight: 'bold',
     textAlign: 'center',
@@ -35,5 +45,10 @@ const styles = StyleSheet.create({
     shadowRadius: 19,
     elevation: 1,
     
-  }
+  },
+  image:{
+    width:30,
+    height:30,
+  },
+
 });

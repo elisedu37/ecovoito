@@ -7,7 +7,7 @@ export default function Question(props) {
     <View style={styles.boxFAQ}>
         <Text>{props.question} </Text>
         <Image
-          source={require('../assets/img/google.png')}
+          source={require('../assets/img/downArrow.png')}
           style={styles.fleche}
         />
       </View>
