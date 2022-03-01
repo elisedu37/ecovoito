@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, Text, Image, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, Image, View, TouchableOpacity, ScrollView } from 'react-native';
 import { Colors } from '../components/Colors';
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 import Button from '../components/Button';
@@ -8,42 +8,42 @@ import Infos from '../components/Infos';
 export default function Accueil({navigation}) {
   return (
       <>
-    <View style={styles.container}>
-    <View>
-      <View style={styles.titleBar}>
-            <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-                <Image
-                source={require('../assets/loader-icon.png')}
-                style={styles.imgCovoit}
-                />
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('Profil')}>
-              <Image
-                source={require('../assets/img/compte.png')}
-                style={styles.imgCovoit}
-                />
-            </TouchableOpacity>
-          </View>
-      </View>
-      <Button
-        name="Mon trajet du jour"
-        bg={Colors.secondary}
-        textcolor={Colors.tertiary}
-      />
-        <View style={styles.colonne}>
-
-        <TouchableOpacity onPress={() => navigation.navigate('Generate')}>
-        <Infos text="Generer QR" image={require('../assets/img/google.png')}/>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('Scan')}>
-            <Infos text="Scan QR" image={require('../assets/img/google.png')}/>
-            </TouchableOpacity>
+    <ScrollView style={styles.container}>
+        <View>
+            <View style={styles.titleBar}>
+                <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+                    <Image
+                        source={require('../assets/loader-icon.png')} style={styles.imgCovoit}
+                    />
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => navigation.navigate('Profil')}>
+                    <Image
+                        source={require('../assets/img/compte.png')} style={styles.imgCovoit}
+                    />
+                </TouchableOpacity>
             </View>
-
-      <Text style={styles.titre}>MON TABLEAU DE BORD </Text>
-          </View>
-    <Footer />
-
+        </View>
+        <Button name="Mon trajet du jour" bg={Colors.secondary} textcolor={Colors.tertiary}/>
+        <View style={styles.colonne}>
+            <Image style={styles.voiture} source={require('../assets/img/google.png')}/>
+            <TouchableOpacity onPress={() => navigation.navigate('Generate')} style={styles.Qrcode}>
+                <Infos text="Generer QR" image={require('../assets/img/google.png')}/>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('Scan')} style={styles.Qrcode}>
+                <Infos text="Scan QR" image={require('../assets/img/google.png')}/>
+            </TouchableOpacity>
+        </View>
+            <Text style={styles.titre}>MON TABLEAU DE BORD </Text>
+            <View style={styles.containerText}>
+                <Text style={styles.TextT}>Donnée du : 3 février 2022</Text>
+                <Text style={styles.TextM}>78,6</Text>
+                <Text style={styles.TextB}>de réduction de CO2</Text>
+            </View>
+        <View style={styles.classementContainer}>
+            <Image source={require('../assets/img/compte.png')} style={styles.classement}/>
+        </View>
+    </ScrollView>
+    <Footer/>
     </>
   );
 };
@@ -55,7 +55,8 @@ const styles = StyleSheet.create({
       flex: 1,
       backgroundColor: '#F2EDD0',
       width: '100%',
-      padding: 20,
+      padding: 36,
+      paddingBottom: 80,
     },
     titleBar: {
       flexDirection: 'row',
@@ -68,16 +69,65 @@ const styles = StyleSheet.create({
         width: 40,
         height: 40,
       },
-      colonne: {
+    Qrcode: {
+        width: '47%',
+        marginBottom: 35,
+    },
+    colonne: {
+        position: 'relative',
         flexDirection: 'row',
         flexWrap: 'wrap',
         justifyContent:'center',
+        marginTop: 70,
       },
-      titre: {
+    voiture: {
+        position: 'absolute',
+        height: 40,
+        width: 40,
+        zIndex: 3,
+        top: -20,
+    },
+    containerText: {
+        width: '100%',
+        backgroundColor: '#F3AF62',
+        flexDirection: 'column',
+        borderRadius: 27,
+        padding: 20,
+      },
+    titre: {
         fontSize: 17,
         fontWeight: 'bold',
         color: Colors.tertiary,
-        padding: 10,
-      },
+        marginTop: 30,
+        marginBottom: 30,
+    },
+    TextT: {
+        fontSize: 10,
+        fontWeight: 'bold',
+        color: Colors.tertiary,
+    },
+    TextM: {
+        fontSize: 50,
+        fontWeight: 'bold',
+        color: Colors.tertiary,
+    },
+    TextB: {
+        fontSize: 15,
+        fontWeight: 'bold',
+        color: Colors.tertiary,
+    },
+    classement: {
+        width: '100%',
+        height: 200,
+        justifyContent: 'center',
+    },
+    classementContainer: {
+        width: '100%',
+        height: 200,
+        justifyContent: 'center',
+        textAlign:'center',
+        marginTop: 50,
+        marginBottom: 70,
+    },
   });
   
