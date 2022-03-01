@@ -9,7 +9,7 @@ import "firebase/firestore";
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyARwNmLNh63cTHRYdop7NjYzchL66YpIhs",
-  authDomain: "ecovoito.firebaseapp.com",
+  authDomain: "ecovoito.localhost",
   projectId: "ecovoito",
   storageBucket: "ecovoito.appspot.com",
   messagingSenderId: "685205876171",
