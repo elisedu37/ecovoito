@@ -3,6 +3,7 @@ import {  Text, StyleSheet, View } from 'react-native';
 import MapView from 'react-native-maps';
 import { Marker, Polyline } from 'react-native-maps';
 import MapViewDirections from 'react-native-maps-directions';
+import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 
 export default function MapScreen() {
   const [coordinates] = useState([
@@ -19,6 +20,20 @@ export default function MapScreen() {
 
   return (
     <View style={styles.container}>
+
+<GooglePlacesAutocomplete
+      placeholder='Search'
+      onPress={(data, details = null) => {
+        // 'details' is provided when fetchDetails = true
+        console.log(data, details);
+      }}
+      query={{
+        key: {GOOGLE_MAPS_APIKEY} ,
+        language: 'en',
+      }}
+      styles={{container:{flex:0, position:"absolute", width:'100%', zIndex:1, top:10}, listView:{backgroundColor:"white"}}}
+    />
+
       <MapView
         style={styles.map}
         initialRegion={{
@@ -30,7 +45,7 @@ export default function MapScreen() {
            <MapViewDirections
           origin={coordinates[0]}
           destination={coordinates[1]}
-          apikey={GOOGLE_MAPS_APIKEY} // insert your API Key here
+          apikey={GOOGLE_MAPS_APIKEY} 
           strokeWidth={4}
           strokeColor="#111111"
         />
