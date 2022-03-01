@@ -18,6 +18,7 @@ import Accueil from './screens/Accueil';
 import Trajets from './screens/Trajets';
 import Analyse from './screens/Analyse';
 import Profil from './screens/Profil';
+import setRole from './forms/setRole';
 import TrajetIndividuel from './screens/TrajetIndividuel';
 
 const Stack = createNativeStackNavigator();
@@ -43,7 +44,8 @@ const MyStack = () => {
             <Stack.Screen name="Login" component={LogIn} />  
             <Stack.Screen name="Account" component={setAccount} />
             <Stack.Screen name="Signin" component={SignIn} />  
-            <Stack.Screen name="Home" component={Accueil} />  
+            <Stack.Screen name="Home" component={Accueil} /> 
+            <Stack.Screen name="setRole" component={setRole} />  
             <Stack.Screen name="QuiSommesNous" component={QuiSommesNous} />  
             <Stack.Screen name="Classement" component={Classement} />  
             <Stack.Screen name="Trajets" component={Trajets} />  

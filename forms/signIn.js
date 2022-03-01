@@ -2,8 +2,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, TextInput, Button, Alert, ActivityIndicator } from 'react-native';
 import { auth, db } from '../config/firebase';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 
 export default class SignIn extends Component {
@@ -11,15 +9,11 @@ export default class SignIn extends Component {
   constructor() {
     super();
     this.state = { 
-      displayName: '',
+      uid: '',
       email: '', 
       password: '',
       isLoading: false
     }
-    const userData = {
-      email: '', 
-      password: '',
-    };
 
     
   }
@@ -39,9 +33,13 @@ export default class SignIn extends Component {
       auth.
       createUserWithEmailAndPassword(this.state.email, this.state.password)
       .then(userCredentials => {
-        const user = userCredentials.user;
-        console.log('User registered successfully!');
-        this.navigation.navigate('Account');
+        auth.onAuthStateChanged(function(user) {
+          db.collection('Users').doc(user.uid).set({
+          email: user.email,
+          // password: user.password,       
+          });           
+          }); 
+        this.props.navigation.navigate('Account'); 
       })
       .catch(error => this.setState({ errorMessage: error.message }))      
     }
