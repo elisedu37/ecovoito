@@ -8,7 +8,7 @@ export default function Infos(props) {
    <View style={styles.content}>
       <Image
         style={styles.img}
-        source={require('../assets/img/google.png')}
+        source={props.image}
       /> 
       <Text style={[styles.paragraph]}>{props.text}</Text>
   </View>

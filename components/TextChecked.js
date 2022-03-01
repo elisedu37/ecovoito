@@ -5,7 +5,7 @@ export default function TextChecked(props) {
   return (
     <View style={styles.box}>
       <Image
-        source={require('../assets/img/google.png')}
+        source={require('../assets/img/checkIcon.png')}
         style={styles.img}
       />
       <Text style={styles.texte}>
@@ -30,5 +30,6 @@ const styles = StyleSheet.create({
 
   texte : {
     padding:5,
+    paddingLeft:15,
   }
 });

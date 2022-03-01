@@ -4,13 +4,13 @@ import Button from '../components/Button';
 import Constants from 'expo-constants';
 import { Colors } from '../components/Colors';
 import Footer from '../components/Footer';
-import SwiperComponent from '../components/SwiperComponent';
+import ScanQRCode from "../components/ScanQRCode";
 
-export default function Home() {
+export default function QRCode() {
   return (
     <View style={styles.container}>
-          <SwiperComponent/>
-          <Footer />
+          <ScanQRCode/>
+          <Footer style={styles.footer} />
     </View>
   );
 };
@@ -21,9 +21,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#F2EDD0',
   },
+  footer:{
+      flex:1,
+  }
 });
-
-/*
- <Button name="Inscription" bg={Colors.secondary} textcolor={Colors.tertiary}/>
-      <Button name="Connexion" bg={Colors.tertiary} textcolor={Colors.secondary}/>
-      */

@@ -2,39 +2,50 @@ import React, { useState, useEffect } from 'react';
 import {Button, StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import { Colors } from './Colors';
 import Icon from 'react-native-vector-icons/FontAwesome';
-
+import { useNavigation } from '@react-navigation/native';
 
 const IconColor = '#000000';
 function AnimTabnav() {
     const IconColor = '#633dae';
 }
-function Footer(navigation) {
-
-    return (
-        <View style={styles.footer}>
-            <TouchableOpacity
-                onPress={() => navigation.navigate('Scan')} color="Colors.IconColor" style={styles.currentBtn}
+export default function Footer() {
+const navigation= useNavigation();
+  return (
+    
+       <View style={styles.footer}>
+           <TouchableOpacity
+                onPress={() => navigation.navigate('QuiSommesNous')} color="Colors.IconColor" 
                 onClick={AnimTabnav()}
             >
-                <Icon name="qrcode" size={40} color="#ffffff" style={styles.currentIco} />
+                <Icon name="question" size={40} color="#ffffff" />
             </TouchableOpacity>
             <TouchableOpacity
-                onPress={() => navigation.navigate('HomeScreen')} color="Colors.IconColor"
+                onPress={() => navigation.navigate('Trajets')} color="Colors.IconColor" 
                 onClick={AnimTabnav()}
             >
-                <Icon name="home" size={40} color="#ffffff" />
+                <Icon name="taxi" size={35} color="#ffffff" />
             </TouchableOpacity>
             <TouchableOpacity
-                onPress={() => navigation.navigate('Generate')} color="Colors.IconColor"
+                onPress={() => navigation.navigate('Home')} color="Colors.IconColor"
                 onClick={AnimTabnav()}
             >
-                <Icon name="search" size={40} color="#ffffff" />
+                <Icon name="globe" size={40} color="#ffffff" />
             </TouchableOpacity>
-        </View>
-    );
+            <TouchableOpacity
+                onPress={() => navigation.navigate('Analyse')} color="Colors.IconColor"
+                onClick={AnimTabnav()}
+            >
+                <Icon name="unlock" size={40} color="#ffffff" />
+            </TouchableOpacity>
+            <TouchableOpacity
+                onPress={() => navigation.navigate('Classement')} color="Colors.IconColor" 
+                onClick={AnimTabnav()}
+            >
+                <Icon name="trophy" size={40} color="#ffffff" />
+            </TouchableOpacity>
+    </View>
+  );
 }
-
-export default Footer;
 
 const styles = StyleSheet.create({
     footer: {

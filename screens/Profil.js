@@ -12,42 +12,51 @@ import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 import Infos from '../components/Infos';
 import { Colors } from '../components/Colors';
 import OldRoute from '../components/OldRoute';
-
-export default function Profil() {
+import Footer from '../components/Footer';
+export default function Profil({navigation}) {
   return (
     <View style={styles.container}>
-      <ScrollView>
+
+<ScrollView>
+
         <View style={styles.header}>
-          <TouchableOpacity>
             <View style={styles.titleBar}>
+            <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+
               <Ionicons
                 name="ios-arrow-back"
                 size={24}
                 color={Colors.secondary}></Ionicons>
+                          </TouchableOpacity>
+                          <TouchableOpacity>
+
               <Ionicons
                 name="cog-outline"
                 size={24}
                 color={Colors.secondary}></Ionicons>
-            </View>
-          </TouchableOpacity>
-        </View>
+                                          </TouchableOpacity>
 
-        <View style={styles.profil}>
-          <Image
-            source={require('../assets/img/google.png')}
-            style={styles.imgProfil}
-          />
-          <View style={styles.infoContainer}>
+            </View>
+        </View>
+      <View style={styles.profil}>
+
+        <Image
+              source={require('../assets/img/imgProfil.jpg')}
+              style={styles.imgProfil}
+            />
+            <View style={styles.infoContainer}>
             <Text style={styles.nom}>Filipine Monvoisin</Text>
             <Text style={styles.subText}>132</Text>
             <Text style={styles.subText}>abonnees</Text>
           </View>
+      
+      <View style={styles.statsContainer}>
 
-          <View style={styles.statsContainer}>
-            <View style={styles.statsBox}>
+      <View style={styles.statsBox}>
               <Ionicons name="key-outline" size={24} color="#52575D"/>
               <Text style={styles.subText}>Suivre</Text>
             </View>
+
             <View style={[styles.statsBox]}>
               <Ionicons name="at-outline" size={25} color="#52575D"/>
               <Text style={styles.subText}>Salarie</Text>
@@ -59,31 +68,34 @@ export default function Profil() {
                 color="#52575D"/>
               <Text style={styles.subText}>Contacter</Text>
             </View>
-          </View>
-        </View>
 
-        <View style={styles.infoProfil}>
-          <Text style={styles.titre}>Informations </Text>
-          <View style={styles.colonne}>
-            <Infos text="23 ans" />
-            <Infos text="5/5" />
-            <Infos text="Le Puy" />
-          </View>
+            </View>
+            </View>
+            <View style={styles.infoProfil}>
+                  <Text style={styles.titre}>Informations </Text>
+                  <View style={styles.colonne}>
+                    <Infos text="23 ans" image={require('../assets/img/anniversaire.png')} />
+                    <Infos text="5/5" image={require('../assets/img/etoile.png')} />
+                    <Infos text="Le Puy" image={require('../assets/img/lieux.png')} />
+                  </View>
+         </View> 
 
-          <Text style={styles.titre}>Anciens covoiturage </Text>
-          
+         <Text style={styles.titre}>Anciens covoiturage </Text>
+         <View style={styles.boxOldRoute}>
+
           <OldRoute nom="Nathan" work="Salarié décathon" depart="Puy en Velay" destination="Val le Puy"/>
           <OldRoute nom="Nathan" work="Salarié décathon" depart="Puy en Velay" destination="Val le Puy"/>
-
+          </View>
 
           <Text style={styles.titre}>Centres d interet </Text>
           <View style={styles.colonne}>
-            <Infos text="sport" />
-            <Infos text="musique" />
-            <Infos text="parler" />
+            <Infos text="sport" image={require('../assets/img/google.png')}/>
+            <Infos text="musique" image={require('../assets/img/google.png')} />
+            <Infos text="parler" image={require('../assets/img/google.png')} />
           </View>
-        </View>
-      </ScrollView>
+
+        </ScrollView> 
+        <Footer/>
     </View>
   );
 }
@@ -141,7 +153,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: Colors.primary,
     borderRadius: 20,
-    marginTop: '-100px',
     margin: 20,
     shadowColor: Colors.shadow,
     shadowOffset: {
@@ -150,7 +161,8 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 1,
     shadowRadius: 19,
-    elevation: 1,
+    elevation: 5,
+    marginTop:-100,
   },
   infoProfil: {
     backgroundColor: Colors.primary,
@@ -174,4 +186,8 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     alignItems: 'center',
   },
+  boxOldRoute:{
+    justifyContent:'center',
+    alignItems:'center',
+  }
 });
