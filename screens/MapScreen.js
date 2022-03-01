@@ -15,7 +15,7 @@ export default function MapScreen() {
       longitude: 2.3361663,
     },
   ]);
-  const GOOGLE_MAPS_APIKEY = 'AIzaSyA_ovxwcIN3moaaJ97gQCDA3m0wTOLmMBs';
+  const GOOGLE_MAPS_APIKEY = 'AIzaSyDPzW9WexAPy_FL6A8K_qseJIvWxZ9H3ns';
 
   return (
     <View style={styles.container}>
