@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {Component}  from 'react';
 import { StyleSheet, Text, View} from 'react-native';
 import Button from '../components/Button';
 import Constants from 'expo-constants';
@@ -6,13 +6,18 @@ import { Colors } from '../components/Colors';
 import Footer from '../components/Footer';
 import SwiperComponent from '../components/SwiperComponent';
 
-export default function Home() {
-  return (
-    <View style={styles.container}>
-          <SwiperComponent/>
-          <Footer />
-    </View>
-  );
+export default class Home extends Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <View style={styles.container}>
+            <SwiperComponent navigation={this.props.navigation}/>
+            <Footer />
+      </View>
+    );
+  }
 };
 
 

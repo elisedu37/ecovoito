@@ -67,7 +67,7 @@ export default class Login extends Component{
         />
         <TextInput
           style={styles.inputStyle}
-          placeholder="Password"
+          placeholder="Mot de passe"
           value={this.state.password}
           onChangeText={(val) => this.updateInputVal(val, 'password')}
           maxLength={15}
@@ -75,9 +75,14 @@ export default class Login extends Component{
         />   
         <Button
           color="#3740FE"
-          title="login"
+          title="Connexion"
           onPress={() => this.loginUser()}
         />
+          <Text 
+          style={styles.loginText}
+          onPress={() => this.props.navigation.navigate('resetPassword')}>
+          Mot de passe oublié
+        </Text> 
         <Text 
           style={styles.loginText}
           onPress={() => this.props.navigation.navigate('Signin')}>

@@ -6,6 +6,44 @@ import Swiper from 'react-native-swiper/src'
 import Button from './Button'
  import IllustratedText from './IllustratedText'
 
+export default class SwiperComponent extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { 
+      isLoading: false
+    }
+  }
+  render() {
+    return (
+      <Swiper style={styles.wrapper} showsButtons={false} showsPagination={true} dotColor={"white"} activeDotColor={"#707070"}>
+        <View style={styles.slide1}>
+          <Text style={styles.text}>UNE APPLICATION DE "CHALLENGE" ENTRE ENTREPRISES</Text>
+          <Image source={require('../assets/CarIllustration.png')} style={styles.image}/>
+        </View>
+        <View style={styles.slide1}>
+          <Text style={styles.text}>VOUS VOULEZ RÉDUIRE L'ÉMISSION DE CO2 DE VOTRE ENTREPRISE ?</Text>
+          <Text style={styles.text}>ECOVOITO EST FAIT POUR VOUS !</Text>
+        </View>
+        <View style={styles.slide1}>
+          <Text style={styles.text}>ECOVOITO c est :</Text>
+          <IllustratedText texte="Évaluer et réduire l'émission de CO2 produite par les salariés" image={require('../assets/img/reductionCO2.png')} />
+          <IllustratedText texte="Un challenge entre entreprise ! Qui sera la meilleure entreprise ?" image={require('../assets/img/challenge.png')} />
+          <IllustratedText texte="Une solution de covoiturage pour vous !" image={require('../assets/img/covoiturage.png') } />
+        </View>
+        <View style={styles.slide1}>
+          <Text style={styles.text}>Et pourquoi pas la votre ?</Text>
+        </View>
+        <View style={styles.slide1}>
+          <Text style={styles.text}>C'EST À VOTRE TOUR DE VOUS CHALLENGER !</Text>
+          <TouchableOpacity onPress={() => this.props.navigation.navigate('Login')}>
+          <Button name="COMMENCER" bg={Colors.secondary} textcolor={Colors.tertiary}/>
+          </TouchableOpacity>
+        </View>
+      </Swiper>
+    )
+  }
+}
+
 const styles = StyleSheet.create({
   wrapper: {
     backgroundColor: '#FFE9CC',
@@ -43,34 +81,5 @@ const styles = StyleSheet.create({
     },
 })
  
-export default class SwiperComponent extends Component {
-  render() {
-    return (
-      <Swiper style={styles.wrapper} showsButtons={false} showsPagination={true} dotColor={"white"} activeDotColor={"#707070"}>
-        <View style={styles.slide1}>
-          <Text style={styles.text}>UNE APPLICATION DE "CHALLENGE" ENTRE ENTREPRISES</Text>
-          <Image source={require('../assets/CarIllustration.png')} style={styles.image}/>
-        </View>
-        <View style={styles.slide1}>
-          <Text style={styles.text}>VOUS VOULEZ RÉDUIRE L'ÉMISSION DE CO2 DE VOTRE ENTREPRISE ?</Text>
-          <Text style={styles.text}>ECOVOITO EST FAIT POUR VOUS !</Text>
-        </View>
-        <View style={styles.slide1}>
-          <Text style={styles.text}>ECOVOITO c est :</Text>
-          <IllustratedText texte="Évaluer et réduire l'émission de CO2 produite par les salariés" image={require('../assets/img/reductionCO2.png')} />
-          <IllustratedText texte="Un challenge entre entreprise ! Qui sera la meilleure entreprise ?" image={require('../assets/img/challenge.png')} />
-          <IllustratedText texte="Une solution de covoiturage pour vous !" image={require('../assets/img/covoiturage.png') } />
-        </View>
-        <View style={styles.slide1}>
-          <Text style={styles.text}>Et pourquoi pas la votre ?</Text>
-        </View>
-        <View style={styles.slide1}>
-          <Text style={styles.text}>C'EST À VOTRE TOUR DE VOUS CHALLENGER !</Text>
-          <Button name="COMMENCER" bg={Colors.secondary} textcolor={Colors.tertiary}/>
-        </View>
-      </Swiper>
-    )
-  }
-}
  
 AppRegistry.registerComponent('myproject', () => SwiperComponent)

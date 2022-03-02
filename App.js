@@ -19,6 +19,7 @@ import Trajets from './screens/Trajets';
 import Analyse from './screens/Analyse';
 import Profil from './screens/Profil';
 import setRole from './forms/setRole';
+import resetPassword from './forms/resetPassword';
 import TrajetIndividuel from './screens/TrajetIndividuel';
 
 const Stack = createNativeStackNavigator();
@@ -33,10 +34,10 @@ const MyStack = () => {
           <Stack.Navigator screenOptions={{headerShown: false}}>
           {user == null ? (
 
-            <Stack.Screen name="LogIn" component={LogIn} /> 
+            <Stack.Screen name="HomeScreen" component={Home} /> 
 
           ) : (
-            () => navigation.navigate('HomeScreen')
+            () => navigation.navigate('Accueil')
 
           )} 
             <Stack.Screen name="Generate" component={QRCode} />  
@@ -50,7 +51,8 @@ const MyStack = () => {
             <Stack.Screen name="Classement" component={Classement} />  
             <Stack.Screen name="Trajets" component={Trajets} />  
             <Stack.Screen name="Analyse" component={Analyse} />  
-            <Stack.Screen name="HomeScreen" component={Home} />  
+            <Stack.Screen name="resetPass" component={resetPassword} />  
+            {/* <Stack.Screen name="HomeScreen" component={Home} />   */}
             <Stack.Screen name="Profil" component={Profil} />  
             <Stack.Screen name="TrajetIndiv" component={TrajetIndividuel} />  
 

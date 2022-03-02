@@ -25,7 +25,7 @@ export default class SignIn extends Component {
   }
   registerUser = () => {
     if(this.state.email === '' && this.state.password === '') {
-      Alert.alert('Enter details to signup!')
+      Alert.alert('Veuillez remplir les champs')
     } else {
       this.setState({
         isLoading: true,
@@ -62,7 +62,7 @@ export default class SignIn extends Component {
         />
         <TextInput
           style={styles.inputStyle}
-          placeholder="Password"
+          placeholder="Mot de passe"
           value={this.state.password}
           onChangeText={(val) => this.updateInputVal(val, 'password')}
           maxLength={15}
@@ -71,13 +71,13 @@ export default class SignIn extends Component {
         <Button
           navigation={this.props.navigation}
           color="#3740FE"
-          title="Signup"
+          title="Inscription"
           onPress={() => this.registerUser()}
         />
         <Text 
           style={styles.loginText}
           onPress={() => this.props.navigation.navigate('Login')}>
-          Already Registered? Click here to login
+         Déja inscrit ? Connectez-vous
         </Text>                          
       </View>
     );
