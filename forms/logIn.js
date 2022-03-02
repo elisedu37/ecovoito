@@ -49,7 +49,7 @@ export default class Login extends Component{
           .then(userCredentials => {
             const user = userCredentials.user;
             console.log('User Logged successfully!');
-            this.props.navigation.navigate('HomeScreen');
+            this.props.navigation.navigate('Home');
           })
           .catch(error => this.setState({ errorMessage: error.message }))      
         }
@@ -80,7 +80,7 @@ export default class Login extends Component{
         />
           <Text 
           style={styles.loginText}
-          onPress={() => this.props.navigation.navigate('resetPassword')}>
+          onPress={() => this.props.navigation.navigate('resetPass')}>
           Mot de passe oublié
         </Text> 
         <Text 

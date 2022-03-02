@@ -44,6 +44,7 @@ const MyStack = () => {
             <Stack.Screen name="Scan" component={ScanQRCode} />  
             <Stack.Screen name="Login" component={LogIn} />  
             <Stack.Screen name="Account" component={setAccount} />
+            <Stack.Screen name="Accueil" component={Home} />
             <Stack.Screen name="Signin" component={SignIn} />  
             <Stack.Screen name="Home" component={Accueil} /> 
             <Stack.Screen name="setRole" component={setRole} />  
