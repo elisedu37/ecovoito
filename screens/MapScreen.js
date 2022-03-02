@@ -17,14 +17,17 @@ export default function MapScreen() {
     },
   ]);
   const GOOGLE_MAPS_APIKEY = 'AIzaSyDPzW9WexAPy_FL6A8K_qseJIvWxZ9H3ns';
-const MapData=[];
+  const MapData=[];
   return (
     <View style={styles.container}>
 
-<GooglePlacesAutocomplete
+  <GooglePlacesAutocomplete
       placeholder='Search'
+      fetchDetails= {true}
+      GooglePlacesSearchQuery={{
+        rankby:'distance'
+      }}
       onPress={(data, details = null) => {
-        // 'details' is provided when fetchDetails = true
         console.log(data, details);
       }}
       query={{
