@@ -96,7 +96,7 @@ export default class setCompany extends Component {
               onChangeText={(val) => this.updateInputVal(val, 'postalCode')}
               maxLength={15}
             /> 
-             <TouchableOpacity onPress={pickImage}>
+             <TouchableOpacity>
                  <Text>Selectionnez votre logo</Text>
              </TouchableOpacity>
             <Button
