@@ -23,6 +23,7 @@ import setCompany from './forms/setCompany';
 import resetPassword from './forms/resetPassword';
 import TrajetIndividuel from './screens/TrajetIndividuel';
 
+import MapScreen from './screens/MapsScreen';
 const Stack = createNativeStackNavigator();
 
 
@@ -66,8 +67,6 @@ const MyStack = () => {
 };
 export default MyStack;
   
-  
-
 
 const styles = StyleSheet.create({
   container: {
