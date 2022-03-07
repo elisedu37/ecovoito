@@ -8,7 +8,7 @@ import Footer from "./components/Footer";
 import Home from './screens/Home';
 import LogIn from './forms/logIn';
 import SignIn from './forms/signIn';
-import MapScreen from './screens/MapScreen';
+import MapScreen from './screens/MapsScreen';
 const Stack = createNativeStackNavigator();
 
 const MyStack = () => {
