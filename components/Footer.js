@@ -3,6 +3,7 @@ import {Button, StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import { Colors } from './Colors';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { useNavigation } from '@react-navigation/native';
+import { signOut } from "firebase/auth";
 
 const IconColor = '#000000';
 function AnimTabnav() {
@@ -13,6 +14,7 @@ const navigation= useNavigation();
   return (
     
        <View style={styles.footer}>
+           <Button onPress={signOut}>Déconnexion</Button>
            <TouchableOpacity
                 onPress={() => navigation.navigate('QuiSommesNous')} color="Colors.IconColor" 
                 onClick={AnimTabnav()}
