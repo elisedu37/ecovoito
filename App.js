@@ -25,6 +25,7 @@ import TrajetIndividuel from './screens/TrajetIndividuel';
 
 const Stack = createNativeStackNavigator();
 
+
 const MyStack = () => {
   const user = auth.currentUser;
   console.log(user);
