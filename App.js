@@ -14,7 +14,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { auth } from './config/firebase';
 import QuiSommesNous from './screens/QuiSommesNous';
 import Classement from './screens/Classement';
-import Accueil from './screens/Accueil';
+import Accueil from './screens/MapsScreen';
 import Trajets from './screens/Trajets';
 import Analyse from './screens/Analyse';
 import Profil from './screens/Profil';

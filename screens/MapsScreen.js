@@ -10,11 +10,11 @@ const MapsScreen = () => {
   const GOOGLE_MAPS_APIKEY = 'AIzaSyDPzW9WexAPy_FL6A8K_qseJIvWxZ9H3ns';
   const MapData=[];
 
-  const [regionCoords, setRegion] = useState({ lat: 45.042768, lng:3.882936 });
-  const [marker, setMarker] = useState({ lat: 45.042768, lng: 3.882936  });
+  const [regionCoords, setRegion] = useState({ lat: 0, lng:0 });
+  const [marker, setMarker] = useState({ lat: 0, lng: 0  });
 
-  const [regionCoordsTwo, setRegionTwo] = useState({ lat: 45.7797, lng: 3.08694 });
-  const [markerTwo, setMarkerTwo] = useState({ lat: 45.7797, lng: 3.08694 });
+  const [regionCoordsTwo, setRegionTwo] = useState({ lat: 0, lng: 0 });
+  const [markerTwo, setMarkerTwo] = useState({ lat: 0, lng:0 });
 
   const onPress = (data, details) => {
     setRegion(details.geometry.location);
@@ -32,6 +32,8 @@ const MapsScreen = () => {
   };
   return (
     <View style={styles.container}>
+      {
+           regionCoordsTwo.lat != 0 && regionCoords.lat != 0 &&
       <MapView
         style={styles.map}
         region={{
@@ -59,6 +61,7 @@ const MapsScreen = () => {
         <Marker coordinate={{ latitude: markerTwo.lat, longitude: markerTwo.lng }} />
 
       </MapView>
+      } 
 
       <GooglePlacesAutocomplete
       styles={{container:{flex:0, position:"absolute", width:'100%', zIndex:1, top:10}, listView:{backgroundColor:"white"}}}
