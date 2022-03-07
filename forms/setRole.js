@@ -18,7 +18,7 @@ export default class SignIn extends Component {
           db.collection('Users').doc(user.uid).update({
           role: 'user',
           });           
-        this.props.navigation.navigate('Home');
+        this.props.navigation.navigate('Account');
     }
 
     setRoleAdmin = () => {
@@ -26,7 +26,7 @@ export default class SignIn extends Component {
           db.collection('Users').doc(user.uid).update({
           role: 'admin',
           });           
-        this.props.navigation.navigate('Home');    
+        this.props.navigation.navigate('setCompany');    
     }
   
   render() {

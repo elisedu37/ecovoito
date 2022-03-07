@@ -44,7 +44,7 @@ export default class SetAccount extends Component {
           })
           console.log(this.state.firstName);
              auth.onAuthStateChanged(this.onAuthComplete); 
-            this.props.navigation.navigate('setRole');    
+            this.props.navigation.navigate('Accueil');    
         }
       }
       render() {
@@ -75,14 +75,14 @@ export default class SetAccount extends Component {
               placeholder="Adresse"
               value={this.state.adress}
               onChangeText={(val) => this.updateInputVal(val, 'adress')}
-              maxLength={15}
+              maxLength={70}
             /> 
             <TextInput
               style={styles.inputStyle}
               placeholder="Ville"
               value={this.state.city}
               onChangeText={(val) => this.updateInputVal(val, 'city')}
-              maxLength={15}
+              maxLength={30}
             /> 
             <TextInput
               style={styles.inputStyle}

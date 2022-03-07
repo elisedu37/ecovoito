@@ -19,11 +19,11 @@ import Trajets from './screens/Trajets';
 import Analyse from './screens/Analyse';
 import Profil from './screens/Profil';
 import setRole from './forms/setRole';
+import setCompany from './forms/setCompany';
 import resetPassword from './forms/resetPassword';
 import TrajetIndividuel from './screens/TrajetIndividuel';
 
 const Stack = createNativeStackNavigator();
-
 
 const MyStack = () => {
   const user = auth.currentUser;
@@ -34,7 +34,7 @@ const MyStack = () => {
           <Stack.Navigator screenOptions={{headerShown: false}}>
           {user == null ? (
 
-            <Stack.Screen name="HomeScreen" component={Home} /> 
+            <Stack.Screen name="Login" component={LogIn} /> 
 
           ) : (
             () => navigation.navigate('Accueil')
@@ -42,18 +42,19 @@ const MyStack = () => {
           )} 
             <Stack.Screen name="Generate" component={QRCode} />  
             <Stack.Screen name="Scan" component={ScanQRCode} />  
-            <Stack.Screen name="Login" component={LogIn} />  
+            {/* <Stack.Screen name="Login" component={LogIn} />   */}
             <Stack.Screen name="Account" component={setAccount} />
             <Stack.Screen name="Accueil" component={Home} />
             <Stack.Screen name="Signin" component={SignIn} />  
             <Stack.Screen name="Home" component={Accueil} /> 
-            <Stack.Screen name="setRole" component={setRole} />  
+            <Stack.Screen name="setRole" component={setRole} />
+            <Stack.Screen name="setCompany" component={setCompany} />  
             <Stack.Screen name="QuiSommesNous" component={QuiSommesNous} />  
             <Stack.Screen name="Classement" component={Classement} />  
             <Stack.Screen name="Trajets" component={Trajets} />  
             <Stack.Screen name="Analyse" component={Analyse} />  
             <Stack.Screen name="resetPass" component={resetPassword} />  
-            {/* <Stack.Screen name="HomeScreen" component={Home} />   */}
+            <Stack.Screen name="HomeScreen" component={Home} />   
             <Stack.Screen name="Profil" component={Profil} />  
             <Stack.Screen name="TrajetIndiv" component={TrajetIndividuel} />  
 
