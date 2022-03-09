@@ -14,7 +14,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { auth } from './config/firebase';
 import QuiSommesNous from './screens/QuiSommesNous';
 import Classement from './screens/Classement';
-import Accueil from './screens/MapsScreen';
+import Accueil from './screens/Accueil';
 import Trajets from './screens/Trajets';
 import Analyse from './screens/Analyse';
 import Profil from './screens/Profil';
@@ -59,6 +59,7 @@ const MyStack = () => {
             <Stack.Screen name="HomeScreen" component={Home} />   
             <Stack.Screen name="Profil" component={Profil} />  
             <Stack.Screen name="TrajetIndiv" component={TrajetIndividuel} />  
+            <Stack.Screen name="Map" component={MapScreen} />  
 
         </Stack.Navigator>
       </NavigationContainer>
