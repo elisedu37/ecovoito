@@ -39,12 +39,14 @@ export default function TrajetIndividuel({navigation}) {
         textcolor={Colors.tertiary}
         image={require('../assets/img/bus.png')}
       />
-      <ChoixTransport
-        name="VEHICULE MOTORISE"
-        bg={Colors.secondary}
-        textcolor={Colors.tertiary}
-        image={require('../assets/img/voiture.png')}
-      />
+      <TouchableOpacity onPress={() => navigation.navigate('Map')}>
+        <ChoixTransport
+          name="VEHICULE MOTORISE"
+          bg={Colors.secondary}
+          textcolor={Colors.tertiary}
+          image={require('../assets/img/voiture.png')}
+        />
+      </TouchableOpacity>
       </View>    
       </View>
     <Footer />

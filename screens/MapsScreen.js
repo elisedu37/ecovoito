@@ -4,17 +4,19 @@ import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplet
 import MapView, { Marker } from 'react-native-maps';
 const GOOGLE_PLACES_API_KEY = 'AIzaSyDPzW9WexAPy_FL6A8K_qseJIvWxZ9H3ns'; 
 import MapViewDirections from 'react-native-maps-directions';
+import { Colors } from '../components/Colors';
+import Footer from '../components/Footer';
 
 
 const MapsScreen = () => {
   const GOOGLE_MAPS_APIKEY = 'AIzaSyDPzW9WexAPy_FL6A8K_qseJIvWxZ9H3ns';
   const MapData=[];
 
-  const [regionCoords, setRegion] = useState({ lat: 45.042768, lng:3.882936 });
-  const [marker, setMarker] = useState({ lat: 45.042768, lng: 3.882936  });
+  const [regionCoords, setRegion] = useState({ lat: 0, lng:0 });
+  const [marker, setMarker] = useState({ lat: 0, lng: 0  });
 
-  const [regionCoordsTwo, setRegionTwo] = useState({ lat: 45.7797, lng: 3.08694 });
-  const [markerTwo, setMarkerTwo] = useState({ lat: 45.7797, lng: 3.08694 });
+  const [regionCoordsTwo, setRegionTwo] = useState({ lat: 0, lng: 0 });
+  const [markerTwo, setMarkerTwo] = useState({ lat: 0, lng:0 });
 
   const onPress = (data, details) => {
     setRegion(details.geometry.location);
@@ -31,7 +33,10 @@ const MapsScreen = () => {
 
   };
   return (
+    <>
     <View style={styles.container}>
+      {
+           regionCoordsTwo.lat != 0 && regionCoords.lat != 0 &&
       <MapView
         style={styles.map}
         region={{
@@ -59,10 +64,11 @@ const MapsScreen = () => {
         <Marker coordinate={{ latitude: markerTwo.lat, longitude: markerTwo.lng }} />
 
       </MapView>
+      } 
 
       <GooglePlacesAutocomplete
-      styles={{container:{flex:0, position:"absolute", width:'100%', zIndex:1, top:10}, listView:{backgroundColor:"white"}}}
-      placeholder="Search"
+      styles={{container:{flex:0, position:"absolute", width:'80%', zIndex:1, top:50}}}
+      placeholder="Depart"
         query={{
           key: GOOGLE_PLACES_API_KEY,
           language: 'en', 
@@ -81,8 +87,8 @@ const MapsScreen = () => {
       />
 
       <GooglePlacesAutocomplete
-      styles={{container:{flex:0, position:"absolute", width:'100%', zIndex:1, top:100}, listView:{backgroundColor:"red"}}}
-      placeholder="Search"
+      styles={{container:{flex:0, position:"absolute", width:'80%', zIndex:0, top:100}}}
+      placeholder="Destination"
         query={{
           key: GOOGLE_PLACES_API_KEY,
           language: 'en',
@@ -101,6 +107,8 @@ const MapsScreen = () => {
       />
 
     </View>
+        <Footer />
+        </>
   );
 };
 
@@ -109,14 +117,14 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: Colors.primary,
   },
   map: {
-    left: 0,
-    right: 0,
-    top: 0,
+    left: 10,
+    right: 10,
     bottom: 0,
     position: 'absolute',
+    height:500,
   },
 });
 
