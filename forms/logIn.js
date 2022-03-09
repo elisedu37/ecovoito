@@ -8,9 +8,10 @@ import {
     StyleSheet ,
     StatusBar,
     Alert,
-    Button
+    Button, Image
 } from 'react-native';
 import { auth } from '../config/firebase';
+import { Colors } from '../components/Colors';
 
 
 
@@ -58,7 +59,13 @@ export default class Login extends Component{
 
     return(
 
-        <View style={styles.container}>   
+        <View style={styles.container}> 
+        <View style={styles.logoContainer}>
+        <Image
+          source={require('../assets/loader-icon.png')}
+        />  
+        </View>
+        <View style={styles.box}>
         <TextInput
           style={styles.inputStyle}
           placeholder="Email"
@@ -87,7 +94,8 @@ export default class Login extends Component{
           style={styles.loginText}
           onPress={() => this.props.navigation.navigate('Signin')}>
           Pas de compte chez nous ? Cliquez ici
-        </Text>                          
+        </Text> 
+        </View>                         
       </View>
     );
 }
@@ -100,18 +108,18 @@ const styles = StyleSheet.create({
       flexDirection: "column",
       justifyContent: "center",
       padding: 35,
-      backgroundColor: '#fff'
+      backgroundColor: Colors.primary,
     },
     inputStyle: {
       width: '100%',
       marginBottom: 15,
       paddingBottom: 15,
       alignSelf: "center",
-      borderColor: "#ccc",
-      borderBottomWidth: 1
+      borderColor: Colors.secondary,
+      borderWidth: 1
     },
     loginText: {
-      color: '#3740FE',
+      color: Colors.secondary,
       marginTop: 25,
       textAlign: 'center'
     },
@@ -124,5 +132,19 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'center',
       backgroundColor: '#fff'
+    },
+    box:{
+      left:0,
+      right:0,
+      backgroundColor: Colors.tertiary,
+      bottom:0,
+      position:'absolute',
+      borderTopLeftRadius:44,
+      borderTopRightRadius:44,
+      padding:46,
+    },
+    logoContainer:{
+      position:'absolute',
+      top:0,
     }
   });
