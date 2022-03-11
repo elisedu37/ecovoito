@@ -6,9 +6,9 @@ import ScanQRCode from "./screens/ScanQRCode";
 import QRCode from "./screens/QRCode";
 import Footer from "./components/Footer";
 import Home from './screens/Home';
-import LogIn from './forms/logIn';
-import SignIn from './forms/signIn';
-import setAccount from './forms/setAccount';
+import LogIn from './forms/LogIn';
+import SignIn from './forms/SignIn';
+import setAccount from './forms/SetAccount';
 import Loader from './components/Loader';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { auth } from './config/firebase';
@@ -18,9 +18,9 @@ import Accueil from './screens/Accueil';
 import Trajets from './screens/Trajets';
 import Analyse from './screens/Analyse';
 import Profil from './screens/Profil';
-import setRole from './forms/setRole';
-import setCompany from './forms/setCompany';
-import resetPassword from './forms/resetPassword';
+import setRole from './forms/SetRole';
+import setCompany from './forms/SetCompany';
+import resetPassword from './forms/ResetPassword';
 import TrajetIndividuel from './screens/TrajetIndividuel';
 
 import MapScreen from './screens/MapsScreen';
@@ -44,7 +44,7 @@ const MyStack = () => {
           )} 
             <Stack.Screen name="Generate" component={QRCode} />  
             <Stack.Screen name="Scan" component={ScanQRCode} />  
-            {/* <Stack.Screen name="Login" component={LogIn} />   */}
+            {/* <Stack.Screen name="LogIn" component={LogIn} />   */}
             <Stack.Screen name="Account" component={setAccount} />
             <Stack.Screen name="Accueil" component={Home} />
             <Stack.Screen name="Signin" component={SignIn} />  

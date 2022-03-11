@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 import { auth } from '../config/firebase';
 
-export default class resetPassword extends Component {
+export default class ResetPassword extends Component {
     constructor(props) {
         super(props);
         this.state = { 

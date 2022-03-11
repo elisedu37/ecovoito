@@ -14,7 +14,7 @@ import { auth } from '../config/firebase';
 
 
 
-export default class Login extends Component{
+export default class LogIn extends Component{
 
     constructor() {
         super();

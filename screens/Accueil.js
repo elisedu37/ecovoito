@@ -5,6 +5,10 @@ import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 import Button from '../components/Button';
 import Footer from '../components/Footer';
 import Infos from '../components/Infos';
+import { db } from '../config/firebase'
+
+
+
 export default function Accueil({navigation}) {
     return (
         <>

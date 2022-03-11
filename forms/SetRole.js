@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, TextInput, Button, Alert, ActivityIndicator } from 'react-native';
 import { auth, db } from '../config/firebase';
 
-export default class SignIn extends Component {
+export default class SetRole extends Component {
   
   constructor(props) {
     super(props);

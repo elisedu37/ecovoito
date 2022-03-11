@@ -6,7 +6,7 @@ import { auth, db, storage } from '../config/firebase';
 import * as ImagePicker from 'expo-image-picker';
 // import { getStorage } from "@firebase/storage";
 
-export default class setCompany extends Component {
+export default class SetCompany extends Component {
   
     constructor(props) {
       super(props);

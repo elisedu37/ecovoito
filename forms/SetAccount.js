@@ -11,7 +11,7 @@ export default class SetAccount extends Component {
           adress: '', 
           postalCode: '',
           city: '',
-          role: '',
+          role: 'user',
           isLoading: false
         }
       }
@@ -34,6 +34,8 @@ export default class SetAccount extends Component {
           role: '',
         });       
       }
+
+
 
       completeRegistration = () => {
         if(this.state.firstName === '' && this.state.adress === '') {
@@ -100,7 +102,6 @@ export default class SetAccount extends Component {
         );
       }
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
