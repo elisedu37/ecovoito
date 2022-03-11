@@ -45,17 +45,17 @@ const MyStack = () => {
             <Stack.Screen name="Generate" component={QRCode} />  
             <Stack.Screen name="Scan" component={ScanQRCode} />  
             {/* <Stack.Screen name="LogIn" component={LogIn} />   */}
-            <Stack.Screen name="Account" component={setAccount} />
+            <Stack.Screen name="Account" component={SetAccount} />
             <Stack.Screen name="Accueil" component={Home} />
             <Stack.Screen name="Signin" component={SignIn} />  
             <Stack.Screen name="Home" component={Accueil} /> 
-            <Stack.Screen name="setRole" component={setRole} />
-            <Stack.Screen name="setCompany" component={setCompany} />  
+            <Stack.Screen name="SetRole" component={SetRole} />
+            <Stack.Screen name="SetCompany" component={SetCompany} />
             <Stack.Screen name="QuiSommesNous" component={QuiSommesNous} />  
             <Stack.Screen name="Classement" component={Classement} />  
             <Stack.Screen name="Trajets" component={Trajets} />  
             <Stack.Screen name="Analyse" component={Analyse} />  
-            <Stack.Screen name="resetPass" component={resetPassword} />  
+            <Stack.Screen name="ResetPass" component={ResetPassword} />
             <Stack.Screen name="HomeScreen" component={Home} />   
             <Stack.Screen name="Profil" component={Profil} />  
             <Stack.Screen name="TrajetIndiv" component={TrajetIndividuel} />  
