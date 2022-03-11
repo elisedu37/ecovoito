@@ -8,9 +8,10 @@ import {
     StyleSheet ,
     StatusBar,
     Alert,
-    Button
+    Button, Image
 } from 'react-native';
 import { auth } from '../config/firebase';
+import { Colors } from '../components/Colors';
 
 export default class resetPassword extends Component {
     constructor(props) {
@@ -43,6 +44,13 @@ export default class resetPassword extends Component {
       render(){
         return(
         <View style={styles.container}>
+          <View style={styles.logoContainer}>
+        <Image
+          source={require('../assets/loader-icon.png')}
+        />  
+        </View>
+        <View style={styles.box}>
+          
           <Text style={styles.loginText}>Mot de passe oublié ?</Text>
           <Text style={styles.loginText}>Entrez ci-dessous votre email, nous vous enverrons un lien de réinitialisation</Text>
           <TextInput
@@ -53,6 +61,7 @@ export default class resetPassword extends Component {
           <TouchableOpacity onPress={() => this.forgotPassword()}>
             <Text>Envoyer</Text>
           </TouchableOpacity>
+          </View>
         </View>
 
         )}
@@ -65,19 +74,50 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     padding: 35,
-    backgroundColor: '#fff'
+    backgroundColor: Colors.primary,
   },
   inputStyle: {
     width: '100%',
+    paddingTop:10,
     marginBottom: 15,
-    paddingBottom: 15,
+    paddingBottom: 10,
     alignSelf: "center",
-    borderColor: "#ccc",
-    borderBottomWidth: 1
+    borderColor: Colors.secondary,
+    borderWidth: 3,
+    borderRadius:19,
+    textAlign:'center',
+    fontSize:15,   
+    color:Colors.secondary,  
   },
   loginText: {
-    color: '#3740FE',
+    color: Colors.secondary,
     marginTop: 25,
-    textAlign: 'center'
+    textAlign: 'center',
+    
+  },
+  preloader: {
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+    position: 'absolute',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#fff',
+  },
+  box:{
+    left:0,
+    right:0,
+    backgroundColor: Colors.tertiary,
+    bottom:0,
+    position:'absolute',
+    borderTopLeftRadius:44,
+    borderTopRightRadius:44,
+    padding:46,
+  },
+  logoContainer:{
+    position:'absolute',
+    top:'15%',
+    left:'30%'
   },
 });

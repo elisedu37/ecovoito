@@ -81,7 +81,7 @@ export default class Login extends Component{
           secureTextEntry={true}
         />   
         <Button
-          color="#3740FE"
+          color="#F2BC79"
           title="Connexion"
           onPress={() => this.loginUser()}
         />
@@ -112,16 +112,22 @@ const styles = StyleSheet.create({
     },
     inputStyle: {
       width: '100%',
+      paddingTop:10,
       marginBottom: 15,
-      paddingBottom: 15,
+      paddingBottom: 10,
       alignSelf: "center",
       borderColor: Colors.secondary,
-      borderWidth: 1
+      borderWidth: 3,
+      borderRadius:19,
+      textAlign:'center',
+      fontSize:15,   
+      color:Colors.secondary,  
     },
     loginText: {
       color: Colors.secondary,
       marginTop: 25,
-      textAlign: 'center'
+      textAlign: 'center',
+      
     },
     preloader: {
       left: 0,
@@ -131,7 +137,7 @@ const styles = StyleSheet.create({
       position: 'absolute',
       alignItems: 'center',
       justifyContent: 'center',
-      backgroundColor: '#fff'
+      backgroundColor: '#fff',
     },
     box:{
       left:0,
@@ -145,6 +151,7 @@ const styles = StyleSheet.create({
     },
     logoContainer:{
       position:'absolute',
-      top:0,
-    }
+      top:'15%',
+      left:'30%'
+    },
   });
