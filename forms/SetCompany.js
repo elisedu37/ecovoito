@@ -1,12 +1,11 @@
-import React, { UseEffect, Component } from 'react';
+import React, { UseEffect, useState, Component } from 'react';
 import { StyleSheet, Text, View, TextInput, Button, Alert, ActivityIndicator, ImagePickerIOS, Platform } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { auth, db, storage } from '../config/firebase';
- import { uploadBytes } from "firebase/storage";
 import * as ImagePicker from 'expo-image-picker';
 // import { getStorage } from "@firebase/storage";
 
-export default class SetCompany extends Component {
+export default class setCompany extends Component {
   
     constructor(props) {
       super(props);
@@ -16,6 +15,7 @@ export default class SetCompany extends Component {
         city: '',
         logo: '',
         postalCode: '',
+        imageName: '',
       }
     }
 
@@ -47,22 +47,39 @@ export default class SetCompany extends Component {
     }
     
 
-    pickImage = async () => {
-        let result = await ImagePicker.launchImageLibraryAsync({
-            mediaTypes: ImagePicker.MediaTypeOptions.All,
-            allowsEditing: true,
-            adpect: [4, 3],
-            quality: 1,
-        });
-      if (!result.cancelled) {
-      const ref = ref(storage, 'logo.jpg');
+  //   pickImage = async () => {
+  //       let result = await ImagePicker.launchImageLibraryAsync({
+  //           mediaTypes: ImagePicker.MediaTypeOptions.All,
+  //           allowsEditing: true,
+  //           adpect: [4, 3],
+  //           quality: 1,
+  //       });
+  //     if (!result.cancelled) {
+  //     const ref = ref(storage, 'logo.jpg');
       
-      const img = await fetch(result.uri);
-      const bytes = await this.img.blob();
-      await uploadBytes(ref, result.uri);
+  //     const img = await fetch(result.uri);
+  //     const bytes = await this.img.blob();
+  //     await uploadBytes(ref, result.uri);
     
+  //   }
+  // };
+
+
+    pickImage = async () => {
+    // const [image, setImage] = useState(null);
+    let result = await ImagePicker.launchCameraAsync();
+    let uploadImage = async (uri, imageName) => { 
+    const response = await fetch(uri);
+    const blob = await response.blob();
+    let ref = storage.ref().child("images/" + imageName);
+    return ref.put(blob); 
+    }  
+    console.log(result);
+    // let photoName = storage.ref();
+    if (!result.cancelled) { 
+      await uploadImage(result.uri, auth.currentUser.email); 
     }
-  };
+  }
 
 
     render(){
@@ -96,7 +113,7 @@ export default class SetCompany extends Component {
               onChangeText={(val) => this.updateInputVal(val, 'postalCode')}
               maxLength={15}
             /> 
-             <TouchableOpacity>
+             <TouchableOpacity onPress={() => this.pickImage()}>
                  <Text>Selectionnez votre logo</Text>
              </TouchableOpacity>
             <Button
