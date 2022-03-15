@@ -70,11 +70,11 @@ export default class resetPassword extends Component {
               placeholder="example@gmail.com"
               placeholderTextColor="#F2BC79"
             />
-            <TouchableOpacity onPress={() => this.forgotPassword()}>
-              <Button
-               color="#F2BC79"
-               title="Envoyer"
-              />
+            <TouchableOpacity
+              style={styles.submit}
+              onPress={() => this.forgotPassword()}
+            >
+                <Text style={styles.submitText}>Envoyer</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     color: Colors.secondary,
     marginTop: 25,
     textAlign: 'center',
-    
+    paddingBottom:10,
   },
   preloader: {
     left: 0,
@@ -137,5 +137,27 @@ const styles = StyleSheet.create({
   image:{
     height:300,
     width:300,
+  },
+  titleBar: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 24,
+    marginHorizontal: 16,
+    marginBottom:30,
+    position:'absolute',
+    top:24,
+  },
+  submit: {
+    marginRight: 40,
+    marginLeft: 40,
+    marginTop: 10,
+    paddingTop: 10,
+    paddingBottom: 10,
+    backgroundColor: Colors.secondary,
+    borderRadius: 10,
+  },
+  submitText: {
+    color:Colors.tertiary,
+    textAlign: 'center',
   }
 });

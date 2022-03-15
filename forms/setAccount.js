@@ -111,11 +111,12 @@ export default class SetAccount extends Component {
               maxLength={15}
               placeholderTextColor="#F2BC79"
             />
-            <Button
-              color="#F2BC79"
-              title="Suivant"
+            <TouchableOpacity
+              style={styles.submit}
               onPress={() => this.completeRegistration()}
-            />
+            >
+                <Text style={styles.submitText}>Suivant</Text>
+            </TouchableOpacity>
           </View>
         </View>        
         );
@@ -185,5 +186,20 @@ const styles = StyleSheet.create({
     marginTop: 24,
     marginHorizontal: 16,
     marginBottom:30,
+    position:'absolute',
+    top:24,
   },
+  submit: {
+    marginRight: 40,
+    marginLeft: 40,
+    marginTop: 10,
+    paddingTop: 10,
+    paddingBottom: 10,
+    backgroundColor: Colors.secondary,
+    borderRadius: 10,
+  },
+  submitText: {
+    color:Colors.tertiary,
+    textAlign: 'center',
+  }
 });

@@ -85,12 +85,13 @@ export default class SignIn extends Component {
           secureTextEntry={true}
           placeholderTextColor="#F2BC79"
         />
-        <Button
+        <TouchableOpacity
           navigation={this.props.navigation}
-          color="#F2BC79"
-          title="Inscription"
+          style={styles.submit}
           onPress={() => this.registerUser()}
-        />
+        >
+            <Text style={styles.submitText}>Inscription</Text>
+        </TouchableOpacity>
         <Text
           style={styles.loginText}
           onPress={() => this.props.navigation.navigate('Login')}>
@@ -164,5 +165,20 @@ const styles = StyleSheet.create({
     marginTop: 24,
     marginHorizontal: 16,
     marginBottom:30,
+    position:'absolute',
+    top:24,
   },
+  submit: {
+    marginRight: 40,
+    marginLeft: 40,
+    marginTop: 10,
+    paddingTop: 10,
+    paddingBottom: 10,
+    backgroundColor: Colors.secondary,
+    borderRadius: 10,
+  },
+  submitText: {
+    color:Colors.tertiary,
+    textAlign: 'center',
+  }
 });

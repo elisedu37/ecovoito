@@ -57,17 +57,19 @@ export default class SignIn extends Component {
         <Text style={styles.loginText}>
         Vous êtes ?
         </Text> 
-        <View style={styles.titleBar}>   
-        <Button
-          color="#F2BC79"
-          title="Salarié"
+        <View style={styles.colonneBar}> 
+        <TouchableOpacity
+          style={styles.submit}
           onPress={() => this.setRoleUser()}
-        />  
-        <Button
-          color="#F2BC79"
-          title="Entreprise"
+        >
+            <Text style={styles.submitText}>Salarié</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.submit}
           onPress={() => this.setRoleAdmin()}
-        />   
+        >
+            <Text style={styles.submitText}>Entreprise</Text>
+        </TouchableOpacity>
         </View>     
         </View>               
       </View>
@@ -137,5 +139,23 @@ const styles = StyleSheet.create({
     marginTop: 24,
     marginHorizontal: 16,
     marginBottom:30,
+    position:'absolute',
+    top:24,
   },
+  colonneBar: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 24,
+    marginHorizontal: 16,
+    marginBottom:30,
+  },
+  submit: {
+    padding: 20,
+    backgroundColor: Colors.secondary,
+    borderRadius: 10,
+  },
+  submitText: {
+    color:Colors.tertiary,
+    textAlign: 'center',
+  }
 });

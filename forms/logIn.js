@@ -82,11 +82,12 @@ export default class Login extends Component{
           secureTextEntry={true}
           placeholderTextColor="#F2BC79"
         />
-        <Button
-          color="#F2BC79"
-          title="Connexion"
+        <TouchableOpacity
+          style={styles.submit}
           onPress={() => this.loginUser()}
-        />
+        >
+            <Text style={styles.submitText}>Connexion</Text>
+        </TouchableOpacity>
         <Text
           style={styles.loginText}
           onPress={() => this.props.navigation.navigate('resetPass')}>
@@ -159,5 +160,18 @@ const styles = StyleSheet.create({
     image:{
       height:300,
       width:300,
+    },
+    submit: {
+      marginRight: 40,
+      marginLeft: 40,
+      marginTop: 10,
+      paddingTop: 10,
+      paddingBottom: 10,
+      backgroundColor: Colors.secondary,
+      borderRadius: 10,
+    },
+    submitText: {
+      color:Colors.tertiary,
+      textAlign: 'center',
     }
   });
