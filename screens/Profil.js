@@ -13,7 +13,7 @@ import Infos from '../components/Infos';
 import { Colors } from '../components/Colors';
 import OldRoute from '../components/OldRoute';
 import Footer from '../components/Footer';
-import { auth, db } from '../config/firebase';
+import { auth, db, storage } from '../config/firebase';
 
 export default class Profil extends Component {
   state = { 
@@ -31,6 +31,7 @@ export default class Profil extends Component {
     constructor(props) {
         super(props);
         this.getUser();
+        this.getLogos();
         db.collection('Users').doc(auth.currentUser.uid).onSnapshot(doc => {
           this.setState({
             user: {
@@ -41,7 +42,17 @@ export default class Profil extends Component {
         })
       }
 
+      getLogos = async () => {
+        var url = storage.ref().child("images/" + auth.currentUser.email).getDownloadURL();
+        url.then(function(imageUrl) {
+          console.log(imageUrl);
+          return imageUrl;
+        }); 
+      }
+
+      
       getUser = async () => {
+        const user = auth.currentUser;
        await db.collection('Users').doc(user.uid).get();
       }
 
@@ -79,7 +90,7 @@ export default class Profil extends Component {
       <View style={styles.profil}>
 
         <Image
-              source={require('../assets/img/imgProfil.jpg')}
+              source={{uri: this.state.imageUrl}}
               style={styles.imgProfil}
             />
             <View style={styles.infoContainer}>

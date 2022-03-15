@@ -2,7 +2,6 @@ import React, { UseEffect, Component } from 'react';
 import { StyleSheet, Text, View, TextInput, Button, Alert, ActivityIndicator, ImagePickerIOS, Platform } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { auth, db, storage } from '../config/firebase';
- import { uploadBytes } from "firebase/storage";
 import * as ImagePicker from 'expo-image-picker';
 
 export default class setCompany extends Component {
@@ -15,6 +14,7 @@ export default class setCompany extends Component {
         city: '',
         logo: '',
         postalCode: '',
+        points: 0
       }
     }
 
@@ -29,7 +29,8 @@ export default class setCompany extends Component {
         name: this.state.name,
         adress: this.state.adress,
         city: this.state.city,
-        postalCode: this.state.postalCode       
+        postalCode: this.state.postalCode,
+        points: 0,
         });
         this.props.navigation.navigate('Accueil'); 
     }

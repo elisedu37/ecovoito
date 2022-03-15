@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import { StyleSheet, Text, View, TextInput, Button, Alert, ActivityIndicator, Image, TouchableOpacity } from 'react-native';
-import { auth, db } from '../config/firebase';
+import { auth, db, storage } from '../config/firebase';
+import * as ImagePicker from 'expo-image-picker';
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 import { Colors } from '../components/Colors';
 
@@ -14,6 +15,7 @@ export default class SetAccount extends Component {
           postalCode: '',
           city: '',
           role: '',
+          points: 0,
           isLoading: false
         }
       }
@@ -22,6 +24,38 @@ export default class SetAccount extends Component {
         const state = this.state;
         state[prop] = val;
         this.setState(state);
+      }
+
+      useEffect = async () => {
+        (async () => {
+          if (Platform.OS !== 'web') {
+            const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+          if (status !== 'granted') {
+            alert('Vous devez autoriser la permission pour publier une image');
+          }
+        }
+        });
+      }
+
+      pickImage = async () => {
+        // const [image, setImage] = useState(null);
+        let result = await ImagePicker.launchImageLibraryAsync({
+          mediaTypes: ImagePicker.MediaTypeOptions.Images,
+          allowsEditing: true,
+          aspect: [4, 4],
+          quality: 1,
+        });
+        let uploadImage = async (uri, imageName) => { 
+        const response = await fetch(uri);
+        const blob = await response.blob();
+        let ref = storage.ref().child("images/" + imageName);
+        return ref.put(blob); 
+        }  
+        // console.log(result);
+        let photoName = storage.ref();
+        if (!result.cancelled) { 
+          await uploadImage(result.uri, auth.currentUser.email); 
+        }
       }
 
       onAuthComplete = (user) => {
@@ -34,6 +68,7 @@ export default class SetAccount extends Component {
           postalCode: this.state.postalCode,
           city: this.state.city,
           role: '',
+          points: 0,
         });       
       }
 
@@ -111,6 +146,7 @@ export default class SetAccount extends Component {
               maxLength={15}
               placeholderTextColor="#F2BC79"
             />
+            <Button title="Sélectionnez un avatar" onPress={() => this.pickImage()}/>
             <TouchableOpacity
               style={styles.submit}
               onPress={() => this.completeRegistration()}

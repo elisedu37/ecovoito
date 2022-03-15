@@ -1,11 +1,37 @@
-import * as React from 'react';
+import React, { UseEffect, Component, setState } from 'react';
 import { StyleSheet, Text, Image, View, TouchableOpacity, ScrollView } from 'react-native';
 import { Colors } from '../components/Colors';
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 import Footer from '../components/Footer';
 import ClassementBox from '../components/ClassementBox';
+import { db, storage } from '../config/firebase';
 
-export default function Classement({navigation}) {
+export default class Classement extends Component {
+  state = {
+    companies: []
+  }
+  constructor(props) {
+    super(props);
+    this.getCompanies();
+    db.collection("Company")
+    .orderBy('points', 'desc')
+    .onSnapshot(docs => {
+    let companies = [];
+    docs.forEach(doc => {
+      companies.push(doc.data())
+    })
+    this.setState({ companies })
+    })
+  }
+
+  getCompanies = async () => {
+    await db.collection('Company').get();
+  }
+
+
+
+  render() {
+    
   return (
       <>
     <View style={styles.container}>
@@ -27,18 +53,10 @@ export default function Classement({navigation}) {
       </View>
     </View>
       <Text style={styles.titre}>LE CLASSEMENT </Text>
-      <View style={styles.box}>
-      <ClassementBox position="2" logo={require('../assets/img/google.png')} work="Géant Casino" lieu="Le Puy en Velay" point="148"/>
-      <ClassementBox position="3" logo={require('../assets/img/google.png')} work="Leclerc" lieu="Saint Etienne" point="143"/>
-      <ClassementBox position="4" logo={require('../assets/img/google.png')} work="Sport 2000" lieu="Le Puy en Velay" point="140"/>
-      <ClassementBox position="5" logo={require('../assets/img/google.png')} work="Delbard" lieu="Le Puy en Velay" point="137"/>
-      <ClassementBox position="6" logo={require('../assets/img/google.png')} work="Darty" lieu="Saint Etienne" point="136"/>
-      <ClassementBox position="7" logo={require('../assets/img/google.png')} work="Mercedes" lieu="Le Puy en Velay" point="132"/>
-      <ClassementBox position="8" logo={require('../assets/img/google.png')} work="Gifi" lieu="Le Puy en Velay" point="125"/>
-      <ClassementBox position="9" logo={require('../assets/img/google.png')} work="Darty" lieu="Saint Etienne" point="110"/>
-      <ClassementBox position="10" logo={require('../assets/img/google.png')} work="Darty" lieu="Saint Etienne" point="98"/>
+      {this.state.companies.map((company, index) => <View key={index} style={styles.box}>
+      <ClassementBox position="2" logo={require('../assets/img/google.png')} work={company.name} lieu={company.city} point={company.points}/>
 
-      </View>
+      </View>)}
       </ScrollView>
 
     </View>
@@ -47,6 +65,7 @@ export default function Classement({navigation}) {
 
     </>
   );
+  }
 };
 
 

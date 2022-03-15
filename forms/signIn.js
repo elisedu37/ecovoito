@@ -14,6 +14,7 @@ export default class SignIn extends Component {
       uid: '',
       email: '', 
       password: '',
+      points: 0,
       isLoading: false
     }
 
@@ -38,6 +39,7 @@ export default class SignIn extends Component {
         auth.onAuthStateChanged(function(user) {
           db.collection('Users').doc(user.uid).set({
           email: user.email,
+          points: 0,
           // password: user.password,       
           });           
           }); 
