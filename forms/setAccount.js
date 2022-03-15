@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TextInput, Button, Alert, ActivityIndicator } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, Alert, ActivityIndicator, Image, TouchableOpacity } from 'react-native';
 import { auth, db } from '../config/firebase';
+import { Ionicons, MaterialIcons } from '@expo/vector-icons';
+import { Colors } from '../components/Colors';
 
 export default class SetAccount extends Component {
     constructor(props) {
@@ -56,12 +58,26 @@ export default class SetAccount extends Component {
           )
         }    
         return (
-          <View style={styles.container}>      
+          <View style={styles.container}>
+          <View style={styles.titleBar}>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('Login')}>
+              <Ionicons name="ios-arrow-back" size={35} color={Colors.secondary} />
+            </TouchableOpacity>
+            <TouchableOpacity></TouchableOpacity>
+          </View>
+          <View style={styles.logoContainer}>
+            <Image
+              source={require('../assets/img/ecovoito.png')}
+              style={styles.image}
+            />
+          </View>
+          <View style={styles.box}>
             <TextInput
               style={styles.inputStyle}
               placeholder="Nom"
               value={this.state.firstName}
               onChangeText={(val) => this.updateInputVal(val, 'firstName')}
+              placeholderTextColor="#F2BC79"
             />
             <TextInput
               style={styles.inputStyle}
@@ -69,34 +85,40 @@ export default class SetAccount extends Component {
               value={this.state.lastName}
               onChangeText={(val) => this.updateInputVal(val, 'lastName')}
               maxLength={15}
-            />   
+              placeholderTextColor="#F2BC79"
+            />
             <TextInput
               style={styles.inputStyle}
               placeholder="Adresse"
               value={this.state.adress}
               onChangeText={(val) => this.updateInputVal(val, 'adress')}
               maxLength={70}
-            /> 
+              placeholderTextColor="#F2BC79"
+            />
             <TextInput
               style={styles.inputStyle}
               placeholder="Ville"
               value={this.state.city}
               onChangeText={(val) => this.updateInputVal(val, 'city')}
               maxLength={30}
-            /> 
+              placeholderTextColor="#F2BC79"
+            />
             <TextInput
               style={styles.inputStyle}
               placeholder="Code postal"
               value={this.state.postalCode}
               onChangeText={(val) => this.updateInputVal(val, 'postalCode')}
               maxLength={15}
-            /> 
-            <Button
-              color="#3740FE"
-              title="Next"
+              placeholderTextColor="#F2BC79"
+            />
+            <TouchableOpacity
+              style={styles.submit}
               onPress={() => this.completeRegistration()}
-            />                      
+            >
+                <Text style={styles.submitText}>Suivant</Text>
+            </TouchableOpacity>
           </View>
+        </View>        
         );
       }
 }
@@ -108,20 +130,26 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     padding: 35,
-    backgroundColor: '#fff'
+    backgroundColor: Colors.primary,
   },
   inputStyle: {
     width: '100%',
+    paddingTop:10,
     marginBottom: 15,
-    paddingBottom: 15,
+    paddingBottom: 10,
     alignSelf: "center",
-    borderColor: "#ccc",
-    borderBottomWidth: 1
+    borderColor: Colors.secondary,
+    borderWidth: 3,
+    borderRadius:19,
+    textAlign:'center',
+    fontSize:15,   
+    color:Colors.secondary,  
   },
   loginText: {
-    color: '#3740FE',
+    color: Colors.secondary,
     marginTop: 25,
-    textAlign: 'center'
+    textAlign: 'center',
+    paddingBottom:20,
   },
   preloader: {
     left: 0,
@@ -131,6 +159,47 @@ const styles = StyleSheet.create({
     position: 'absolute',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#fff'
+    backgroundColor: '#fff',
+  },
+  box:{
+    left:0,
+    right:0,
+    backgroundColor: Colors.tertiary,
+    bottom:0,
+    position:'absolute',
+    borderTopLeftRadius:44,
+    borderTopRightRadius:44,
+    padding:46,
+  },
+  logoContainer:{
+    position:'absolute',
+    top:'1%',
+    left:'10%'
+  },
+  image:{
+    height:300,
+    width:300,
+  },
+  titleBar: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 24,
+    marginHorizontal: 16,
+    marginBottom:30,
+    position:'absolute',
+    top:24,
+  },
+  submit: {
+    marginRight: 40,
+    marginLeft: 40,
+    marginTop: 10,
+    paddingTop: 10,
+    paddingBottom: 10,
+    backgroundColor: Colors.secondary,
+    borderRadius: 10,
+  },
+  submitText: {
+    color:Colors.tertiary,
+    textAlign: 'center',
   }
 });

@@ -1,8 +1,9 @@
 // components/signup.js
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TextInput, Button, Alert, ActivityIndicator, Image } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, Alert, ActivityIndicator, Image , TouchableOpacity} from 'react-native';
 import { auth, db } from '../config/firebase';
 import { Colors } from '../components/Colors';
+import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 
 
 export default class SignIn extends Component {
@@ -54,11 +55,18 @@ export default class SignIn extends Component {
       )
     }    
     return (
-      <View style={styles.container}>   
+      <View style={styles.container}>
+      <View style={styles.titleBar}>
+        <TouchableOpacity onPress={() => this.props.navigation.navigate('Login')}>
+          <Ionicons name="ios-arrow-back" size={35} color={Colors.secondary} />
+        </TouchableOpacity>
+        <TouchableOpacity></TouchableOpacity>
+      </View>
       <View style={styles.logoContainer}>
         <Image
-          source={require('../assets/loader-icon.png')}
-        />  
+          source={require('../assets/img/ecovoito.png')}
+          style={styles.image}
+        />
       </View>
       <View style={styles.box}>
         <TextInput
@@ -66,6 +74,7 @@ export default class SignIn extends Component {
           placeholder="Email"
           value={this.state.email}
           onChangeText={(val) => this.updateInputVal(val, 'email')}
+          placeholderTextColor="#F2BC79"
         />
         <TextInput
           style={styles.inputStyle}
@@ -74,20 +83,22 @@ export default class SignIn extends Component {
           onChangeText={(val) => this.updateInputVal(val, 'password')}
           maxLength={15}
           secureTextEntry={true}
-        />   
-        <Button
-          navigation={this.props.navigation}
-          color="#F2BC79"
-          title="Inscription"
-          onPress={() => this.registerUser()}
+          placeholderTextColor="#F2BC79"
         />
-        <Text 
+        <TouchableOpacity
+          navigation={this.props.navigation}
+          style={styles.submit}
+          onPress={() => this.registerUser()}
+        >
+            <Text style={styles.submitText}>Inscription</Text>
+        </TouchableOpacity>
+        <Text
           style={styles.loginText}
           onPress={() => this.props.navigation.navigate('Login')}>
-         Déja inscrit ? Connectez-vous
-        </Text> 
-        </View>                            
+          Déja inscrit ? Connectez-vous
+        </Text>
       </View>
+    </View>    
     );
   }
 }
@@ -141,7 +152,33 @@ const styles = StyleSheet.create({
   },
   logoContainer:{
     position:'absolute',
-    top:'15%',
-    left:'30%'
+    top:'5%',
+    left:'10%'
   },
+  image:{
+    height:300,
+    width:300,
+  },
+  titleBar: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 24,
+    marginHorizontal: 16,
+    marginBottom:30,
+    position:'absolute',
+    top:24,
+  },
+  submit: {
+    marginRight: 40,
+    marginLeft: 40,
+    marginTop: 10,
+    paddingTop: 10,
+    paddingBottom: 10,
+    backgroundColor: Colors.secondary,
+    borderRadius: 10,
+  },
+  submitText: {
+    color:Colors.tertiary,
+    textAlign: 'center',
+  }
 });
