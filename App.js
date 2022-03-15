@@ -59,6 +59,7 @@ const MyStack = () => {
             <Stack.Screen name="HomeScreen" component={Home} />   
             <Stack.Screen name="Profil" component={Profil} />  
             <Stack.Screen name="TrajetIndiv" component={TrajetIndividuel} />  
+            <Stack.Screen name="Map" component={MapScreen} />  
 
         </Stack.Navigator>
       </NavigationContainer>

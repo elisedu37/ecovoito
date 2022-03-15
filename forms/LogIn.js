@@ -8,9 +8,10 @@ import {
     StyleSheet ,
     StatusBar,
     Alert,
-    Button
+    Button, Image
 } from 'react-native';
 import { auth } from '../config/firebase';
+import { Colors } from '../components/Colors';
 
 
 
@@ -58,7 +59,13 @@ export default class LogIn extends Component{
 
     return(
 
-        <View style={styles.container}>   
+        <View style={styles.container}> 
+        <View style={styles.logoContainer}>
+        <Image
+          source={require('../assets/loader-icon.png')}
+        />  
+        </View>
+        <View style={styles.box}>
         <TextInput
           style={styles.inputStyle}
           placeholder="Email"
@@ -74,7 +81,7 @@ export default class LogIn extends Component{
           secureTextEntry={true}
         />   
         <Button
-          color="#3740FE"
+          color="#F2BC79"
           title="Connexion"
           onPress={() => this.loginUser()}
         />
@@ -87,7 +94,8 @@ export default class LogIn extends Component{
           style={styles.loginText}
           onPress={() => this.props.navigation.navigate('Signin')}>
           Pas de compte chez nous ? Cliquez ici
-        </Text>                          
+        </Text> 
+        </View>                         
       </View>
     );
 }
@@ -100,20 +108,26 @@ const styles = StyleSheet.create({
       flexDirection: "column",
       justifyContent: "center",
       padding: 35,
-      backgroundColor: '#fff'
+      backgroundColor: Colors.primary,
     },
     inputStyle: {
       width: '100%',
+      paddingTop:10,
       marginBottom: 15,
-      paddingBottom: 15,
+      paddingBottom: 10,
       alignSelf: "center",
-      borderColor: "#ccc",
-      borderBottomWidth: 1
+      borderColor: Colors.secondary,
+      borderWidth: 3,
+      borderRadius:19,
+      textAlign:'center',
+      fontSize:15,   
+      color:Colors.secondary,  
     },
     loginText: {
-      color: '#3740FE',
+      color: Colors.secondary,
       marginTop: 25,
-      textAlign: 'center'
+      textAlign: 'center',
+      
     },
     preloader: {
       left: 0,
@@ -123,6 +137,21 @@ const styles = StyleSheet.create({
       position: 'absolute',
       alignItems: 'center',
       justifyContent: 'center',
-      backgroundColor: '#fff'
-    }
+      backgroundColor: '#fff',
+    },
+    box:{
+      left:0,
+      right:0,
+      backgroundColor: Colors.tertiary,
+      bottom:0,
+      position:'absolute',
+      borderTopLeftRadius:44,
+      borderTopRightRadius:44,
+      padding:46,
+    },
+    logoContainer:{
+      position:'absolute',
+      top:'15%',
+      left:'30%'
+    },
   });
