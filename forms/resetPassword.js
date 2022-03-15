@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import { auth } from '../config/firebase';
 import { Colors } from '../components/Colors';
+import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 
 export default class resetPassword extends Component {
     constructor(props) {
@@ -43,27 +44,40 @@ export default class resetPassword extends Component {
 
       render(){
         return(
-        <View style={styles.container}>
+          <View style={styles.container}>
+          <View style={styles.titleBar}>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('Login')}>
+              <Ionicons name="ios-arrow-back" size={35} color={Colors.secondary} />
+            </TouchableOpacity>
+            <TouchableOpacity></TouchableOpacity>
+          </View>
           <View style={styles.logoContainer}>
-        <Image
-          source={require('../assets/loader-icon.png')}
-        />  
-        </View>
-        <View style={styles.box}>
-          
-          <Text style={styles.loginText}>Mot de passe oublié ?</Text>
-          <Text style={styles.loginText}>Entrez ci-dessous votre email, nous vous enverrons un lien de réinitialisation</Text>
-          <TextInput
-            style={styles.inputStyle}
-            onChangeText={(val) => this.updateInputVal(val, 'email')}
-            value={this.state.email} 
-            placeholder="example@gmail.com"/>
-          <TouchableOpacity onPress={() => this.forgotPassword()}>
-            <Text>Envoyer</Text>
-          </TouchableOpacity>
+            <Image
+              source={require('../assets/img/ecovoito.png')}
+              style={styles.image}
+            />
+          </View>
+          <View style={styles.box}>
+            <Text style={styles.loginText}>Mot de passe oublié ?</Text>
+            <Text style={styles.loginText}>
+              Entrez ci-dessous votre email, nous vous enverrons un lien de
+              réinitialisation
+            </Text>
+            <TextInput
+              style={styles.inputStyle}
+              onChangeText={(val) => this.updateInputVal(val, 'email')}
+              value={this.state.email}
+              placeholder="example@gmail.com"
+              placeholderTextColor="#F2BC79"
+            />
+            <TouchableOpacity onPress={() => this.forgotPassword()}>
+              <Button
+               color="#F2BC79"
+               title="Envoyer"
+              />
+            </TouchableOpacity>
           </View>
         </View>
-
         )}
 }
 
@@ -117,7 +131,11 @@ const styles = StyleSheet.create({
   },
   logoContainer:{
     position:'absolute',
-    top:'15%',
-    left:'30%'
+    top:'5%',
+    left:'10%'
   },
+  image:{
+    height:300,
+    width:300,
+  }
 });

@@ -58,19 +58,20 @@ export default class Login extends Component{
     render() {
 
     return(
-
-        <View style={styles.container}> 
-        <View style={styles.logoContainer}>
+      <View style={styles.container}>
+      <View style={styles.logoContainer}>
         <Image
-          source={require('../assets/loader-icon.png')}
-        />  
-        </View>
-        <View style={styles.box}>
+          source={require('../assets/img/ecovoito.png')}
+          style={styles.image}
+        />
+      </View>
+      <View style={styles.box}>
         <TextInput
           style={styles.inputStyle}
           placeholder="Email"
           value={this.state.email}
           onChangeText={(val) => this.updateInputVal(val, 'email')}
+          placeholderTextColor="#F2BC79"
         />
         <TextInput
           style={styles.inputStyle}
@@ -79,24 +80,25 @@ export default class Login extends Component{
           onChangeText={(val) => this.updateInputVal(val, 'password')}
           maxLength={15}
           secureTextEntry={true}
-        />   
+          placeholderTextColor="#F2BC79"
+        />
         <Button
           color="#F2BC79"
           title="Connexion"
           onPress={() => this.loginUser()}
         />
-          <Text 
+        <Text
           style={styles.loginText}
           onPress={() => this.props.navigation.navigate('resetPass')}>
           Mot de passe oublié
-        </Text> 
-        <Text 
+        </Text>
+        <Text
           style={styles.loginText}
           onPress={() => this.props.navigation.navigate('Signin')}>
           Pas de compte chez nous ? Cliquez ici
-        </Text> 
-        </View>                         
+        </Text>
       </View>
+    </View>
     );
 }
 }
@@ -151,7 +153,11 @@ const styles = StyleSheet.create({
     },
     logoContainer:{
       position:'absolute',
-      top:'15%',
-      left:'30%'
+      top:'5%',
+      left:'10%'
     },
+    image:{
+      height:300,
+      width:300,
+    }
   });
