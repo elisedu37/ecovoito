@@ -18,9 +18,9 @@ import Accueil from './screens/Accueil';
 import Trajets from './screens/Trajets';
 import Analyse from './screens/Analyse';
 import Profil from './screens/Profil';
-import setRole from './forms/setRole';
-import setCompany from './forms/setCompany';
-import resetPassword from './forms/resetPassword';
+import SetRole from './forms/setRole';
+import SetCompany from './forms/setCompany';
+import ResetPassword from './forms/resetPassword';
 import TrajetIndividuel from './screens/TrajetIndividuel';
 
 import MapScreen from './screens/MapsScreen';
@@ -49,13 +49,13 @@ const MyStack = () => {
             <Stack.Screen name="Accueil" component={Home} />
             <Stack.Screen name="Signin" component={SignIn} />  
             <Stack.Screen name="Home" component={Accueil} /> 
-            <Stack.Screen name="setRole" component={setRole} />
-            <Stack.Screen name="setCompany" component={setCompany} />  
+            <Stack.Screen name="SetRole" component={SetRole} />
+            <Stack.Screen name="SetCompany" component={SetCompany} />  
             <Stack.Screen name="QuiSommesNous" component={QuiSommesNous} />  
             <Stack.Screen name="Classement" component={Classement} />  
             <Stack.Screen name="Trajets" component={Trajets} />  
             <Stack.Screen name="Analyse" component={Analyse} />  
-            <Stack.Screen name="resetPass" component={resetPassword} />  
+            <Stack.Screen name="ResetPass" component={ResetPassword} />  
             <Stack.Screen name="HomeScreen" component={Home} />   
             <Stack.Screen name="Profil" component={Profil} />  
             <Stack.Screen name="TrajetIndiv" component={TrajetIndividuel} />  

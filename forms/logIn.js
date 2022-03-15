@@ -87,7 +87,7 @@ export default class Login extends Component{
         />
           <Text 
           style={styles.loginText}
-          onPress={() => this.props.navigation.navigate('resetPass')}>
+          onPress={() => this.props.navigation.navigate('ResetPass')}>
           Mot de passe oublié
         </Text> 
         <Text 

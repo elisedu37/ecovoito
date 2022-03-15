@@ -4,7 +4,6 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { auth, db, storage } from '../config/firebase';
  import { uploadBytes } from "firebase/storage";
 import * as ImagePicker from 'expo-image-picker';
-// import { getStorage } from "@firebase/storage";
 
 export default class setCompany extends Component {
   
@@ -48,27 +47,31 @@ export default class setCompany extends Component {
     
 
     pickImage = async () => {
-        let result = await ImagePicker.launchImageLibraryAsync({
-            mediaTypes: ImagePicker.MediaTypeOptions.All,
-            allowsEditing: true,
-            adpect: [4, 3],
-            quality: 1,
-        });
-      if (!result.cancelled) {
-      const ref = ref(storage, 'logo.jpg');
-      
-      const img = await fetch(result.uri);
-      const bytes = await this.img.blob();
-      await uploadBytes(ref, result.uri);
-    
+      // const [image, setImage] = useState(null);
+      let result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.Images,
+        allowsEditing: true,
+        aspect: [4, 4],
+        quality: 1,
+      });
+      let uploadImage = async (uri, imageName) => { 
+      const response = await fetch(uri);
+      const blob = await response.blob();
+      let ref = storage.ref().child("images/" + imageName);
+      return ref.put(blob); 
+      }  
+      // console.log(result);
+      let photoName = storage.ref();
+      if (!result.cancelled) { 
+        await uploadImage(result.uri, auth.currentUser.email); 
+      }
     }
-  };
 
 
     render(){
         return(
 
-            <View style={styles.container}>      
+          <View style={styles.container}>      
             <TextInput
               style={styles.inputStyle}
               placeholder="Nom de l'entreprise"
@@ -80,33 +83,32 @@ export default class setCompany extends Component {
               placeholder="Adresse de l'entreprise"
               value={this.state.adress}
               onChangeText={(val) => this.updateInputVal(val, 'adress')}
-              maxLength={15}
+              maxLength={50}
             />   
             <TextInput
               style={styles.inputStyle}
               placeholder="Ville"
               value={this.state.city}
               onChangeText={(val) => this.updateInputVal(val, 'city')}
-              maxLength={15}
+              maxLength={70}
             /> 
             <TextInput
               style={styles.inputStyle}
-              placeholder="Code postal"
+              placeholder="Code Postal"
               value={this.state.postalCode}
               onChangeText={(val) => this.updateInputVal(val, 'postalCode')}
-              maxLength={15}
+              maxLength={30}
             /> 
-             <TouchableOpacity>
-                 <Text>Selectionnez votre logo</Text>
-             </TouchableOpacity>
+            <Button title="Sélectionnez un logo" onPress={() => this.pickImage()}/>
             <Button
               color="#3740FE"
               title="Next"
               onPress={() => this.createCompany()}
             />                      
-          </View>    
+          </View>  
 
-        )}
+        );
+      }
 }
 
 const styles = StyleSheet.create({

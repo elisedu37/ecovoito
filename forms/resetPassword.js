@@ -13,7 +13,7 @@ import {
 import { auth } from '../config/firebase';
 import { Colors } from '../components/Colors';
 
-export default class resetPassword extends Component {
+export default class ResetPassword extends Component {
     constructor(props) {
         super(props);
         this.state = { 

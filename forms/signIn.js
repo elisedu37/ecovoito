@@ -40,7 +40,7 @@ export default class SignIn extends Component {
           // password: user.password,       
           });           
           }); 
-        this.props.navigation.navigate('setRole'); 
+        this.props.navigation.navigate('SetRole'); 
       })
       .catch(error => this.setState({ errorMessage: error.message }))      
     }

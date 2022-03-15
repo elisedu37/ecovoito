@@ -26,7 +26,7 @@ export default class SignIn extends Component {
           db.collection('Users').doc(user.uid).update({
           role: 'admin',
           });           
-        this.props.navigation.navigate('setCompany');    
+        this.props.navigation.navigate('SetCompany');    
     }
   
   render() {
