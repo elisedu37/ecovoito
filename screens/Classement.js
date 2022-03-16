@@ -4,11 +4,11 @@ import { Colors } from '../components/Colors';
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 import Footer from '../components/Footer';
 import ClassementBox from '../components/ClassementBox';
-import { db, storage } from '../config/firebase';
+import { db, auth, storage } from '../config/firebase';
 
 export default class Classement extends Component {
   state = {
-    companies: []
+    companies: [],
   }
   constructor(props) {
     super(props);
@@ -28,10 +28,7 @@ export default class Classement extends Component {
     await db.collection('Company').get();
   }
 
-
-
-  render() {
-    
+  render() {    
   return (
       <>
     <View style={styles.container}>
@@ -54,8 +51,7 @@ export default class Classement extends Component {
     </View>
       <Text style={styles.titre}>LE CLASSEMENT </Text>
       {this.state.companies.map((company, index) => <View key={index} style={styles.box}>
-      <ClassementBox position="2" logo={require('../assets/img/google.png')} work={company.name} lieu={company.city} point={company.points}/>
-
+      <ClassementBox key={index} position="2" logo={company.downloadURL} work={company.name} lieu={company.city} point={company.points}/>
       </View>)}
       </ScrollView>
 

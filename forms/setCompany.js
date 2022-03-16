@@ -4,7 +4,7 @@ import { auth, db, storage } from '../config/firebase';
 import * as ImagePicker from 'expo-image-picker';
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 import { Colors } from '../components/Colors';
-export default class setCompany extends Component {
+export default class SetCompany extends Component {
   
     constructor(props) {
       super(props);
@@ -12,8 +12,8 @@ export default class setCompany extends Component {
         name: '',
         adress: '', 
         city: '',
-        logo: '',
         postalCode: '',
+        downloadURL: '',
         points: 0
       }
     }
@@ -30,6 +30,7 @@ export default class setCompany extends Component {
         adress: this.state.adress,
         city: this.state.city,
         postalCode: this.state.postalCode,
+        downloadURL: this.state.downloadURL,
         points: 0,
         });
         this.props.navigation.navigate('Accueil'); 
@@ -59,10 +60,15 @@ export default class setCompany extends Component {
       const response = await fetch(uri);
       const blob = await response.blob();
       let ref = storage.ref().child("images/" + imageName);
-      return ref.put(blob); 
+      return ref.put(blob)
+      .then(snapshot => {
+      return snapshot.ref.getDownloadURL();
+     })
+      .then(downloadURL => {
+      console.log(`Successfully uploaded file and got download link - ${downloadURL}`);
+      this.setState({ downloadURL })
+     })
       }  
-      // console.log(result);
-      let photoName = storage.ref();
       if (!result.cancelled) { 
         await uploadImage(result.uri, auth.currentUser.email); 
       }

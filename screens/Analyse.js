@@ -1,11 +1,31 @@
-import * as React from 'react';
+import React, { Component, useState, setState } from 'react';
 import { StyleSheet, Text, Image, View, TouchableOpacity, ScrollView } from 'react-native';
 import { Colors } from '../components/Colors';
+import { auth, db, storage } from '../config/firebase';
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 
 import Footer from '../components/Footer';
 
-export default function Analyse({navigation}) {
+export default class Analyse extends Component {
+  state = { 
+    url: ''
+  }
+
+  user = auth.currentUser;
+    constructor(props) {
+        super(props);
+        this.getLogos();
+      }
+
+      getLogos = () => {
+        var imageRef = storage.ref().child("images/" + auth.currentUser.email);
+        imageRef.getDownloadURL()
+        .then((url) => {
+          this.setState({url});
+        }); 
+      }
+
+  render() {
   return (
     <>
       <View style={styles.container}>
@@ -43,7 +63,7 @@ export default function Analyse({navigation}) {
             </View>
             <View style={styles.classementContainerR}>
               <Image
-                source={require('../assets/img/imgProfil.jpg')}
+                source={{uri: this.state.url}}
                 style={styles.imgProfil}
               />
               <Text style={styles.TextClassement}>8ème</Text>
@@ -68,7 +88,7 @@ export default function Analyse({navigation}) {
       </View>
       <Footer />
     </>
-  );
+  )};
 }
 
 const styles = StyleSheet.create({
