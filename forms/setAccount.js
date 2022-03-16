@@ -100,12 +100,7 @@ export default class SetAccount extends Component {
             </TouchableOpacity>
             <TouchableOpacity></TouchableOpacity>
           </View>
-          <View style={styles.logoContainer}>
-            <Image
-              source={require('../assets/img/ecovoito.png')}
-              style={styles.image}
-            />
-          </View>
+          
           <View style={styles.box}>
             <TextInput
               style={styles.inputStyle}
@@ -146,7 +141,12 @@ export default class SetAccount extends Component {
               maxLength={15}
               placeholderTextColor="#F2BC79"
             />
-            <Button title="Sélectionnez un avatar" onPress={() => this.pickImage()}/>
+            <TouchableOpacity
+              style={styles.submitImage}
+              onPress={() => this.pickImage()}
+            >
+                <Text style={styles.submitImageText}>Sélectionnez un avatar</Text>
+            </TouchableOpacity>
             <TouchableOpacity
               style={styles.submit}
               onPress={() => this.completeRegistration()}
@@ -237,5 +237,20 @@ const styles = StyleSheet.create({
   submitText: {
     color:Colors.tertiary,
     textAlign: 'center',
-  }
+  },
+  submitImage: {
+    backgroundColor: Colors.tertiary,
+    width: '100%',
+    paddingTop:10,
+    marginBottom: 15,
+    paddingBottom: 10,
+    alignSelf: "center",
+    borderColor: Colors.secondary,
+    borderWidth: 3,
+    borderRadius:19,
+  }, 
+  submitImageText: {
+    color:Colors.secondary,
+    textAlign: 'center',
+  },
 });
