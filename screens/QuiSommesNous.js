@@ -34,7 +34,7 @@ export default function QuiSommesNous({navigation}) {
         
       </View>
 
-      <Text style={styles.titre}>ECOVOITO C EST : </Text>
+      <Text style={styles.titre}>ECOVOITO C'EST : </Text>
 
       <IllustratedText texte="Évaluer et réduire l'émission de CO2 produite par les salariés" image={require('../assets/img/reductionCO2.png')} />
       <IllustratedText texte="Un challenge entre entreprise ! Qui sera la meilleure entreprise ?" image={require('../assets/img/challenge.png')} />
@@ -53,7 +53,7 @@ export default function QuiSommesNous({navigation}) {
         <View style={styles.boxCovoit}>
           <Image
             source={require('../assets/img/attention.png')}
-            style={styles.imgCovoit}
+            style={styles.warning}
           />
           <Text style={styles.texte}>
           TOUTES FRAUDES OU TRICHES AU CHALLENGE SERONT SÉVÈREMENT SANCTIONNÉS.
@@ -63,18 +63,18 @@ export default function QuiSommesNous({navigation}) {
 
       <Text style={styles.titre}>LES RECOMPENSES </Text>
       <View style={styles.colonne}>
-        <Infos text="Bon de réduction" image={require('../assets/img/google.png')}/>
-        <Infos text="Argent" image={require('../assets/img/google.png')}/>
-        <Infos text="Argent" image={require('../assets/img/google.png')}/>
-        <Infos text="Bon de réduction" image={require('../assets/img/google.png')}/>
+        <Infos text="Bon de réduction" image={require('../assets/img/reductionCO2.png')}/>
+        <Infos text="Argent" image={require('../assets/img/etoile.png')}/>
+        <Infos text="Argent" image={require('../assets/img/etoile.png')}/>
+        <Infos text="Bon de réduction" image={require('../assets/img/reductionCO2.png')}/>
       </View>
 
       <Text style={styles.titre}>FAQ </Text>
       <View style={styles.boxQuestions}>
-      <Question question="Comment sont attribués les points" />
-      <Question question="Comment sont attribués les points" />
-      <Question question="Comment sont attribués les points" />
-      <Question question="Comment sont attribués les points" />
+      <Question question="Comment sont attribués les points ? " />
+      <Question question="Qu'est-ce que la réduction de CO2 ? " />
+      <Question question="Combien de points me faut-il pour..." />
+      <Question question="Vous avez besoin d'une aide d'Ecovoito ?" />
       </View>
       </ScrollView>
     </View>
@@ -134,5 +134,9 @@ const styles = StyleSheet.create({
   boxQuestions:{
     justifyContent:'center',
     alignItems:'center',
-  }
+  },
+  warning: {
+    width:'16%',
+    height: 40,
+  },
 });
