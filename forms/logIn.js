@@ -154,8 +154,11 @@ const styles = StyleSheet.create({
     },
     logoContainer:{
       position:'absolute',
-      top:'5%',
-      left:'15%'
+      top: '5%', 
+      left: 0, 
+      right: 0, 
+      bottom: 0,  
+      alignItems: 'center'
     },
     image:{
       height:300,
