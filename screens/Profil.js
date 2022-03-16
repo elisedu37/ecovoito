@@ -140,13 +140,6 @@ export default class Profil extends Component {
           <OldRoute nom="Nathan" work="Salarié décathon" depart="Puy en Velay" destination="Val le Puy"/>
           </View>
 
-          <Text style={styles.titre}>Centres d interet </Text>
-          <View style={styles.colonne}>
-            <Infos text="sport" image={require('../assets/img/google.png')}/>
-            <Infos text="musique" image={require('../assets/img/google.png')} />
-            <Infos text="parler" image={require('../assets/img/google.png')} />
-          </View>
-
         </ScrollView> 
         <Footer/>
     </View>
