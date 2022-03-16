@@ -5,7 +5,7 @@ import { auth, db } from '../config/firebase';
 import { Colors } from '../components/Colors';
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 
-export default class SignIn extends Component {
+export default class SetRole extends Component {
   
   constructor(props) {
     super(props);

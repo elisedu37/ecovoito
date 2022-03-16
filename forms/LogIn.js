@@ -15,7 +15,7 @@ import { Colors } from '../components/Colors';
 
 
 
-export default class Login extends Component{
+export default class LogIn extends Component{
 
     constructor() {
         super();

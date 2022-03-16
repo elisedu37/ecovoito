@@ -72,6 +72,8 @@ export default class SetAccount extends Component {
         });       
       }
 
+
+
       completeRegistration = () => {
         if(this.state.firstName === '' && this.state.adress === '') {
           Alert.alert('Enter details to signup!')
@@ -158,7 +160,6 @@ export default class SetAccount extends Component {
         );
       }
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,

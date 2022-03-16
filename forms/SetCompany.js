@@ -1,4 +1,4 @@
-import React, { UseEffect, Component } from 'react';
+import React, { UseEffect, useState, Component } from 'react';
 import { StyleSheet, Text, View, TextInput, Button, Alert, ActivityIndicator, ImagePickerIOS, Platform } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { auth, db, storage } from '../config/firebase';
@@ -14,7 +14,8 @@ export default class setCompany extends Component {
         city: '',
         logo: '',
         postalCode: '',
-        points: 0
+        points: 0,
+        imageName: '',
       }
     }
 
