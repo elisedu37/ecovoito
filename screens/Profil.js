@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component, useState, setState } from 'react';
 import {
   StyleSheet,
   Text,
@@ -13,7 +13,58 @@ import Infos from '../components/Infos';
 import { Colors } from '../components/Colors';
 import OldRoute from '../components/OldRoute';
 import Footer from '../components/Footer';
-export default function Profil({navigation}) {
+import { auth, db, storage } from '../config/firebase';
+
+export default class Profil extends Component {
+  state = { 
+    url: '',
+    user: {
+      firstName: '',
+      lastName: '',
+      adress: '', 
+      postalCode: '',
+      city: '',
+      role: '',
+      isLoading: false
+    }
+  }
+  user = auth.currentUser;
+    constructor(props) {
+        super(props);
+        this.getUser();
+        this.getLogos();
+        db.collection('Users').doc(auth.currentUser.uid).onSnapshot(doc => {
+          this.setState({
+            user: {
+              firstName: doc.data().firstName,
+              lastName: doc.data().lastName,
+              city: doc.data().city
+            }})
+        })
+      }
+
+      getLogos = () => {
+        var imageRef = storage.ref().child("images/" + auth.currentUser.email);
+        imageRef.getDownloadURL()
+        .then((url) => {
+          this.setState({url});
+        }); 
+      }
+
+      
+      getUser = async () => {
+        const user = auth.currentUser;
+       await db.collection('Users').doc(user.uid).get();
+      }
+
+      render() {
+        if(this.state.isLoading){
+          return(
+            <View style={styles.preloader}>
+              <ActivityIndicator size="large" color="#9E9E9E"/>
+            </View>
+          )
+        }   
   return (
     <View style={styles.container}>
 
@@ -21,31 +72,33 @@ export default function Profil({navigation}) {
 
         <View style={styles.header}>
             <View style={styles.titleBar}>
-            <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('Home')}>
               <Ionicons
                 name="ios-arrow-back"
                 size={24}
-                color={Colors.secondary}></Ionicons>
-                          </TouchableOpacity>
-                          <TouchableOpacity>
-
+                color={Colors.secondary}>
+              </Ionicons>
+            </TouchableOpacity>
+            <TouchableOpacity>
               <Ionicons
                 name="cog-outline"
                 size={24}
                 color={Colors.secondary}></Ionicons>
-                                          </TouchableOpacity>
+            </TouchableOpacity>
 
             </View>
         </View>
       <View style={styles.profil}>
 
+      {this.state.url ?
         <Image
-              source={require('../assets/img/imgProfil.jpg')}
+              source={{uri: this.state.url}}
               style={styles.imgProfil}
             />
+            : 
+            null}
             <View style={styles.infoContainer}>
-            <Text style={styles.nom}>Filipine Monvoisin</Text>
+            <Text style={styles.nom}>{this.state.user.lastName} {this.state.user.firstName}</Text>
             <Text style={styles.subText}>132</Text>
             <Text style={styles.subText}>abonnees</Text>
           </View>
@@ -98,6 +151,7 @@ export default function Profil({navigation}) {
         <Footer/>
     </View>
   );
+}
 }
 
 const styles = StyleSheet.create({

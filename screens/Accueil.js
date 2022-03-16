@@ -6,6 +6,7 @@ import Button from '../components/Button';
 import Footer from '../components/Footer';
 import Infos from '../components/Infos';
 export default function Accueil({navigation}) {
+    // const navigation = useNavigation();
     return (
         <>
             <ScrollView style={styles.container}>
