@@ -4,11 +4,11 @@
     "slug": "Ecovoito",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/img/ecovoito.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/img/ecovoito.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#FFE9CC"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
