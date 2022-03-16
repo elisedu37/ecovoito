@@ -144,5 +144,5 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       backgroundColor: '#fff'
     }
-  });
+  }); 
   
