@@ -1,9 +1,44 @@
 import * as React from 'react';
-import { StyleSheet, Text, Image, View, TouchableOpacity, ScrollView } from 'react-native';
+import { StyleSheet, Text, Image, View, TouchableOpacity, ScrollView, Dimensions } from 'react-native';
 import { Colors } from '../components/Colors';
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
+import {LineChart} from 'react-native-chart-kit';
 
 import Footer from '../components/Footer';
+
+const MyLineChart = () => {
+  return (
+    <>
+      <LineChart
+        data={{
+          labels: ['14/03', '15/03', '16/03', '17/03', '18/03'],
+          datasets: [
+            {
+              data: [10, 20, 40, 80, 100],
+              strokeWidth: 2,
+            },
+          ],
+        }}
+        width={Dimensions.get('window').width - 16}
+        height={220}
+        chartConfig={{
+          backgroundColor: '#F2BC79',
+          backgroundGradientFrom: '#F2BC79',
+          backgroundGradientTo: '#F2BC79',
+          decimalPlaces: 2,
+          color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+          style: {
+            borderRadius: 16,
+          },
+        }}
+        style={{
+          marginVertical: 8,
+          borderRadius: 16,
+        }}
+      />
+    </>
+  );
+};
 
 export default function Analyse({navigation}) {
   return (
@@ -33,6 +68,7 @@ export default function Analyse({navigation}) {
             <Text style={styles.TextB}>kg de réduction de CO2</Text>
           </View>
           <Text style={styles.titre}>EVOLUTION </Text>
+          <MyLineChart />
           <Text style={styles.titre}>VOTRE CLASSEMENT </Text>
           <View style={styles.classementContainer}>
             <View style={styles.classementContainerL}>

@@ -34,14 +34,14 @@ const MyStack = () => {
     <>
         <NavigationContainer>
           <Stack.Navigator screenOptions={{headerShown: false}}>
-          {user == null ? (
+          {/*user == null ? (
 
             <Stack.Screen name="Login" component={LogIn} /> 
 
           ) : (
             () => navigation.navigate('Accueil')
 
-          )} 
+          )*/} 
             <Stack.Screen name="Generate" component={QRCode} />  
             <Stack.Screen name="Scan" component={ScanQRCode} />  
             {/* <Stack.Screen name="Login" component={LogIn} />   */}
