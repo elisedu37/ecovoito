@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
+import {Text, View, StyleSheet, FlatList, TouchableOpacity, Image} from 'react-native';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import MapView, { Marker } from 'react-native-maps';
 const GOOGLE_PLACES_API_KEY = 'AIzaSyDPzW9WexAPy_FL6A8K_qseJIvWxZ9H3ns';
@@ -8,7 +8,7 @@ import { Colors } from '../components/Colors';
 import Footer from '../components/Footer';
 
 
-const MapsScreen = ({ route }) => {
+const MapsScreen = ({ navigation, route }) => {
   const modetransport = route.params.text;
   const GOOGLE_MAPS_APIKEY = 'AIzaSyDPzW9WexAPy_FL6A8K_qseJIvWxZ9H3ns';
   const MapData=[];
@@ -108,22 +108,33 @@ const MapsScreen = ({ route }) => {
             console.log(MapData.distance);
           }}
         />
-        <Marker coordinate={{ latitude: marker.lat, longitude: marker.lng }} />
-        <Marker coordinate={{ latitude: markerTwo.lat, longitude: markerTwo.lng }} />
+        <Marker coordinate={{ latitude: marker.lat, longitude: marker.lng }}/>
+        <Marker coordinate={{ latitude: markerTwo.lat, longitude: markerTwo.lng }}/>
 
       </MapView>
-
       }
-      {
-        regionCoordsTwo.lat != 0 && regionCoords.lat != 0 &&
-        <Text>Emission de CO2 : {emission}</Text>
-      }
-      {
-        regionCoordsTwo.lat != 0 && regionCoords.lat != 0 &&
-        <Text>Points gagné : {Point}</Text>
-      }
+      <View style={styles.containerTop}>
+        <View style={styles.containerTopLeft}>
+          {
+            regionCoordsTwo.lat != 0 && regionCoords.lat != 0 &&
+            <Text style={styles.textTop}>Emission de CO2 : {emission}</Text>
+          }
+          {
+            regionCoordsTwo.lat != 0 && regionCoords.lat != 0 &&
+            <Text style={styles.textBot}>Points gagné : {Point}</Text>
+          }
+        </View>
+        <View style={styles.containerTopRight}>
+          {
+            regionCoordsTwo.lat != 0 && regionCoords.lat != 0 &&
+            <TouchableOpacity onPress={() => navigation.navigate('Home', emission, Point)} style={styles.bouton}>
+              <Text style={styles.textButton}> Confirmer trajet</Text>
+            </TouchableOpacity>
+          }
+        </View>
+      </View>
       <GooglePlacesAutocomplete
-      styles={{container:{flex:0, position:"absolute", width:'80%', zIndex:1, top:50}}}
+      styles={{container:{flex:0, position:"absolute", width:'80%', zIndex:1, top:75, }}}
       placeholder="Depart"
         query={{
           key: GOOGLE_PLACES_API_KEY,
@@ -143,7 +154,7 @@ const MapsScreen = ({ route }) => {
       />
 
       <GooglePlacesAutocomplete
-      styles={{container:{flex:0, position:"absolute", width:'80%', zIndex:0, top:100}}}
+      styles={{container:{flex:0, position:"absolute", width:'80%', zIndex:0, top:135}}}
       placeholder="Destination"
         query={{
           key: GOOGLE_PLACES_API_KEY,
@@ -177,12 +188,59 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: Colors.primary,
   },
+        containerTop: {
+         marginTop: 190,
+          justifyContent: 'space-between',
+          flex:2,
+          flexDirection: 'row',
+          paddingBottom:520,
+      },
+        containerTopLeft: {
+          width: '40%',
+          textAlign: 'center',
+          alignItems: 'center',
+          paddingTop: 10,
+      },
+        containerTopRight: {
+          width: '40%',
+          textAlign: 'center',
+          alignItems: 'center',
+          paddingTop: 10,
+      },
+        bouton: {
+          textAlign: 'center',
+          alignItems: 'center',
+          padding: 12,
+          backgroundColor: Colors.secondary,
+          borderRadius: 15,
+          color: Colors.tertiary,
+          height: 45,
+        },
   map: {
     left: 10,
     right: 10,
     bottom: 0,
     position: 'absolute',
     height:500,
+  },
+  textBot: {
+    zIndex:5,
+    color: Colors.tertiary,
+    fontSize: 19,
+    fontWeight: 'bold',
+  },
+  textButton: {
+    zIndex:5,
+    color: Colors.tertiary,
+    fontSize: 14,
+    fontWeight: 'bold',
+  },
+  textTop: {
+
+    zIndex:5,
+    fontSize: 14,
+    fontWeight: 'bold',
+    color: Colors.tertiary,
   },
 });
 
