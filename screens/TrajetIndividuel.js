@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { StyleSheet, Text, Image, View, TouchableOpacity } from 'react-native';
+import {StyleSheet, Text, Image, View, TouchableOpacity, FlatList} from 'react-native';
 import { Colors } from '../components/Colors';
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 import ChoixTransport from '../components/ChoixTransport';
 import Footer from '../components/Footer';
+import {useState} from "react";
 
-export default function TrajetIndividuel({navigation}) {
+export default function TrajetIndividuel({ navigation }) {
   return (
       <>
     <View style={styles.container}>
@@ -27,25 +28,30 @@ export default function TrajetIndividuel({navigation}) {
       </View>
       <Text style={styles.titre}>CRÉATION DE MON TRAJET INDIVIDUEL</Text>
       <View >
-      <ChoixTransport
-        name="VÉHICULE NON-MOTORISÉ"
-        bg={Colors.secondary}
-        textcolor={Colors.tertiary}
-        image={require('../assets/img/velo.png')}
-      />
-      <ChoixTransport
-        name="TRANSPORT EN COMMUN"
-        bg={Colors.secondary}
-        textcolor={Colors.tertiary}
-        image={require('../assets/img/bus.png')}
-      />
-      <TouchableOpacity onPress={() => navigation.navigate('Map')}>
+
+      <TouchableOpacity onPress={() => navigation.navigate('Map', {text: "voiture"})}>
         <ChoixTransport
           name="VEHICULE MOTORISE"
           bg={Colors.secondary}
           textcolor={Colors.tertiary}
           image={require('../assets/img/voiture.png')}
         />
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('Map', {text: "transportCommun"})}>
+        <ChoixTransport
+          name="TRANSPORT EN COMMUN"
+          bg={Colors.secondary}
+          textcolor={Colors.tertiary}
+          image={require('../assets/img/bus.png')}
+        />
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('Map', {text: "vélo"})}>
+          <ChoixTransport
+            name="VEHICULE NON-MOTORISE"
+            bg={Colors.secondary}
+            textcolor={Colors.tertiary}
+            image={require('../assets/img/velo.png')}
+          />
       </TouchableOpacity>
       </View>    
       </View>
@@ -84,4 +90,13 @@ const styles = StyleSheet.create({
         color: Colors.tertiary,
         padding: 10,
       },
+    icone:{
+        padding:15,
+        backgroundColor: Colors.tertiary,
+        borderRadius:50,
+    },
+    image:{
+        width:30,
+        height:30,
+    },
   });
