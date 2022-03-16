@@ -35,13 +35,13 @@ export default class Classement extends Component {
       <ScrollView>
     <View>
       <View style={styles.titleBar}>
-            <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('Home')}>
                 <Image
                 source={require('../assets/loader-icon.png')}
                 style={styles.imgCovoit}
                 />
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('Profil')}>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('Profil')}>
               <Image
                 source={require('../assets/img/compte.png')}
                 style={styles.imgCovoit}
