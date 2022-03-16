@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState, setState } from 'react';
 import {
   StyleSheet,
   Text,
@@ -17,6 +17,7 @@ import { auth, db, storage } from '../config/firebase';
 
 export default class Profil extends Component {
   state = { 
+    url: '',
     user: {
       firstName: '',
       lastName: '',
@@ -42,11 +43,11 @@ export default class Profil extends Component {
         })
       }
 
-      getLogos = async () => {
-        var url = storage.ref().child("images/" + auth.currentUser.email).getDownloadURL();
-        url.then(function(imageUrl) {
-          console.log(imageUrl);
-          return imageUrl;
+      getLogos = () => {
+        var imageRef = storage.ref().child("images/" + auth.currentUser.email);
+        imageRef.getDownloadURL()
+        .then((url) => {
+          this.setState({url});
         }); 
       }
 
@@ -89,10 +90,13 @@ export default class Profil extends Component {
         </View>
       <View style={styles.profil}>
 
+      {this.state.url ?
         <Image
-              source={{uri: this.state.imageUrl}}
+              source={{uri: this.state.url}}
               style={styles.imgProfil}
             />
+            : 
+            null}
             <View style={styles.infoContainer}>
             <Text style={styles.nom}>{this.state.user.lastName} {this.state.user.firstName}</Text>
             <Text style={styles.subText}>132</Text>
