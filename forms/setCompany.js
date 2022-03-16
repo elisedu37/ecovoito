@@ -79,12 +79,7 @@ export default class setCompany extends Component {
             </TouchableOpacity>
             <TouchableOpacity></TouchableOpacity>
             </View>
-            <View style={styles.logoContainer}>
-              <Image
-              source={require('../assets/img/ecovoito.png')}
-              style={styles.image}
-              />
-            </View>
+            
             <View style={styles.box}>    
             <TextInput
               style={styles.inputStyle}
