@@ -51,7 +51,10 @@ export default class Classement extends Component {
     </View>
       <Text style={styles.titre}>LE CLASSEMENT </Text>
       {this.state.companies.map((company, index) => <View key={index} style={styles.box}>
-      <ClassementBox key={index} position="2" logo={company.downloadURL} work={company.name} lieu={company.city} point={company.points}/>
+      <View style={styles.companyContainer}>
+      <Image source={{uri: company.downloadURL}} style={styles.imgCovoit}/>
+      <ClassementBox key={index} position="2" work={company.name} lieu={company.city} point={company.points}/>
+      </View>
       </View>)}
       </ScrollView>
 
@@ -93,6 +96,9 @@ const styles = StyleSheet.create({
       box:{
         justifyContent:'center',
         alignItems:'center',
+      },
+      companyContainer:{
+        flexDirection: 'row',
       }
   });
   
