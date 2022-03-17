@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     paddingLeft:5,
     color: Colors.tertiary,
     fontWeight: 'bold',
-
+    textAlign : 'right',
   },
 
   colonne1:{

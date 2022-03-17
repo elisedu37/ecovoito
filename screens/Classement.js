@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
       width: 40,
       height: 40,
       marginRight: -50,
-      marginTop: 13,
+      marginTop: 10,
       zIndex: 5,
       resizeMode: 'contain',
       },
