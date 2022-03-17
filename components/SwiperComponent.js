@@ -36,7 +36,7 @@ export default class SwiperComponent extends Component {
         <View style={styles.slide1}>
           <Text style={styles.text}>C'EST À VOTRE TOUR DE VOUS CHALLENGER !</Text>
           <TouchableOpacity onPress={() => this.props.navigation.navigate('Login')}>
-          <Button name="COMMENCER" bg={Colors.secondary} textcolor={Colors.tertiary}/>
+          <Button styles={styles.submit} name="COMMENCER" bg={Colors.secondary} textcolor={Colors.tertiary}/>
           </TouchableOpacity>
         </View>
       </Swiper>

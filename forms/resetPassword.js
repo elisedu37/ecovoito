@@ -148,8 +148,7 @@ const styles = StyleSheet.create({
     top:24,
   },
   submit: {
-    marginRight: 40,
-    marginLeft: 40,
+    width: "100%",
     marginTop: 10,
     paddingTop: 10,
     paddingBottom: 10,
