@@ -35,7 +35,7 @@ const navigation= useNavigation();
                 onPress={() => navigation.navigate('Analyse')} color="Colors.IconColor"
                 onClick={AnimTabnav()}
             >
-                <Icon name="unlock" size={40} color="#ffffff" />
+                <Icon name="bar-chart" size={35} color="#ffffff" />
             </TouchableOpacity>
             <TouchableOpacity
                 onPress={() => navigation.navigate('Classement')} color="Colors.IconColor" 

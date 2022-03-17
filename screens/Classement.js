@@ -4,11 +4,11 @@ import { Colors } from '../components/Colors';
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 import Footer from '../components/Footer';
 import ClassementBox from '../components/ClassementBox';
-import { db, storage } from '../config/firebase';
+import { db, auth, storage } from '../config/firebase';
 
 export default class Classement extends Component {
   state = {
-    companies: []
+    companies: [],
   }
   constructor(props) {
     super(props);
@@ -28,23 +28,20 @@ export default class Classement extends Component {
     await db.collection('Company').get();
   }
 
-
-
-  render() {
-    
+  render() {    
   return (
       <>
     <View style={styles.container}>
       <ScrollView>
     <View>
       <View style={styles.titleBar}>
-            <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('Home')}>
                 <Image
                 source={require('../assets/loader-icon.png')}
                 style={styles.imgCovoit}
                 />
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('Profil')}>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('Profil')}>
               <Image
                 source={require('../assets/img/compte.png')}
                 style={styles.imgCovoit}
@@ -54,8 +51,10 @@ export default class Classement extends Component {
     </View>
       <Text style={styles.titre}>LE CLASSEMENT </Text>
       {this.state.companies.map((company, index) => <View key={index} style={styles.box}>
-      <ClassementBox position="2" logo={require('../assets/img/google.png')} work={company.name} lieu={company.city} point={company.points}/>
-
+      <View style={styles.companyContainer}>
+      <Image source={{uri: company.downloadURL}} style={styles.imgCovoit}/>
+      <ClassementBox key={index} position="2" work={company.name} lieu={company.city} point={company.points}/>
+      </View>
       </View>)}
       </ScrollView>
 
@@ -97,6 +96,9 @@ const styles = StyleSheet.create({
       box:{
         justifyContent:'center',
         alignItems:'center',
+      },
+      companyContainer:{
+        flexDirection: 'row',
       }
   });
   
