@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
     width: '90%',
-    padding: 15,
+    padding: 10,
     marginBottom: 10,
     backgroundColor:'rgba(187, 150, 109, 0.5)',
     borderRadius:20,
@@ -40,20 +40,20 @@ const styles = StyleSheet.create({
     height: 30,
   },
   texte:{
-    fontSize:15,
+    fontSize:13,
     paddingLeft:5,
     color: Colors.tertiary,
     fontWeight: 'bold',
   },
   sousTexte:{
-    fontSize:10,
+    fontSize:9,
     paddingLeft:5,
     color: Colors.tertiary,
     fontStyle: 'italic',
 
   },
   textePoint:{
-    fontSize:25,
+    fontSize:20,
     paddingLeft:5,
     color: Colors.tertiary,
     fontWeight: 'bold',
