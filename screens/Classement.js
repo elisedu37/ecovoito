@@ -84,8 +84,12 @@ const styles = StyleSheet.create({
       marginBottom:30,
     },
     imgCovoit: {
-        width: 40,
-        height: 40,
+      width: 40,
+      height: 40,
+      marginRight: -50,
+      marginTop: 13,
+      zIndex: 5,
+      resizeMode: 'contain',
       },
       titre: {
         fontSize: 17,
