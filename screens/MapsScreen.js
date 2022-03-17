@@ -128,13 +128,13 @@ const MapsScreen = ({ navigation, route }) => {
               {
                 regionCoordsTwo.lat != 0 && regionCoords.lat != 0 &&
                 <TouchableOpacity onPress={() => navigation.navigate('Home', emission, Point)} style={styles.bouton}>
-                  <Text style={styles.textButton}> Confirmer trajet</Text>
+                  <Text style={styles.textButton}>Confirmer</Text>
                 </TouchableOpacity>
               }
             </View>
           </View>
           <GooglePlacesAutocomplete
-              styles={{container:{flex:0, position:"absolute", width:'80%', zIndex:1, top:75, }}}
+              styles={{container:{flex:0, position:"absolute", width:'80%', zIndex:1, top:50, }}}
               placeholder="Depart"
               query={{
                 key: GOOGLE_PLACES_API_KEY,
@@ -154,7 +154,7 @@ const MapsScreen = ({ navigation, route }) => {
           />
 
           <GooglePlacesAutocomplete
-              styles={{container:{flex:0, position:"absolute", width:'80%', zIndex:0, top:135}}}
+              styles={{container:{flex:0, position:"absolute", width:'80%', zIndex:0, top:100}}}
               placeholder="Destination"
               query={{
                 key: GOOGLE_PLACES_API_KEY,
@@ -189,39 +189,44 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.primary,
   },
   containerTop: {
-    marginTop: 190,
+    marginTop: 170,
     justifyContent: 'space-between',
     flex:2,
     flexDirection: 'row',
     paddingBottom:520,
   },
   containerTopLeft: {
-    width: '40%',
+    width: '60%',
     textAlign: 'center',
     alignItems: 'center',
     paddingTop: 10,
+    height: 80,
   },
   containerTopRight: {
-    width: '40%',
+    width: '30%',
     textAlign: 'center',
     alignItems: 'center',
     paddingTop: 10,
+    position: 'relative',
+    height: 80,
   },
   bouton: {
-    textAlign: 'center',
     alignItems: 'center',
-    padding: 12,
+    paddingTop: 15,
+    paddingLeft: 2,
+    paddingRight: 2,
     backgroundColor: Colors.secondary,
     borderRadius: 15,
     color: Colors.tertiary,
-    height: 45,
+    height: 60,
+    zIndex: 50,
   },
   map: {
     left: 10,
     right: 10,
     bottom: 0,
     position: 'absolute',
-    height:500,
+    height:400,
   },
   textBot: {
     zIndex:5,
@@ -236,11 +241,11 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   textTop: {
-
-    zIndex:5,
+    zIndex:6,
     fontSize: 14,
     fontWeight: 'bold',
     color: Colors.tertiary,
+    textAlign: 'center',
   },
 });
 
