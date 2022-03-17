@@ -44,7 +44,7 @@ const MapsScreen = ({ navigation, route }) => {
 
 
   if (modetransport === 'vélo'){
-    reduction = distance * km;
+    reduction = Math.round((distance * km) * 100) / 100;
     db.collection('Users').doc(auth.currentUser.uid).update({
       reduction: reduction,
     }); 
@@ -56,7 +56,7 @@ const MapsScreen = ({ navigation, route }) => {
     }); 
   }
   else if (modetransport === 'transportCommun'){
-    reduction = (distance * km) *2;
+    reduction = Math.round(((distance * km) *0.75) * 100) / 100;
     db.collection('Users').doc(auth.currentUser.uid).update({
       reduction: reduction,
     }); 
