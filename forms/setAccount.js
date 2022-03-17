@@ -16,6 +16,7 @@ export default class SetAccount extends Component {
           city: '',
           role: '',
           points: 0,
+          reduction: 0,
           isLoading: false
         }
       }
@@ -67,6 +68,7 @@ export default class SetAccount extends Component {
           adress: this.state.adress, 
           postalCode: this.state.postalCode,
           city: this.state.city,
+          reduction: this.state.reduction,
           role: '',
           points: 0,
         });       
@@ -202,7 +204,7 @@ const styles = StyleSheet.create({
     right:0,
     backgroundColor: Colors.tertiary,
     bottom:0,
-    position:'absolute',
+    position:'relative',
     borderTopLeftRadius:44,
     borderTopRightRadius:44,
     padding:46,
