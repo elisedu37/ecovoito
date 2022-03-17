@@ -9,11 +9,21 @@ import { auth, db, storage } from '../config/firebase';
 
 export default class Accueil extends Component {
   state = {
-    url: ''
+    url: '',
+    user: {
+      reduction: '',
+    }
   }
   constructor(props) {
     super(props);
     this.getLogos();
+    this.getUser();
+    db.collection('Users').doc(auth.currentUser.uid).onSnapshot(doc => {
+      this.setState({
+        user: {
+          reduction: doc.data().reduction,
+        }})
+    })
   }
 
   getLogos = () => {
@@ -23,6 +33,10 @@ export default class Accueil extends Component {
       this.setState({url});
     }); 
   }
+
+  getUser = async () => {
+    db.collection('Users').doc(auth.currentUser.uid).get();
+   }
 
 
   render() {
@@ -74,7 +88,7 @@ export default class Accueil extends Component {
             <Text style={styles.titre}>MON TABLEAU DE BORD </Text>
             <View style={styles.containerText}>
               <Text style={styles.TextT}>Donnée du : 18 mars 2022</Text>
-              <Text style={styles.TextM}>78,6 kg</Text>
+              <Text style={styles.TextM}>{this.state.user.reduction}</Text>
               <Text style={styles.TextB}>de réduction de CO2</Text>
             </View>
             <View style={styles.classementContainer}>
