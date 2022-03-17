@@ -204,7 +204,7 @@ const styles = StyleSheet.create({
     right:0,
     backgroundColor: Colors.tertiary,
     bottom:0,
-    position:'relative',
+    position:'absolute',
     borderTopLeftRadius:44,
     borderTopRightRadius:44,
     padding:46,

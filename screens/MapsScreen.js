@@ -6,7 +6,11 @@ const GOOGLE_PLACES_API_KEY = 'AIzaSyDPzW9WexAPy_FL6A8K_qseJIvWxZ9H3ns';
 import MapViewDirections from 'react-native-maps-directions';
 import { Colors } from '../components/Colors';
 import Footer from '../components/Footer';
+import { auth, db, storage } from '../config/firebase';
 
+let state = {
+  reduction: 0,
+}
 
 const MapsScreen = ({ navigation, route }) => {
   const modetransport = route.params.text;
@@ -41,13 +45,27 @@ const MapsScreen = ({ navigation, route }) => {
 
   if (modetransport === 'vélo'){
     reduction = distance * km;
+    db.collection('Users').doc(auth.currentUser.uid).update({
+      reduction: reduction,
+    }); 
   }
   else if (modetransport === 'voiture'){
     reduction = 0;
+    db.collection('Users').doc(auth.currentUser.uid).update({
+      reduction: reduction,
+    }); 
   }
   else if (modetransport === 'transportCommun'){
     reduction = (distance * km) *2;
+    db.collection('Users').doc(auth.currentUser.uid).update({
+      reduction: reduction,
+    }); 
   }
+
+
+
+
+
 
   let Point = 0;
 
@@ -102,7 +120,6 @@ const MapsScreen = ({ navigation, route }) => {
                   onReady={result => {
                     MapData.distance = result.distance;
                     MapData.duration = result.duration;
-                    reduction = MapData.distance;
                     console.log(`Distance: ${result.distance} km`);
                     console.log(`Durée: ${result.duration} min`);
                     console.log(MapData.distance);
@@ -248,5 +265,5 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 });
-export {reduction}
+
 export default MapsScreen;
