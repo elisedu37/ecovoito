@@ -1,24 +1,43 @@
-import * as React from 'react';
+import React, { Component, useState, setState } from 'react';
 import { StyleSheet, Text, Image, View, TouchableOpacity, ScrollView } from 'react-native';
 import { Colors } from '../components/Colors';
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 import Button from '../components/Button';
 import Footer from '../components/Footer';
 import Infos from '../components/Infos';
-export default function Accueil({navigation}) {
-    // const navigation = useNavigation();
+import { auth, db, storage } from '../config/firebase';
+
+export default class Accueil extends Component {
+  state = {
+    url: ''
+  }
+  constructor(props) {
+    super(props);
+    this.getLogos();
+  }
+
+  getLogos = () => {
+    var imageRef = storage.ref().child("images/" + auth.currentUser.email);
+    imageRef.getDownloadURL()
+    .then((url) => {
+      this.setState({url});
+    }); 
+  }
+
+
+  render() {
     return (
         <>
           <ScrollView style={styles.container}>
             <View>
               <View style={styles.titleBar}>
-                <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('Home')}>
                   <Image
                     source={require('../assets/loader-icon.png')}
                     style={styles.imgCovoit}
                   />
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => navigation.navigate('Profil')}>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('Profil')}>
                   <Image
                     source={require('../assets/img/compte.png')}
                     style={styles.imgCovoit}
@@ -26,7 +45,7 @@ export default function Accueil({navigation}) {
                 </TouchableOpacity>
               </View>
             </View>
-            <TouchableOpacity onPress={() => navigation.navigate('Trajets')}>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('Trajets')}>
               <Button
                 name="Mon trajet du jour"
                 bg={Colors.secondary}
@@ -39,7 +58,7 @@ export default function Accueil({navigation}) {
                 source={require('../assets/img/covoiturage.png')}
               />
               <TouchableOpacity
-                onPress={() => navigation.navigate('Generate')}
+                onPress={() => this.props.navigation.navigate('Generate')}
                 style={styles.Qrcode}>
                 <Infos
                   text="Generer QR"
@@ -47,7 +66,7 @@ export default function Accueil({navigation}) {
                 />
               </TouchableOpacity>
               <TouchableOpacity
-                onPress={() => navigation.navigate('Scan')}
+                onPress={() => this.props.navigation.navigate('Scan')}
                 style={styles.Qrcode}>
                 <Infos text="Scan QR" image={require('../assets/img/scan.png')} />
               </TouchableOpacity>
@@ -67,7 +86,7 @@ export default function Accueil({navigation}) {
               </View>
               <View style={styles.classementContainerR}>
                 <Image
-                  source={require('../assets/img/imgProfil.jpg')}
+                  source={{uri: this.state.url}} 
                   style={styles.imgProfil}
                 />
                 <Text style={styles.TextClassement}>8ème</Text>
@@ -77,7 +96,7 @@ export default function Accueil({navigation}) {
           </ScrollView>
           <Footer />
         </>
-      );
+      )};
     }
     
     const styles = StyleSheet.create({
