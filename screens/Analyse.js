@@ -49,7 +49,7 @@ export default class Analyse extends Component {
           <Text style={styles.titre}>MON TABLEAU DE BORD </Text>
           <View style={styles.containerText}>
             <Text style={styles.TextT}>Donnée du : 18 mars 2022</Text>
-            <Text style={styles.TextM}>78,6 kg</Text>
+            <Text style={styles.TextM}>76.8 kg</Text>
             <Text style={styles.TextB}>de réduction de CO2</Text>
             <Text style={styles.TextT}>L’ensemble de la concentration de CO2 dans l’atmosphère détermine l’effet de serre, il s’agit donc de réduire le plus possible le CO2. Pour les entreprises, il est donc judicieux de formuler les économies d’émissions possible, puis de planifier et mettre en œuvre les étapes respectives.</Text>
           </View>
