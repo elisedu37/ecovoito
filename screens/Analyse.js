@@ -98,14 +98,14 @@ export default class Analyse extends Component {
                 source={{uri: this.state.url}}
                 style={styles.imgProfil}
               />
-              <Text style={styles.TextClassement}>8ème</Text>
+              <Text style={styles.TextClassement}>4ème</Text>
               <Text style={styles.TextClassement}>/10</Text>
             </View>
           </View>
           <Text style={styles.titre}>VOTRE ENTREPRISE </Text>
           <View style={styles.classementContainer}>
             <View style={styles.classementContainerR}>
-              <Text style={styles.TextClassement}>20ème</Text>
+              <Text style={styles.TextClassement}>3ème</Text>
               <Text style={styles.TextClassement}>/100</Text>
             </View>
             <View style={styles.classementContainerL}>

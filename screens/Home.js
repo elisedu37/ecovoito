@@ -14,7 +14,6 @@ export default class Home extends Component {
     return (
       <View style={styles.container}>
             <SwiperComponent navigation={this.props.navigation}/>
-            <Footer />
       </View>
     );
   }
