@@ -36,17 +36,17 @@ const MapsScreen = ({ navigation, route }) => {
 
   let km = 0.193
   let distance = 100;
-  let emission = 0;
+  let reduction = 0;
 
 
   if (modetransport === 'vélo'){
-    emission = distance * km;
+    reduction = distance * km;
   }
   else if (modetransport === 'voiture'){
-    emission = 0;
+    reduction = 0;
   }
   else if (modetransport === 'transportCommun'){
-    emission = (distance * km) *2;
+    reduction = (distance * km) *2;
   }
 
   let Point = 0;
@@ -102,7 +102,7 @@ const MapsScreen = ({ navigation, route }) => {
                   onReady={result => {
                     MapData.distance = result.distance;
                     MapData.duration = result.duration;
-                    emission = MapData.distance;
+                    reduction = MapData.distance;
                     console.log(`Distance: ${result.distance} km`);
                     console.log(`Durée: ${result.duration} min`);
                     console.log(MapData.distance);
@@ -117,7 +117,7 @@ const MapsScreen = ({ navigation, route }) => {
             <View style={styles.containerTopLeft}>
               {
                 regionCoordsTwo.lat != 0 && regionCoords.lat != 0 &&
-                <Text style={styles.textTop}>Réduction de CO2 : {emission}</Text>
+                <Text style={styles.textTop}>Réduction de CO2 : {reduction}</Text>
               }
               {
                 regionCoordsTwo.lat != 0 && regionCoords.lat != 0 &&
@@ -127,7 +127,7 @@ const MapsScreen = ({ navigation, route }) => {
             <View style={styles.containerTopRight}>
               {
                 regionCoordsTwo.lat != 0 && regionCoords.lat != 0 &&
-                <TouchableOpacity onPress={() => navigation.navigate('Home', emission, Point)} style={styles.bouton}>
+                <TouchableOpacity onPress={() => navigation.navigate('Analyse', reduction, Point)} style={styles.bouton}>
                   <Text style={styles.textButton}>Confirmer</Text>
                 </TouchableOpacity>
               }
@@ -248,5 +248,5 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 });
-
+export {reduction}
 export default MapsScreen;
