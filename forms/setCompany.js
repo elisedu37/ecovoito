@@ -33,7 +33,7 @@ export default class SetCompany extends Component {
         downloadURL: this.state.downloadURL,
         points: 0,
         });
-        this.props.navigation.navigate('Accueil'); 
+        this.props.navigation.navigate('Home'); 
     }
 
     useEffect = async () => {

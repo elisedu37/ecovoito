@@ -81,7 +81,7 @@ export default class SetAccount extends Component {
           })
           console.log(this.state.firstName);
              auth.onAuthStateChanged(this.onAuthComplete); 
-            this.props.navigation.navigate('Accueil');    
+            this.props.navigation.navigate('Home');    
         }
       }
       render() {
