@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {Text, View, StyleSheet, FlatList, TouchableOpacity, Image} from 'react-native';
+import { Text, View, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import MapView, { Marker } from 'react-native-maps';
 const GOOGLE_PLACES_API_KEY = 'AIzaSyDPzW9WexAPy_FL6A8K_qseJIvWxZ9H3ns';
@@ -80,6 +80,7 @@ const MapsScreen = ({ navigation, route }) => {
     }
   }
   return (
+<<<<<<< HEAD
       <>
         <View style={styles.container}>
           {
@@ -176,6 +177,93 @@ const MapsScreen = ({ navigation, route }) => {
 
 
         </View>
+=======
+    <>
+    <View style={styles.container}>
+      {
+           regionCoordsTwo.lat != 0 && regionCoords.lat != 0 &&
+      <MapView
+        style={styles.map}
+        region={{
+          latitude: regionCoords.lat,
+          longitude: regionCoords.lng,
+          latitudeDelta: 0.0922,
+          longitudeDelta: 0.0421,
+        }}>
+
+        <MapViewDirections
+          origin={{ latitude: marker.lat, longitude: marker.lng }}
+          destination={{ latitude: markerTwo.lat, longitude: markerTwo.lng }}
+          apikey={GOOGLE_MAPS_APIKEY}
+          strokeWidth={4}
+          strokeColor="#111111"
+          onReady={result => {
+            MapData.distance = result.distance;
+            MapData.duration = result.duration;
+            emission = MapData.distance;
+            console.log(`Distance: ${result.distance} km`);
+            console.log(`Durée: ${result.duration} min`);
+            console.log(MapData.distance);
+          }}
+        />
+        <Marker coordinate={{ latitude: marker.lat, longitude: marker.lng }} />
+        <Marker coordinate={{ latitude: markerTwo.lat, longitude: markerTwo.lng }} />
+
+      </MapView>
+
+      }
+      {
+        regionCoordsTwo.lat != 0 && regionCoords.lat != 0 &&
+        <Text>Emission de CO2 : {emission}</Text>
+      }
+      {
+        regionCoordsTwo.lat != 0 && regionCoords.lat != 0 &&
+        <Text>Points gagné : {Point}</Text>
+      }
+      <GooglePlacesAutocomplete
+      styles={{container:{flex:0, position:"absolute", width:'80%', zIndex:1, top:50}}}
+      placeholder="Depart"
+        query={{
+          key: GOOGLE_PLACES_API_KEY,
+          language: 'en',
+        }}
+        GooglePlacesDetailsQuery={{
+          fields: 'geometry',
+        }}
+        fetchDetails={true}
+        onPress={onPress}
+        onFail={(error) => console.error(error)}
+        requestUrl={{
+          url:
+            'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api',
+          useOnPlatform: 'web',
+        }} // this in only required for use on the web. See https://git.io/JflFv more for details.
+      />
+
+      <GooglePlacesAutocomplete
+      styles={{container:{flex:0, position:"absolute", width:'80%', zIndex:0, top:100}}}
+      placeholder="Destination"
+        query={{
+          key: GOOGLE_PLACES_API_KEY,
+          language: 'en',
+        }}
+        GooglePlacesDetailsQuery={{
+          fields: 'geometry',
+        }}
+        fetchDetails={true}
+        onPress={onPressTwo}
+        onFail={(error) => console.error(error)}
+        requestUrl={{
+          url:
+            'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api',
+          useOnPlatform: 'web',
+        }}
+      />
+
+
+
+    </View>
+>>>>>>> 9ccbb2e2c138ef922c2d7dceb5b4d02b795a4404
         <Footer />
       </>
   );
