@@ -80,104 +80,6 @@ const MapsScreen = ({ navigation, route }) => {
     }
   }
   return (
-<<<<<<< HEAD
-      <>
-        <View style={styles.container}>
-          {
-            regionCoordsTwo.lat != 0 && regionCoords.lat != 0 &&
-            <MapView
-                style={styles.map}
-                region={{
-                  latitude: regionCoords.lat,
-                  longitude: regionCoords.lng,
-                  latitudeDelta: 0.0922,
-                  longitudeDelta: 0.0421,
-                }}>
-
-              <MapViewDirections
-                  origin={{ latitude: marker.lat, longitude: marker.lng }}
-                  destination={{ latitude: markerTwo.lat, longitude: markerTwo.lng }}
-                  apikey={GOOGLE_MAPS_APIKEY}
-                  strokeWidth={4}
-                  strokeColor="#111111"
-                  onReady={result => {
-                    MapData.distance = result.distance;
-                    MapData.duration = result.duration;
-                    emission = MapData.distance;
-                    console.log(`Distance: ${result.distance} km`);
-                    console.log(`Durée: ${result.duration} min`);
-                    console.log(MapData.distance);
-                  }}
-              />
-              <Marker coordinate={{ latitude: marker.lat, longitude: marker.lng }}/>
-              <Marker coordinate={{ latitude: markerTwo.lat, longitude: markerTwo.lng }}/>
-
-            </MapView>
-          }
-          <View style={styles.containerTop}>
-            <View style={styles.containerTopLeft}>
-              {
-                regionCoordsTwo.lat != 0 && regionCoords.lat != 0 &&
-                <Text style={styles.textTop}>Emission de CO2 : {emission}</Text>
-              }
-              {
-                regionCoordsTwo.lat != 0 && regionCoords.lat != 0 &&
-                <Text style={styles.textBot}>Points gagné : {Point}</Text>
-              }
-            </View>
-            <View style={styles.containerTopRight}>
-              {
-                regionCoordsTwo.lat != 0 && regionCoords.lat != 0 &&
-                <TouchableOpacity onPress={() => navigation.navigate('Home', emission, Point)} style={styles.bouton}>
-                  <Text style={styles.textButton}> Confirmer trajet</Text>
-                </TouchableOpacity>
-              }
-            </View>
-          </View>
-          <GooglePlacesAutocomplete
-              styles={{container:{flex:0, position:"absolute", width:'80%', zIndex:1, top:75, }}}
-              placeholder="Depart"
-              query={{
-                key: GOOGLE_PLACES_API_KEY,
-                language: 'en',
-              }}
-              GooglePlacesDetailsQuery={{
-                fields: 'geometry',
-              }}
-              fetchDetails={true}
-              onPress={onPress}
-              onFail={(error) => console.error(error)}
-              requestUrl={{
-                url:
-                    'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api',
-                useOnPlatform: 'web',
-              }} // this in only required for use on the web. See https://git.io/JflFv more for details.
-          />
-
-          <GooglePlacesAutocomplete
-              styles={{container:{flex:0, position:"absolute", width:'80%', zIndex:0, top:135}}}
-              placeholder="Destination"
-              query={{
-                key: GOOGLE_PLACES_API_KEY,
-                language: 'en',
-              }}
-              GooglePlacesDetailsQuery={{
-                fields: 'geometry',
-              }}
-              fetchDetails={true}
-              onPress={onPressTwo}
-              onFail={(error) => console.error(error)}
-              requestUrl={{
-                url:
-                    'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api',
-                useOnPlatform: 'web',
-              }}
-          />
-
-
-
-        </View>
-=======
     <>
     <View style={styles.container}>
       {
@@ -263,7 +165,6 @@ const MapsScreen = ({ navigation, route }) => {
 
 
     </View>
->>>>>>> 9ccbb2e2c138ef922c2d7dceb5b4d02b795a4404
         <Footer />
       </>
   );

@@ -18,9 +18,9 @@ import Accueil from './screens/Accueil';
 import Trajets from './screens/Trajets';
 import Analyse from './screens/Analyse';
 import Profil from './screens/Profil';
-import SetRole from './forms/setRole';
-import SetCompany from './forms/setCompany';
-import ResetPassword from './forms/resetPassword';
+import SetRole from './forms/SetRole';
+import SetCompany from './forms/SetCompany';
+import ResetPassword from './forms/ResetPassword';
 import TrajetIndividuel from './screens/TrajetIndividuel';
 
 import MapScreen from './screens/MapsScreen';
