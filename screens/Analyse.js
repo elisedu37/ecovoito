@@ -49,8 +49,9 @@ export default class Analyse extends Component {
           <Text style={styles.titre}>MON TABLEAU DE BORD </Text>
           <View style={styles.containerText}>
             <Text style={styles.TextT}>Donnée du : 18 mars 2022</Text>
-            <Text style={styles.TextM}>78,6</Text>
-            <Text style={styles.TextB}>kg de réduction de CO2</Text>
+            <Text style={styles.TextM}>78,6 kg</Text>
+            <Text style={styles.TextB}>de réduction de CO2</Text>
+            <Text style={styles.TextT}>L’ensemble de la concentration de CO2 dans l’atmosphère détermine l’effet de serre, il s’agit donc de réduire le plus possible le CO2. Pour les entreprises, il est donc judicieux de formuler les économies d’émissions possible, puis de planifier et mettre en œuvre les étapes respectives.</Text>
           </View>
           <Text style={styles.titre}>EVOLUTION </Text>
           <>
@@ -63,14 +64,15 @@ export default class Analyse extends Component {
                     strokeWidth: 2,
                   },
                 ],
+                legend: ["Evolution des kilomètres économisés"]
               }}
-              width={Dimensions.get('window').width - 16}
+              width={Dimensions.get('window').width - 40}
               height={220}
               chartConfig={{
                 backgroundColor: '#F2BC79',
                 backgroundGradientFrom: '#F2BC79',
                 backgroundGradientTo: '#F2BC79',
-                decimalPlaces: 2,
+                decimalPlaces: 0,
                 color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
                 style: {
                   borderRadius: 16,
@@ -81,6 +83,7 @@ export default class Analyse extends Component {
                 borderRadius: 16,
               }}
             />
+            <Text style={styles.TextT}>Dernière valeur du 18 mars : 122 km économisés</Text>
           </>
           <Text style={styles.titre}>VOTRE CLASSEMENT </Text>
           <View style={styles.classementContainer}>

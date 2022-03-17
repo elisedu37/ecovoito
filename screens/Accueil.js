@@ -55,8 +55,8 @@ export default function Accueil({navigation}) {
             <Text style={styles.titre}>MON TABLEAU DE BORD </Text>
             <View style={styles.containerText}>
               <Text style={styles.TextT}>Donnée du : 18 mars 2022</Text>
-              <Text style={styles.TextM}>78,6</Text>
-              <Text style={styles.TextB}>kg de réduction de CO2</Text>
+              <Text style={styles.TextM}>78,6 kg</Text>
+              <Text style={styles.TextB}>de réduction de CO2</Text>
             </View>
             <View style={styles.classementContainer}>
               <View style={styles.classementContainerL}>
