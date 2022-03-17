@@ -39,7 +39,7 @@ const MapsScreen = ({ navigation, route }) => {
   };
 
   let km = 0.193
-  let distance = 100;
+  let distance = 1.963;
   let reduction = 0;
 
 
