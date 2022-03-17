@@ -38,13 +38,13 @@ export default class Classement extends Component {
             <TouchableOpacity onPress={() => this.props.navigation.navigate('Home')}>
                 <Image
                 source={require('../assets/loader-icon.png')}
-                style={styles.imgCovoit}
+                style={styles.logo}
                 />
             </TouchableOpacity>
             <TouchableOpacity onPress={() => this.props.navigation.navigate('Profil')}>
               <Image
                 source={require('../assets/img/compte.png')}
-                style={styles.imgCovoit}
+                style={styles.logo}
                 />
             </TouchableOpacity>
       </View>
@@ -84,9 +84,17 @@ const styles = StyleSheet.create({
       marginBottom:30,
     },
     imgCovoit: {
-        width: 40,
-        height: 40,
+      width: 40,
+      height: 40,
+      marginRight: -50,
+      marginTop: 10,
+      zIndex: 5,
+      resizeMode: 'contain',
       },
+  logo : {
+      width: 40,
+    height :40,
+    },
       titre: {
         fontSize: 17,
         fontWeight: 'bold',

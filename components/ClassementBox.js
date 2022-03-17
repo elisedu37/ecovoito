@@ -15,7 +15,10 @@ export default function ClassementBox(props) {
         <Text style={styles.sousTexte}>{props.lieu}</Text>
       </View>
       <View style={styles.colonne3}>
-        <Text style={styles.texte}>{props.point} points</Text>
+        <Text style={styles.textePoint}>{props.point}</Text>
+      </View>
+      <View style={styles.colonne4}>
+        <Text style={styles.texte}>points</Text>
       </View>
     </View>
   );
@@ -26,10 +29,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
     width: '90%',
-    padding: 5,
+    padding: 10,
     marginBottom: 10,
     backgroundColor:'rgba(187, 150, 109, 0.5)',
-    borderRadius:10,
+    borderRadius:20,
   },
 
   img: {
@@ -39,11 +42,22 @@ const styles = StyleSheet.create({
   texte:{
     fontSize:13,
     paddingLeft:5,
+    color: Colors.tertiary,
+    fontWeight: 'bold',
   },
   sousTexte:{
-    fontSize:10,
+    fontSize:9,
     paddingLeft:5,
+    color: Colors.tertiary,
+    fontStyle: 'italic',
 
+  },
+  textePoint:{
+    fontSize:20,
+    paddingLeft:5,
+    color: Colors.tertiary,
+    fontWeight: 'bold',
+    textAlign : 'right',
   },
 
   colonne1:{
@@ -53,6 +67,9 @@ const styles = StyleSheet.create({
     width:'42%',
   },
   colonne3:{
-    width:'43%',
+    width:'20%',
+  },
+  colonne4:{
+    width: '20%',
   },
 });

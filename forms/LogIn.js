@@ -86,7 +86,7 @@ export default class LogIn extends Component{
           style={styles.submit}
           onPress={() => this.loginUser()}
         >
-            <Text style={styles.submitText}>Connexion</Text>
+          <Text style={styles.submitText}>Connexion</Text>
         </TouchableOpacity>
         <Text
           style={styles.loginText}
@@ -165,8 +165,7 @@ const styles = StyleSheet.create({
       width:300,
     },
     submit: {
-      marginRight: 40,
-      marginLeft: 40,
+      width: "100%",
       marginTop: 10,
       paddingTop: 10,
       paddingBottom: 10,

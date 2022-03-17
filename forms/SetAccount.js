@@ -16,6 +16,7 @@ export default class SetAccount extends Component {
           city: '',
           role: '',
           points: 0,
+          reduction: 0,
           isLoading: false
         }
       }
@@ -67,6 +68,7 @@ export default class SetAccount extends Component {
           adress: this.state.adress, 
           postalCode: this.state.postalCode,
           city: this.state.city,
+          reduction: this.state.reduction,
           role: '',
           points: 0,
         });       
@@ -83,7 +85,7 @@ export default class SetAccount extends Component {
           })
           console.log(this.state.firstName);
              auth.onAuthStateChanged(this.onAuthComplete); 
-            this.props.navigation.navigate('Accueil');    
+            this.props.navigation.navigate('Home');    
         }
       }
       render() {
@@ -227,8 +229,7 @@ const styles = StyleSheet.create({
     top:24,
   },
   submit: {
-    marginRight: 40,
-    marginLeft: 40,
+    width: "100%",
     marginTop: 10,
     paddingTop: 10,
     paddingBottom: 10,

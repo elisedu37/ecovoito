@@ -38,7 +38,7 @@ export default class Profil extends Component {
             user: {
               firstName: doc.data().firstName,
               lastName: doc.data().lastName,
-              city: doc.data().city
+              city: doc.data().city,
             }})
         })
       }

@@ -6,7 +6,11 @@ const GOOGLE_PLACES_API_KEY = 'AIzaSyDPzW9WexAPy_FL6A8K_qseJIvWxZ9H3ns';
 import MapViewDirections from 'react-native-maps-directions';
 import { Colors } from '../components/Colors';
 import Footer from '../components/Footer';
+import { auth, db, storage } from '../config/firebase';
 
+let state = {
+  reduction: 0,
+}
 
 const MapsScreen = ({ navigation, route }) => {
   const modetransport = route.params.text;
@@ -36,18 +40,32 @@ const MapsScreen = ({ navigation, route }) => {
 
   let km = 0.193
   let distance = 100;
-  let emission = 0;
+  let reduction = 0;
 
 
   if (modetransport === 'vélo'){
-    emission = distance * km;
+    reduction = distance * km;
+    db.collection('Users').doc(auth.currentUser.uid).update({
+      reduction: reduction,
+    }); 
   }
   else if (modetransport === 'voiture'){
-    emission = 0;
+    reduction = 0;
+    db.collection('Users').doc(auth.currentUser.uid).update({
+      reduction: reduction,
+    }); 
   }
   else if (modetransport === 'transportCommun'){
-    emission = (distance * km) *2;
+    reduction = (distance * km) *2;
+    db.collection('Users').doc(auth.currentUser.uid).update({
+      reduction: reduction,
+    }); 
   }
+
+
+
+
+
 
   let Point = 0;
 
@@ -80,91 +98,101 @@ const MapsScreen = ({ navigation, route }) => {
     }
   }
   return (
-    <>
-    <View style={styles.container}>
-      {
-           regionCoordsTwo.lat != 0 && regionCoords.lat != 0 &&
-      <MapView
-        style={styles.map}
-        region={{
-          latitude: regionCoords.lat,
-          longitude: regionCoords.lng,
-          latitudeDelta: 0.0922,
-          longitudeDelta: 0.0421,
-        }}>
+      <>
+        <View style={styles.container}>
+          {
+            regionCoordsTwo.lat != 0 && regionCoords.lat != 0 &&
+            <MapView
+                style={styles.map}
+                region={{
+                  latitude: regionCoords.lat,
+                  longitude: regionCoords.lng,
+                  latitudeDelta: 0.0922,
+                  longitudeDelta: 0.0421,
+                }}>
 
-        <MapViewDirections
-          origin={{ latitude: marker.lat, longitude: marker.lng }}
-          destination={{ latitude: markerTwo.lat, longitude: markerTwo.lng }}
-          apikey={GOOGLE_MAPS_APIKEY}
-          strokeWidth={4}
-          strokeColor="#111111"
-          onReady={result => {
-            MapData.distance = result.distance;
-            MapData.duration = result.duration;
-            emission = MapData.distance;
-            console.log(`Distance: ${result.distance} km`);
-            console.log(`Durée: ${result.duration} min`);
-            console.log(MapData.distance);
-          }}
-        />
-        <Marker coordinate={{ latitude: marker.lat, longitude: marker.lng }} />
-        <Marker coordinate={{ latitude: markerTwo.lat, longitude: markerTwo.lng }} />
+              <MapViewDirections
+                  origin={{ latitude: marker.lat, longitude: marker.lng }}
+                  destination={{ latitude: markerTwo.lat, longitude: markerTwo.lng }}
+                  apikey={GOOGLE_MAPS_APIKEY}
+                  strokeWidth={4}
+                  strokeColor="#111111"
+                  onReady={result => {
+                    MapData.distance = result.distance;
+                    MapData.duration = result.duration;
+                    console.log(`Distance: ${result.distance} km`);
+                    console.log(`Durée: ${result.duration} min`);
+                    console.log(MapData.distance);
+                  }}
+              />
+              <Marker coordinate={{ latitude: marker.lat, longitude: marker.lng }}/>
+              <Marker coordinate={{ latitude: markerTwo.lat, longitude: markerTwo.lng }}/>
 
-      </MapView>
+            </MapView>
+          }
+          <View style={styles.containerTop}>
+            <View style={styles.containerTopLeft}>
+              {
+                regionCoordsTwo.lat != 0 && regionCoords.lat != 0 &&
+                <Text style={styles.textTop}>Réduction de CO2 : {reduction}</Text>
+              }
+              {
+                regionCoordsTwo.lat != 0 && regionCoords.lat != 0 &&
+                <Text style={styles.textBot}>Points gagné : {Point}</Text>
+              }
+            </View>
+            <View style={styles.containerTopRight}>
+              {
+                regionCoordsTwo.lat != 0 && regionCoords.lat != 0 &&
+                <TouchableOpacity onPress={() => navigation.navigate('Analyse', reduction, Point)} style={styles.bouton}>
+                  <Text style={styles.textButton}>Confirmer</Text>
+                </TouchableOpacity>
+              }
+            </View>
+          </View>
+          <GooglePlacesAutocomplete
+              styles={{container:{flex:0, position:"absolute", width:'80%', zIndex:1, top:50, }}}
+              placeholder="Depart"
+              query={{
+                key: GOOGLE_PLACES_API_KEY,
+                language: 'en',
+              }}
+              GooglePlacesDetailsQuery={{
+                fields: 'geometry',
+              }}
+              fetchDetails={true}
+              onPress={onPress}
+              onFail={(error) => console.error(error)}
+              requestUrl={{
+                url:
+                    'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api',
+                useOnPlatform: 'web',
+              }} // this in only required for use on the web. See https://git.io/JflFv more for details.
+          />
 
-      }
-      {
-        regionCoordsTwo.lat != 0 && regionCoords.lat != 0 &&
-        <Text>Emission de CO2 : {emission}</Text>
-      }
-      {
-        regionCoordsTwo.lat != 0 && regionCoords.lat != 0 &&
-        <Text>Points gagné : {Point}</Text>
-      }
-      <GooglePlacesAutocomplete
-      styles={{container:{flex:0, position:"absolute", width:'80%', zIndex:1, top:50}}}
-      placeholder="Depart"
-        query={{
-          key: GOOGLE_PLACES_API_KEY,
-          language: 'en',
-        }}
-        GooglePlacesDetailsQuery={{
-          fields: 'geometry',
-        }}
-        fetchDetails={true}
-        onPress={onPress}
-        onFail={(error) => console.error(error)}
-        requestUrl={{
-          url:
-            'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api',
-          useOnPlatform: 'web',
-        }} // this in only required for use on the web. See https://git.io/JflFv more for details.
-      />
-
-      <GooglePlacesAutocomplete
-      styles={{container:{flex:0, position:"absolute", width:'80%', zIndex:0, top:100}}}
-      placeholder="Destination"
-        query={{
-          key: GOOGLE_PLACES_API_KEY,
-          language: 'en',
-        }}
-        GooglePlacesDetailsQuery={{
-          fields: 'geometry',
-        }}
-        fetchDetails={true}
-        onPress={onPressTwo}
-        onFail={(error) => console.error(error)}
-        requestUrl={{
-          url:
-            'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api',
-          useOnPlatform: 'web',
-        }}
-      />
+          <GooglePlacesAutocomplete
+              styles={{container:{flex:0, position:"absolute", width:'80%', zIndex:0, top:100}}}
+              placeholder="Destination"
+              query={{
+                key: GOOGLE_PLACES_API_KEY,
+                language: 'en',
+              }}
+              GooglePlacesDetailsQuery={{
+                fields: 'geometry',
+              }}
+              fetchDetails={true}
+              onPress={onPressTwo}
+              onFail={(error) => console.error(error)}
+              requestUrl={{
+                url:
+                    'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api',
+                useOnPlatform: 'web',
+              }}
+          />
 
 
 
-    </View>
+        </View>
         <Footer />
       </>
   );
@@ -178,39 +206,44 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.primary,
   },
   containerTop: {
-    marginTop: 190,
+    marginTop: 170,
     justifyContent: 'space-between',
     flex:2,
     flexDirection: 'row',
     paddingBottom:520,
   },
   containerTopLeft: {
-    width: '40%',
+    width: '60%',
     textAlign: 'center',
     alignItems: 'center',
     paddingTop: 10,
+    height: 80,
   },
   containerTopRight: {
-    width: '40%',
+    width: '30%',
     textAlign: 'center',
     alignItems: 'center',
     paddingTop: 10,
+    position: 'relative',
+    height: 80,
   },
   bouton: {
-    textAlign: 'center',
     alignItems: 'center',
-    padding: 12,
+    paddingTop: 15,
+    paddingLeft: 2,
+    paddingRight: 2,
     backgroundColor: Colors.secondary,
     borderRadius: 15,
     color: Colors.tertiary,
-    height: 45,
+    height: 60,
+    zIndex: 50,
   },
   map: {
     left: 10,
     right: 10,
     bottom: 0,
     position: 'absolute',
-    height:500,
+    height:400,
   },
   textBot: {
     zIndex:5,
@@ -225,11 +258,11 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   textTop: {
-
-    zIndex:5,
+    zIndex:6,
     fontSize: 14,
     fontWeight: 'bold',
     color: Colors.tertiary,
+    textAlign: 'center',
   },
 });
 
