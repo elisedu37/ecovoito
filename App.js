@@ -35,8 +35,10 @@ const MyStack = () => {
         <NavigationContainer>
           <Stack.Navigator screenOptions={{headerShown: false}}>
           {user == null ? (
-
-            <Stack.Screen name="Login" component={LogIn} /> 
+            [
+            <Stack.Screen key={0} name="Accueil" component={Home} />,
+            <Stack.Screen key={1}  name="Login" component={LogIn} /> 
+            ]
 
           ) : (
             () => navigation.navigate('Accueil')
@@ -46,7 +48,6 @@ const MyStack = () => {
             <Stack.Screen name="Scan" component={ScanQRCode} />  
             {/* <Stack.Screen name="Login" component={LogIn} />   */}
             <Stack.Screen name="Account" component={setAccount} />
-            <Stack.Screen name="Accueil" component={Home} />
             <Stack.Screen name="Signin" component={SignIn} />  
             <Stack.Screen name="Home" component={Accueil} /> 
             <Stack.Screen name="SetRole" component={SetRole} />
