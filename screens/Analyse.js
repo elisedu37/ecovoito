@@ -25,9 +25,34 @@ export default class Analyse extends Component {
           this.setState({url});
         }); 
       }
-
-      MyLineChart = () => {
-        return (
+  render() {
+  return (
+    <>
+      <View style={styles.container}>
+        <ScrollView>
+          <View>
+            <View style={styles.titleBar}>
+              <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+                <Image
+                  source={require('../assets/loader-icon.png')}
+                  style={styles.imgCovoit}
+                />
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => navigation.navigate('Profil')}>
+                <Image
+                  source={require('../assets/img/compte.png')}
+                  style={styles.imgCovoit}
+                />
+              </TouchableOpacity>
+            </View>
+          </View>
+          <Text style={styles.titre}>MON TABLEAU DE BORD </Text>
+          <View style={styles.containerText}>
+            <Text style={styles.TextT}>Donnée du : 18 mars 2022</Text>
+            <Text style={styles.TextM}>78,6</Text>
+            <Text style={styles.TextB}>kg de réduction de CO2</Text>
+          </View>
+          <Text style={styles.titre}>EVOLUTION </Text>
           <>
             <LineChart
               data={{
@@ -57,38 +82,6 @@ export default class Analyse extends Component {
               }}
             />
           </>
-        );
-      };
-
-  render() {
-  return (
-    <>
-      <View style={styles.container}>
-        <ScrollView>
-          <View>
-            <View style={styles.titleBar}>
-              <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-                <Image
-                  source={require('../assets/loader-icon.png')}
-                  style={styles.imgCovoit}
-                />
-              </TouchableOpacity>
-              <TouchableOpacity onPress={() => navigation.navigate('Profil')}>
-                <Image
-                  source={require('../assets/img/compte.png')}
-                  style={styles.imgCovoit}
-                />
-              </TouchableOpacity>
-            </View>
-          </View>
-          <Text style={styles.titre}>MON TABLEAU DE BORD </Text>
-          <View style={styles.containerText}>
-            <Text style={styles.TextT}>Donnée du : 18 mars 2022</Text>
-            <Text style={styles.TextM}>78,6</Text>
-            <Text style={styles.TextB}>kg de réduction de CO2</Text>
-          </View>
-          <Text style={styles.titre}>EVOLUTION </Text>
-          <MyLineChart />
           <Text style={styles.titre}>VOTRE CLASSEMENT </Text>
           <View style={styles.classementContainer}>
             <View style={styles.classementContainerL}>
