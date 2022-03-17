@@ -117,7 +117,7 @@ const MapsScreen = ({ navigation, route }) => {
             <View style={styles.containerTopLeft}>
               {
                 regionCoordsTwo.lat != 0 && regionCoords.lat != 0 &&
-                <Text style={styles.textTop}>Emission de CO2 : {emission}</Text>
+                <Text style={styles.textTop}>Réduction de CO2 : {emission}</Text>
               }
               {
                 regionCoordsTwo.lat != 0 && regionCoords.lat != 0 &&
