@@ -88,7 +88,7 @@ export default class Accueil extends Component {
             <Text style={styles.titre}>MON TABLEAU DE BORD </Text>
             <View style={styles.containerText}>
               <Text style={styles.TextT}>Donnée du : 18 mars 2022</Text>
-              <Text style={styles.TextM}>{this.state.user.reduction}</Text>
+              <Text style={styles.TextM}>{this.state.user.reduction} kg</Text>
               <Text style={styles.TextB}>de réduction de CO2</Text>
             </View>
             <View style={styles.classementContainer}>

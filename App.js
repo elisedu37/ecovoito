@@ -25,7 +25,9 @@ import TrajetIndividuel from './screens/TrajetIndividuel';
 
 import MapScreen from './screens/MapsScreen';
 const Stack = createNativeStackNavigator();
-
+import { LogBox } from 'react-native';
+LogBox.ignoreLogs(['Warning:...']);
+LogBox.ignoreAllLogs();
 
 const MyStack = () => {
   const user = auth.currentUser;
