@@ -11,13 +11,13 @@ import "firebase/storage";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyARwNmLNh63cTHRYdop7NjYzchL66YpIhs",
-  authDomain: "ecovoito.localhost",
-  projectId: "ecovoito",
-  storageBucket: "ecovoito.appspot.com",
-  messagingSenderId: "685205876171",
-  appId: "1:685205876171:web:08bcf6ea86777e6ef0da4e",
-  measurementId: "G-21XKJG662P"
+  apiKey: "add_api_key",
+  authDomain: "add_auth_domain",
+  projectId: "add_project_id",
+  storageBucket: "add_storage_bucket",
+  messagingSenderId: "add_messaging_sender_id",
+  appId: "add_app_id",
+  measurementId: "add_measurement_id"
 };
 // Initialize Firebase
 let app;
