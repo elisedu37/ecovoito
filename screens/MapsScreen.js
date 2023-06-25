@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import MapView, { Marker } from 'react-native-maps';
-const GOOGLE_PLACES_API_KEY = 'AIzaSyDPzW9WexAPy_FL6A8K_qseJIvWxZ9H3ns';
 import MapViewDirections from 'react-native-maps-directions';
 import { Colors } from '../components/Colors';
 import Footer from '../components/Footer';
@@ -12,9 +11,11 @@ let state = {
   reduction: 0,
 }
 
+const GOOGLE_PLACES_API_KEY = 'google_places_api_key';
+
 const MapsScreen = ({ navigation, route }) => {
   const modetransport = route.params.text;
-  const GOOGLE_MAPS_APIKEY = 'AIzaSyDPzW9WexAPy_FL6A8K_qseJIvWxZ9H3ns';
+  const GOOGLE_MAPS_APIKEY = 'google_maps_api_key';
   const MapData=[];
 
   const [regionCoords, setRegion] = useState({ lat: 0, lng:0 });
